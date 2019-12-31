@@ -10,6 +10,9 @@ module.exports = {
   },
   mode: 'development',
   devServer: {
+    proxy: {
+      '/server': 'http://localhost:3000',
+    },
     contentBase: './src',
     publicPath: '/dist',
   },
