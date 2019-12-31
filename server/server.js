@@ -3,8 +3,11 @@ const PORT = 3000;
 const app = express();
 const path = require('path');
 
+
+// app.use(express.static('dist'))
+
 app.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client/index.html'))
+  res.sendFile(path.resolve(__dirname, '../src/index.html'))
 })
 
 

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import Reducers from './reducers.js';
-import thunks from './middleware.js';
+import thunks from '../Middleware/thunkMiddleware.js';
 
 
 // combine reducers

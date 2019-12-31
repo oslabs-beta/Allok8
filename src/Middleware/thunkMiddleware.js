@@ -1,5 +1,5 @@
-import store from '../store';
-import * as actionCreator from '../constant/actionCreator.js';
+import store from '../Store/store.js';
+import * as actionCreator from '../Actions/actionCreator.js';
 
 
 
@@ -14,7 +14,7 @@ const nextValue = (uri) =>
   })
     .then(res => res.json())
     //do some work to grab what we need
-    .then(val => {store.dispatch(actionCreator.updateValue(val))});
+    // .then(val => {store.dispatch(actionCreator.updateValue(val))});
   }
 
 export default {

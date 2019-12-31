@@ -3,27 +3,24 @@ const path = require('path');
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
   mode: 'development',
   devServer: {
+    contentBase: './src',
     publicPath: '/dist',
-    compress: true,
-    port: 8000,
-    proxy: {
-      '/server/': 'http://localhost:3000'
-    }
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: ['babel-loader']
       },
       {
         test: /\.css/,
+        exclude: /node_modules/,
         use: ['style-loader', 'css-loader'],
       },
     ]
