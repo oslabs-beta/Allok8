@@ -1,11 +1,11 @@
 const express = require('express');
+
 // const bodyParser = require('body-parser');
 // const cookieParser = require('cookie-parser');
 
 const PORT = 3000;
 const app = express();
 const path = require('path');
-
 
 // const xRouter = require('./routes/x');
 
