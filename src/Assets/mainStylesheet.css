@@ -1,0 +1,18 @@
+html {
+    width: 100%;
+    height: 100%;
+
+    font-family: 'Roboto', 'Open Sans', sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(237, 237, 237)
+}
+
+#root {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}

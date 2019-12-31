@@ -3,27 +3,34 @@ import { connect } from 'react-redux';
 import * as actions from '../Actions/actionCreator.js';
 // We will be doing fetches so we will need thunks
 import thunks from '../Middleware/thunkMiddleware.js';
-import Landing from './Landing.jsx';
 
 
 const mapDispatchToProps = (dispatch) => ({
-  // flipBool: () => dispatch(actions.flipBool()),
+  flipBool: () => dispatch(actions.flipBool()),
 });
 
 const mapStateToProps = (store) => ({
-  // bool: store.state.bool,
-  // payload: store.state.payload,
+  bool: store.state.bool,
+  payload: store.state.payload,
 });
 
-class App extends Component {
+
+class Landing extends Component {
   constructor(props) {
     super(props);
   }
 
-  // renders a button and a boolean; the button flips the boolean
   render() {
     return (
-      <Landing />
+      <div id="landingContainer">
+        <h1>Allok8</h1>
+        <hr />
+        <input id="apiInput" placeholder="Api" type="text" />
+        <br />
+        <input id="tokenInput" placeholder="Token" type="text" />
+        <br />
+        <button>=></button>
+      </div>
     );
   }
 }
@@ -32,4 +39,4 @@ class App extends Component {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(App);
+)(Landing);
