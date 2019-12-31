@@ -9,8 +9,13 @@ const path = require('path');
 
 // const xRouter = require('./routes/x');
 
+
+// const xRouter = require('./routes/x');
+
 // app.use(bodyParser.json());
 
+// statically serve everything in the build folder on the route '/build'
+app.use('/dist', express.static(path.join(__dirname, '../dist')));
 
 // root, send index.html
 app.get('/', (req, res) => {
