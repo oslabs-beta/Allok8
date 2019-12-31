@@ -1,10 +1,12 @@
 const path = require('path');
 
 module.exports = {
+  mode: process.env.NODE_ENV,
+
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   mode: 'development',
   devServer: {
@@ -16,13 +18,13 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: ['babel-loader'],
       },
       {
         test: /\.css/,
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader'],
       },
-    ]
-  }
+    ],
+  },
 };
