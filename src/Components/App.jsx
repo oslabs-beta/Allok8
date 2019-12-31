@@ -22,7 +22,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        {this.props.bool}
+        {`${this.props.bool}`}
         <button onClick={this.props.flipBool}>flip</button>
         <div>{this.props.payload}</div>
       </div>
