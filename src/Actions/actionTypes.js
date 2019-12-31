@@ -1,2 +1,3 @@
 
-export const FLIP_BOOL = 'FLIP_BOOL';
+export const GET_DATA = 'GET_DATA';
+export const UPDATE_DATA = 'UPDATE_DATA';

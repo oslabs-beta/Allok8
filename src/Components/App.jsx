@@ -1,35 +1,31 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../Actions/actionCreator.js';
-// We will be doing fetches so we will need thunks
-import thunks from '../Middleware/thunkMiddleware.js';
 import Landing from './Landing.jsx';
+import Dashboard from './Dashboard.jsx';
 
-
-const mapDispatchToProps = (dispatch) => ({
-  // flipBool: () => dispatch(actions.flipBool()),
-});
 
 const mapStateToProps = (store) => ({
-  // bool: store.state.bool,
+  page: store.state.page,
   // payload: store.state.payload,
 });
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   // renders a button and a boolean; the button flips the boolean
   render() {
-    return (
-      <Landing />
-    );
+    switch (this.props.page) {
+      case 'DASHBOARD':
+        console.log('Dashboard');
+        return (<Dashboard />);
+      case 'LANDING':
+        console.log('Landing');
+        return (<Landing />);
+      default:
+        return (<h1>ERROR</h1>);
+    }
   }
 }
 
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(App);
+export default connect(mapStateToProps)(App);

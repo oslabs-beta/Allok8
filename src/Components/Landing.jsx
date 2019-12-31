@@ -1,25 +1,21 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../Actions/actionCreator.js';
 // We will be doing fetches so we will need thunks
-import thunks from '../Middleware/thunkMiddleware.js';
+import thunks from '../Middleware/thunkMiddleware';
 
-
-const mapDispatchToProps = (dispatch) => ({
-  flipBool: () => dispatch(actions.flipBool()),
-});
 
 const mapStateToProps = (store) => ({
-  bool: store.state.bool,
-  payload: store.state.payload,
+  page: store.state.page,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getData: () => dispatch(thunks.getData(document.getElementById('apiInput').value, document.getElementById('tokenInput').value)),
 });
 
 
 class Landing extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div id="landingContainer">
@@ -29,7 +25,7 @@ class Landing extends Component {
         <br />
         <input id="tokenInput" placeholder="Token" type="text" />
         <br />
-        <button>=></button>
+        <button type="button" onClick={() => this.props.getData()}>=></button>
       </div>
     );
   }
