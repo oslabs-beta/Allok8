@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server/server.js",
     "build": "webpack",
-    "both": "webpack-dev-server --mode development --open --hot & nodemon server/server.js",
-    "dev":"webpack-dev-server --mode development --open --hot"
+    "both": "concurrently \"webpack-dev-server --mode development --open --hot\" \"nodemon server/server.js\"",
+    "dev": "webpack-dev-server --mode development --open --hot"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/oslabs-beta/Allok8#readme",
   "dependencies": {
+    "concurrently": "^5.0.2",
     "express": "^4.17.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
