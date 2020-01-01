@@ -1,5 +1,5 @@
 import store from '../Store/store';
-import * as actionCreator from '../Actions/actionCreator';
+import { updateData } from '../Actions/actionCreator';
 
 
 const getData = (api, token) => () => {
@@ -12,11 +12,7 @@ const getData = (api, token) => () => {
     body: JSON.stringify({ api, token }),
   })
     .then((res) => res.json())
-    .then((res) => {
-      console.log(res);
-      return res;
-    })
-    .then((data) => { store.dispatch(actionCreator.updateData(data, api, token)); })
+    .then((data) => { store.dispatch(updateData(data, api, token)); })
     .catch((err) => { console.log('Whoops', err); });
 };
 
