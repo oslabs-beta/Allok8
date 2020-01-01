@@ -8,7 +8,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
   },
-  mode: 'development',
   devServer: {
     proxy: {
       '/server': 'http://localhost:3000',
