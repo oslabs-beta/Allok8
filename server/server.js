@@ -7,7 +7,7 @@ const PORT = 3000;
 const app = express();
 const path = require('path');
 const cmd = require('node-cmd');
-
+const curlRouter = require('./routes/curlRouter.js');
 // const xRouter = require('./routes/x');
 
 
@@ -34,7 +34,7 @@ cmd.get(
         podInfo[obj.items[i].metadata.name] = obj.items[i]
       }
     podNameArray.forEach(pod => containerInfo[pod] = podInfo[pod].spec.containers )
-    console.log(containerInfo)
+    // console.log(containerInfo)
   }
 )
 //get node info
@@ -50,9 +50,9 @@ cmd.get(
         nodeNameArray.push(item.metadata.name);
         nodeMetricsRaw[item.metadata.name] = item.status
       })
-      console.log(nodeNameArray)
-      console.log(nodeMetricsRaw)
-      console.log('the current number of nodes is: ', numOfNodes) 
+      // console.log(nodeNameArray)
+      // console.log(nodeMetricsRaw)
+      // console.log('the current number of nodes is: ', numOfNodes) 
       
   }
 )
@@ -68,15 +68,8 @@ app.get('/', (req, res) => {
 });
 
 
-//example template on how we can use req.body or req.cookies to make our requests
-// app.get('/getInfo', (req, res, next) => {
-//   const { url, token } = req.body;
-//   cmd.get(
-//   `curl ${url} --header "Authorization: Bearer ${token}" --insecure`
-//   )
-// }, (req, res) => {
-//   res.send('INFO WE WANT')
-// })
+//route handlers
+app.use('/server', curlRouter);
 
 
 // catch-all route handler for any requests to an unknown route
