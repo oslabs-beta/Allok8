@@ -49,3 +49,19 @@ button {
 }
 
 /* #2E6CE6 */
+
+h2 {
+    margin: 4px 0px;
+}
+
+h3 {
+    margin: 4px 0px 4px 16px;
+}
+
+h4 {
+    margin: 4px 0px 0px 32px;
+}
+
+h6 {
+    margin: 0px 0px 4px 40px;
+}

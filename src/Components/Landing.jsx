@@ -8,6 +8,8 @@ import thunks from '../Middleware/thunkMiddleware';
 
 const mapStateToProps = (store) => ({
   page: store.state.page,
+  api: store.state.api,
+  token: store.state.token,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -21,9 +23,9 @@ class Landing extends Component {
       <div id="landingContainer">
         <h1>Allok8</h1>
         <hr />
-        <input id="apiInput" placeholder="Api" type="text" />
+        <input id="apiInput" placeholder="Api" type="text" defaultValue={this.props.api} />
         <br />
-        <input id="tokenInput" placeholder="Token" type="text" />
+        <input id="tokenInput" placeholder="Token" type="text" defaultValue={this.props.token} />
         <br />
         <button type="button" onClick={() => this.props.getData()}>=></button>
       </div>
