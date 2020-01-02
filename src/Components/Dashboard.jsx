@@ -8,9 +8,13 @@ import thunks from '../Middleware/thunkMiddleware.js';
 
 const mapStateToProps = (store) => ({
   data: store.state.data,
+  api: store.state.api,
+  token: store.state.token,
 });
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+  getData: (api, token) => dispatch(thunks.getData(api, token)),
+});
 
 
 class Dashboard extends Component {
@@ -18,32 +22,52 @@ class Dashboard extends Component {
     super(props);
 
     this.buildDataDisp = this.buildDataDisp.bind(this);
+    this.updateData = this.updateData.bind(this);
+
+    setInterval(this.updateData, 5000);
+  }
+
+  updateData() {
+    console.log('Update Data');
+    this.props.getData(this.props.api, this.props.token);
   }
 
   buildDataDisp() {
     const { data } = this.props;
     const dataArr = [];
-    dataArr.push(<h1 key="cluster">{data.name}</h1>);
+    dataArr.push(<h1 key="cluster">Allok8</h1>);
     for (let n = 0; n < data.nodeInfo.nodeNameArray.length; n += 1) {
       const nodeName = data.nodeInfo.nodeNameArray[n];
-      dataArr.push(<h2 key={n}>{nodeName}</h2>);
+      dataArr.push(<h2 key={n}>{`Node ${n + 1}: ${nodeName}`}</h2>);
       if (data.nodeInfo.nodeMetricsRaw[nodeName]) {
+        // Metrics for current node
         const nodeMetrics = data.nodeInfo.nodeMetricsRaw[nodeName];
-        const nodeMetricKeys = Object.keys(data.nodeInfo.nodeMetricsRaw[nodeName]);
-        // for (let m = 0; m < nodeMetricKeys.length; m += 1) {
-        //   dataArr.push(<h6 key={`${nodeName}${nodeMetricKeys[m]}`}>{`${nodeMetricKeys[m]}: ${nodeMetrics[nodeMetricKeys[m]]}`}</h6>);
-        // }
-        dataArr.push(<h6 key={`${nodeName}cpuCap`}>{`CPU Capacity: ${nodeMetrics.capacity.memory}`}</h6>);
+
+        // Capacity and Allocatable Data for current node
+        const alloc = nodeMetrics.allocatable;
+        const cap = nodeMetrics.capacity;
+        if (cap.memory) dataArr.push(<h6 key={`${n}${nodeName}capMem`}>{`Memory - Capacity: ${cap.memory}`}</h6>);
+        if (alloc.memory) dataArr.push(<h6 key={`${n}${nodeName}alloMem`}>{`Memory - Allocatable : ${alloc.memory}`}</h6>);
+        if (cap.cpu) dataArr.push(<h6 key={`${n}${nodeName}capCpu`}>{`CPU - Capacity: ${(Number(cap.cpu) * 1000)}m`}</h6>);
+        if (alloc.memory) dataArr.push(<h6 key={`${n}${nodeName}alloCPU`}>{`CPU - Allocatable : ${alloc.cpu}`}</h6>);
+        // dataArr.push(<h6 key={`${n}${nodeName}capEphStor`}>{`Ephemeral Storage - Capacity: ${cap['ephemeral-storage']}`}</h6>);
+        // dataArr.push(<h6 key={`${n}${nodeName}calloEphStor`}>{`Ephemeral Storage - Allocatable: ${alloc['ephemeral-storage']}`}</h6>);
 
         for (let p = 0; p < data.podInfo.podNameArray.length; p += 1) {
           const podName = data.podInfo.podNameArray[p];
           const podInfo = data.podInfo.podInfo[podName];
           if (podInfo.spec.nodeName === nodeName) {
-            dataArr.push(<h3 key={`${podName}`}>{podName}</h3>);
+            if (podName) dataArr.push(<h3 key={`${p}${nodeName}${podName}`}>{`Pod: ${podName}`}</h3>);
+            if (podInfo.metadata.namespace) dataArr.push(<h6 key={`${p}${nodeName}${podName}namespace`}>{`Namespace: ${podInfo.metadata.namespace}`}</h6>);
+            if (podInfo.status && podInfo.status.phase) dataArr.push(<h6 key={`${p}${nodeName}${podName}status`}>{`Status: ${podInfo.status.phase}`}</h6>);
+            if (podInfo.status && podInfo.status.startTime) dataArr.push(<h6 key={`${p}${nodeName}${podName}startTime`}>{`Start Time: ${podInfo.status.startTime}`}</h6>);
             for (let c = 0; c < podInfo.spec.containers.length; c += 1) {
-              const contName = podInfo.spec.containers[c].name;
-              dataArr.push(<h4 key={`${contName}`}>{contName}</h4>);
-              dataArr.push(<h6 key={`${contName}cpuReq`}>{`CPU Requests : ${podInfo.spec.containers[c].resources.requests.cpu}`}</h6>);
+              const cont = podInfo.spec.containers[c];
+              if (cont.name) dataArr.push(<h4 key={`${c}${nodeName}${podName}${cont.name}`}>{`Container: ${cont.name}`}</h4>);
+              if (cont.image) dataArr.push(<h6 key={`${c}${nodeName}${podName}${cont.name}image`}>{`Image : ${cont.image}`}</h6>);
+              if (cont.resources.limits && cont.resources.limits.memory) dataArr.push(<h6 key={`${c}${nodeName}${podName}${cont.name}memLim`}>{`Memory Limit: ${cont.resources.limits.memory}`}</h6>);
+              if (cont.resources.requests && cont.resources.requests.memory) dataArr.push(<h6 key={`${c}${nodeName}${podName}${cont.name}memReq`}>{`Memory Requests: ${cont.resources.requests.memory}`}</h6>);
+              if (cont.resources.requests && cont.resources.requests.cpu) dataArr.push(<h6 key={`${c}${nodeName}${podName}${cont.name}cpuReq`}>{`CPU Requests: ${cont.resources.requests.cpu}`}</h6>);
             }
           }
         }
