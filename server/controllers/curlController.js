@@ -10,6 +10,7 @@ k8.getNodeInfo = (req, res, next) => {
     function(err, data, stderr){
       //error handle if needed
       if (err) {
+        // console.log('hitting error in curl', err);
         return next(err);
       }
         const obj = JSON.parse(data);
