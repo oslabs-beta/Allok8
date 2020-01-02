@@ -41,7 +41,7 @@ k8.getPodInfo = (req, res, next) => {
   // todo switch from body to using cookies, I think
   const { api, token } = req.body;
   //! hard coded for now
-  const namespace = 'kube-system';
+  const namespace = 'default';
   cmd.get(
     `curl https://${api}/api/v1/namespaces/${namespace}/pods?limit=500 --header "Authorization: Bearer ${token}" --insecure`,
     (err, data, stderr) => {
