@@ -1,0 +1,24 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    // "no-param-reassign": "off",
+    // "consistent-return": "off",
+    "no-console": "off",
+    "react/prop-types": "off",
+    "linebreak-style": "off", // windows CRLF LF thing?
+    "func-names": "off",
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }] // allows for i++ or i-- in third arg of for loop
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+        "jsx": true
+    },
+    "ecmaVersion": 2018
+  },
+  "plugins": [
+    "react"
+  ],
+  "env": {
+    "browser": true
+  }
+}

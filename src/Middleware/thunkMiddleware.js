@@ -1,22 +1,20 @@
-import store from '../Store/store.js';
-import * as actionCreator from '../Actions/actionCreator.js';
+import store from '../Store/store';
+import { updateData } from '../Actions/actionCreator';
 
 
-
-const nextValue = (uri) => 
- () => {
-
-  const data = { uri }
-  // todo add route
-  fetch('', {
-    method: 'GET',
+const getData = (api, token) => () => {
+  console.log(api);
+  console.log(token);
+  fetch('/server/getInfo', {
+    method: 'POST',
     headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ api, token }),
   })
-    .then(res => res.json())
-    //do some work to grab what we need
-    // .then(val => {store.dispatch(actionCreator.updateValue(val))});
-  }
+    .then((res) => res.json())
+    .then((data) => { store.dispatch(updateData(data, api, token)); })
+    .catch((err) => { console.log('Whoops', err); });
+};
 
 export default {
-  nextValue
+  getData,
 };
