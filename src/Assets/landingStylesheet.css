@@ -52,17 +52,17 @@ button {
 
 h2 {
     margin: 4px 0px;
-    color: rgb(30, 132, 235);
+    color: rgb(74, 150, 24);
 }
 
 h3 {
     margin: 4px 0px 4px 16px;
-    color: rgb(24, 111, 197);
+    color: red;
 }
 
 h4 {
     margin: 4px 0px 0px 32px;
-    color: rgb(31, 106, 177);
+    color: rgb(199, 120, 1);
 }
 
 h6 {

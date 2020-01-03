@@ -24,7 +24,7 @@ class Dashboard extends Component {
     this.buildDataDisp = this.buildDataDisp.bind(this);
     this.updateData = this.updateData.bind(this);
 
-    setInterval(this.updateData, 5000);
+    setInterval(this.updateData, 500);
   }
 
   updateData() {
@@ -46,10 +46,10 @@ class Dashboard extends Component {
         // Capacity and Allocatable Data for current node
         const alloc = nodeMetrics.allocatable;
         const cap = nodeMetrics.capacity;
-        if (cap.memory) dataArr.push(<h6 key={`${n}${nodeName}capMem`}>{`Memory - Capacity: ${cap.memory}`}</h6>);
-        if (alloc.memory) dataArr.push(<h6 key={`${n}${nodeName}alloMem`}>{`Memory - Allocatable : ${alloc.memory}`}</h6>);
-        if (cap.cpu) dataArr.push(<h6 key={`${n}${nodeName}capCpu`}>{`CPU - Capacity: ${(Number(cap.cpu) * 1000)}m`}</h6>);
-        if (alloc.memory) dataArr.push(<h6 key={`${n}${nodeName}alloCPU`}>{`CPU - Allocatable : ${alloc.cpu}`}</h6>);
+        if (cap.memory) dataArr.push(<h6 key={`${n}${nodeName}capMem`}>{`Memory - Allocatable: ${((parseInt(alloc.memory, 10) / parseInt(cap.memory, 10)) * 100).toFixed(2)}%`}</h6>);
+        if (alloc.memory) dataArr.push(<h6 key={`${n}${nodeName}alloMem`}>{`Memory - Usage: ${(((parseInt(cap.memory, 10) - parseInt(alloc.memory, 10)) / parseInt(cap.memory, 10)) * 100).toFixed(2)}%`}</h6>);
+        if (cap.cpu) dataArr.push(<h6 key={`${n}${nodeName}capCpu`}>{`CPUs: ${cap.cpu}`}</h6>);
+        if (alloc.memory) dataArr.push(<h6 key={`${n}${nodeName}alloCPU`}>{`CPU - Allocatable : ${(parseInt(alloc.cpu, 10) / 10)}%`}</h6>);
         // dataArr.push(<h6 key={`${n}${nodeName}capEphStor`}>{`Ephemeral Storage - Capacity: ${cap['ephemeral-storage']}`}</h6>);
         // dataArr.push(<h6 key={`${n}${nodeName}calloEphStor`}>{`Ephemeral Storage - Allocatable: ${alloc['ephemeral-storage']}`}</h6>);
 
@@ -67,7 +67,7 @@ class Dashboard extends Component {
               if (cont.image) dataArr.push(<h6 key={`${c}${nodeName}${podName}${cont.name}image`}>{`Image : ${cont.image}`}</h6>);
               if (cont.resources.limits && cont.resources.limits.memory) dataArr.push(<h6 key={`${c}${nodeName}${podName}${cont.name}memLim`}>{`Memory Limit: ${cont.resources.limits.memory}`}</h6>);
               if (cont.resources.requests && cont.resources.requests.memory) dataArr.push(<h6 key={`${c}${nodeName}${podName}${cont.name}memReq`}>{`Memory Requests: ${cont.resources.requests.memory}`}</h6>);
-              if (cont.resources.requests && cont.resources.requests.cpu) dataArr.push(<h6 key={`${c}${nodeName}${podName}${cont.name}cpuReq`}>{`CPU Requests: ${cont.resources.requests.cpu}`}</h6>);
+              if (cont.resources.requests && cont.resources.requests.cpu) dataArr.push(<h6 key={`${c}${nodeName}${podName}${cont.name}cpuReq`}>{`CPU: ${parseInt(cont.resources.requests.cpu, 10) / (cap.cpu * 10)}%`}</h6>);
             }
           }
         }
