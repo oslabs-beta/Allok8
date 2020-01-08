@@ -5,6 +5,9 @@ import * as types from '../Actions/actionTypes';
 // We will be doing fetches so we will need thunks
 import thunks from '../Middleware/thunkMiddleware.js';
 
+// import header
+import Header from './Header.jsx';
+
 
 const mapStateToProps = (store) => ({
   data: store.state.data,
@@ -91,10 +94,15 @@ class Dashboard extends Component {
   render() {
     console.log(this.props.data);
     return (
+      <div>
+        <div>
+          <Header/>
+        </div>
       <div id="DashboardContainer">
         {/* <h1>DASHBOARD</h1> */}
         <div>{this.buildDataDisp()}</div>
 
+      </div>
       </div>
     );
   }
