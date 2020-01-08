@@ -7,6 +7,7 @@ import thunks from '../Middleware/thunkMiddleware.js';
 
 // import header
 import Header from './Header.jsx';
+import Display from '../Containers/Display.jsx';
 
 
 const mapStateToProps = (store) => ({
@@ -97,6 +98,7 @@ class Dashboard extends Component {
       <div>
         <div>
           <Header/>
+          <Display/>
         </div>
       <div id="DashboardContainer">
         {/* <h1>DASHBOARD</h1> */}
