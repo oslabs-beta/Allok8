@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Viewer from './Viewer.jsx';
+import InfoPanel from '../Components/InfoPanel.jsx';
 
 class MainView extends Component{
   constructor(props){
@@ -10,6 +12,8 @@ class MainView extends Component{
     return(
       <div>
         <h2>THIS IS THE MAIN VIEW</h2>
+        <Viewer />
+        <InfoPanel />
       </div>
     )
   }
