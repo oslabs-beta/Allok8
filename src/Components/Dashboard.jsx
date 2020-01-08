@@ -9,7 +9,6 @@ import thunks from '../Middleware/thunkMiddleware.js';
 import Header from './Header.jsx';
 import Display from '../Containers/Display.jsx';
 
-
 const mapStateToProps = (store) => ({
   data: store.state.data,
   api: store.state.api,
