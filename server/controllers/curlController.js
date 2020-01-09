@@ -29,6 +29,8 @@ k8.getNodeInfo = (req, res, next) => {
         nodeNameArray,
         nodeMetricsRaw,
       };
+
+      // console.log('THIS IS NODE METRICS RAW ', nodeMetricsRaw)
       // console.log(nodeNameArray)
       // console.log(nodeMetricsRaw)
       // console.log('the current number of nodes is: ', numOfNodes)
@@ -36,6 +38,7 @@ k8.getNodeInfo = (req, res, next) => {
     },
   );
 };
+
 
 k8.getPodInfo = (req, res, next) => {
   // todo switch from body to using cookies, I think
@@ -75,9 +78,55 @@ k8.getPodInfo = (req, res, next) => {
         podInfo,
         podNameArray,
       };
+
+      // console.log('THIS IS POD INFO ', podInfo)
       return next();
     },
   );
 };
+
+k8.getNodesUsage = (req, res, next) => {
+  // todo switch from body to using cookies, I think
+  const { api, token } = req.body;
+  //! hard coded for now
+  cmd.get(
+    `curl https://${api}/apis/metrics.k8s.io/v1beta1/nodes --header "Authorization: Bearer ${token}" --insecure`,
+    (err, data, stderr) => {
+      // error handle if needed
+      if (err) {
+        return next(err);
+      }
+      const obj = JSON.parse(data);
+
+      console.log('THIS IS USAGE ', obj.items);
+
+      return next();
+    },
+  );
+};
+
+k8.getPodsUsage = (req, res, next) => {
+  // todo switch from body to using cookies, I think
+  const { api, token } = req.body;
+  //! hard coded for now
+  const namespace = 'default';
+  cmd.get(
+    `curl https://${api}/apis/metrics.k8s.io/v1beta1/namespaces/${namespace}/pods --header "Authorization: Bearer ${token}" --insecure`,
+    (err, data, stderr) => {
+      // error handle if needed
+      if (err) {
+        return next(err);
+      }
+      const obj = JSON.parse(data);
+
+      // console.log('THIS IS USAGE ', obj.items);
+
+      return next();
+    },
+  );
+};
+
+
+
 
 module.exports = k8;
