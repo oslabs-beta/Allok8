@@ -30,10 +30,6 @@ k8.getNodeInfo = (req, res, next) => {
         nodeMetricsRaw,
       };
 
-      // console.log('THIS IS NODE METRICS RAW ', nodeMetricsRaw)
-      // console.log(nodeNameArray)
-      // console.log(nodeMetricsRaw)
-      // console.log('the current number of nodes is: ', numOfNodes)
       return next();
     },
   );
@@ -55,7 +51,6 @@ k8.getPodInfo = (req, res, next) => {
       const obj = JSON.parse(data);
       const podNameArray = [];
       const podInfo = {};
-      const containerInfo = {};
       // todo swap this to use object.keys to iterate instead of a for in
 
       // ? there is definitely a better way to do this we will need to revisit how this object looks together
@@ -70,11 +65,8 @@ k8.getPodInfo = (req, res, next) => {
           podInfo[obj.items[i].metadata.name] = obj.items[i];
         }
       }
-      // creates an object that has the information for the containers in the pod as key,value pairs by pod
-      podNameArray.forEach((pod) => containerInfo[pod] = podInfo[pod].spec.containers);
-      // console.log(containerInfo)
-      res.locals.containerInfo = {
-        containerInfo,
+   
+      res.locals.podsInfo = {
         podInfo,
         podNameArray,
       };
@@ -96,9 +88,9 @@ k8.getNodesUsage = (req, res, next) => {
       if (err) {
         return next(err);
       }
-      const obj = JSON.parse(data);
-
-      console.log('THIS IS USAGE ', obj.items);
+      // console.log('HELLLO ', JSON.parse(data));
+      res.locals.nodeUsage = JSON.parse(data);
+      // console.log('THIS IS USAGE ', JSON.parse(data).items);
 
       return next();
     },
@@ -117,7 +109,7 @@ k8.getPodsUsage = (req, res, next) => {
       if (err) {
         return next(err);
       }
-      const obj = JSON.parse(data);
+      res.locals.podUsage = JSON.parse(data);
 
       // console.log('THIS IS USAGE ', obj.items);
 
@@ -126,7 +118,41 @@ k8.getPodsUsage = (req, res, next) => {
   );
 };
 
+k8.structureData = (req, res, next) => {
+  const { podUsage, nodeUsage, podsInfo, nodeInfo } = res.locals;
+  const nodeKeys = Object.keys(nodeInfo.nodeMetricsRaw);
 
+
+  /////BAHRAM>......
+
+  Object.keys(nodeInfo.nodeMetricsRaw).forEach(nodeName => {
+
+    nodeUsage.items.forEach(eachNode => {
+      // console.log('THIS IS EACH METADATA ', eachNode.metadata)
+      if (eachNode.metadata.name === nodeName) {
+        nodeInfo.nodeMetricsRaw[nodeName]['nodeUsage'] = eachNode
+      }
+    })
+
+
+    Object.keys(podsInfo.podInfo).forEach(podName => {
+      const currNodeName = podsInfo.podInfo[podName].spec.nodeName;
+
+      podUsage.items.forEach(eachPod => {
+
+        if (eachPod.metadata.name === podName) {
+          podsInfo.podInfo[podName]['podUsage'] = eachPod
+        }
+      })
+
+      if (nodeName === currNodeName) {
+        nodeInfo.nodeMetricsRaw[nodeName]['pods'] = podsInfo.podInfo[podName]
+      }
+    
+  })
+  })
+  return next()
+}
 
 
 module.exports = k8;
