@@ -1,0 +1,50 @@
+
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    k8s-app: kubernetes-metrics-scraper
+  name: dashboard-metrics-scraper
+spec:
+  ports:
+    - port: 8000
+      targetPort: 8000
+  selector:
+    k8s-app: kubernetes-metrics-scraper
+
+---
+
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  labels:
+    k8s-app: kubernetes-metrics-scraper
+  name: kubernetes-metrics-scraper
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      k8s-app: kubernetes-metrics-scraper
+  template:
+    metadata:
+      labels:
+        k8s-app: kubernetes-metrics-scraper
+    spec:
+      containers:
+        - name: kubernetes-metrics-scraper
+          image: kubernetesui/metrics-scraper:v1.0.0
+          ports:
+            - containerPort: 8000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /
+              port: 8000
+            initialDelaySeconds: 30
+            timeoutSeconds: 30
+      # Comment the following tolerations if Dashboard must not be deployed on master
+      tolerations:
+        - key: node-role.kubernetes.io/master
+          effect: NoSchedule

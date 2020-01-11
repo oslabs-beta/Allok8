@@ -6,6 +6,7 @@ import Node from '../Components/Node.jsx';
 const mapStateToProps = (store) => ({
   data: store.state.data,
 });
+
 class Viewer extends Component{
   constructor(props){
     super(props)

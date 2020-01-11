@@ -29,13 +29,12 @@ k8.getNodeInfo = (req, res, next) => {
         nodeNameArray,
         nodeMetricsRaw,
       };
-      // console.log(nodeNameArray)
-      // console.log(nodeMetricsRaw)
-      // console.log('the current number of nodes is: ', numOfNodes)
+
       return next();
     },
   );
 };
+
 
 k8.getPodInfo = (req, res, next) => {
   // todo switch from body to using cookies, I think
@@ -52,7 +51,6 @@ k8.getPodInfo = (req, res, next) => {
       const obj = JSON.parse(data);
       const podNameArray = [];
       const podInfo = {};
-      const containerInfo = {};
       // todo swap this to use object.keys to iterate instead of a for in
 
       // ? there is definitely a better way to do this we will need to revisit how this object looks together
@@ -67,17 +65,94 @@ k8.getPodInfo = (req, res, next) => {
           podInfo[obj.items[i].metadata.name] = obj.items[i];
         }
       }
-      // creates an object that has the information for the containers in the pod as key,value pairs by pod
-      podNameArray.forEach((pod) => containerInfo[pod] = podInfo[pod].spec.containers);
-      // console.log(containerInfo)
-      res.locals.containerInfo = {
-        containerInfo,
+   
+      res.locals.podsInfo = {
         podInfo,
         podNameArray,
       };
+
+      // console.log('THIS IS POD INFO ', podInfo)
       return next();
     },
   );
 };
+
+k8.getNodesUsage = (req, res, next) => {
+  // todo switch from body to using cookies, I think
+  const { api, token } = req.body;
+  //! hard coded for now
+  cmd.get(
+    `curl https://${api}/apis/metrics.k8s.io/v1beta1/nodes --header "Authorization: Bearer ${token}" --insecure`,
+    (err, data, stderr) => {
+      // error handle if needed
+      if (err) {
+        return next(err);
+      }
+      // console.log('HELLLO ', JSON.parse(data));
+      res.locals.nodeUsage = JSON.parse(data);
+      // console.log('THIS IS USAGE ', JSON.parse(data).items);
+
+      return next();
+    },
+  );
+};
+
+k8.getPodsUsage = (req, res, next) => {
+  // todo switch from body to using cookies, I think
+  const { api, token } = req.body;
+  //! hard coded for now
+  const namespace = 'default';
+  cmd.get(
+    `curl https://${api}/apis/metrics.k8s.io/v1beta1/namespaces/${namespace}/pods --header "Authorization: Bearer ${token}" --insecure`,
+    (err, data, stderr) => {
+      // error handle if needed
+      if (err) {
+        return next(err);
+      }
+      res.locals.podUsage = JSON.parse(data);
+
+      // console.log('THIS IS USAGE ', obj.items);
+
+      return next();
+    },
+  );
+};
+
+k8.structureData = (req, res, next) => {
+  const { podUsage, nodeUsage, podsInfo, nodeInfo } = res.locals;
+  const nodeKeys = Object.keys(nodeInfo.nodeMetricsRaw);
+
+
+  /////BAHRAM>......
+
+  Object.keys(nodeInfo.nodeMetricsRaw).forEach(nodeName => {
+
+    nodeUsage.items.forEach(eachNode => {
+      // console.log('THIS IS EACH METADATA ', eachNode.metadata)
+      if (eachNode.metadata.name === nodeName) {
+        nodeInfo.nodeMetricsRaw[nodeName]['nodeUsage'] = eachNode
+      }
+    })
+
+
+    Object.keys(podsInfo.podInfo).forEach(podName => {
+      const currNodeName = podsInfo.podInfo[podName].spec.nodeName;
+
+      podUsage.items.forEach(eachPod => {
+
+        if (eachPod.metadata.name === podName) {
+          podsInfo.podInfo[podName]['podUsage'] = eachPod
+        }
+      })
+
+      if (nodeName === currNodeName) {
+        nodeInfo.nodeMetricsRaw[nodeName]['pods'] = podsInfo.podInfo[podName]
+      }
+    
+  })
+  })
+  return next()
+}
+
 
 module.exports = k8;
