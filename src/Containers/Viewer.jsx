@@ -17,7 +17,7 @@ class Viewer extends Component{
     let nodeArray = [];
     for(let key in this.props.data.nodeInfo.nodeMetricsRaw){
       console.log('*****this is the key', key);
-      nodeArray.push(<Node node={key}/>);
+      nodeArray.push(<Node node={this.props.data.nodeInfo.nodeMetricsRaw[key]}/>);
     }
     return(
       <div>

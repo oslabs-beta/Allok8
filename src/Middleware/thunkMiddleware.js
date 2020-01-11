@@ -11,7 +11,7 @@ const getData = (api, token) => () => {
     body: JSON.stringify({ api, token }),
   })
     .then((res) => res.json())
-    .then((data) => { store.dispatch(updateData(data, api, token)); })
+    .then((data) => { console.log('**** THIS IS DATA;', data); store.dispatch(updateData(data, api, token)); })
     .catch((err) => { console.log('Whoops', err); });
 };
 
