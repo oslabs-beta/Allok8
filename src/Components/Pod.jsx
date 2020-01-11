@@ -5,10 +5,10 @@ class Pod extends Component{
   render(){
     
     console.log('****PODS PROPS:', this.props.podInfo)
-    
+    const metadata = this.props.podInfo;
     return(
       <div>
-        {/* <h3>{this.props.podInfo.metadata.name}</h3> */}
+        <h4>{metadata.name}</h4>
       </div>
     )
   }
