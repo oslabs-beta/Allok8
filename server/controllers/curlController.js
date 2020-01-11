@@ -131,6 +131,7 @@ k8.structureData = (req, res, next) => {
       // console.log('THIS IS EACH METADATA ', eachNode.metadata)
       if (eachNode.metadata.name === nodeName) {
         nodeInfo.nodeMetricsRaw[nodeName]['nodeUsage'] = eachNode
+        nodeInfo.nodeMetricsRaw[nodeName]['pods'] = [];
       }
     })
 
@@ -146,7 +147,7 @@ k8.structureData = (req, res, next) => {
       })
 
       if (nodeName === currNodeName) {
-        nodeInfo.nodeMetricsRaw[nodeName]['pods'] = podsInfo.podInfo[podName]
+        nodeInfo.nodeMetricsRaw[nodeName]['pods'].push(podsInfo.podInfo[podName]);
       }
     
   })

@@ -26,7 +26,7 @@ class Dashboard extends Component {
 
     // this.buildDataDisp = this.buildDataDisp.bind(this);
     this.updateData = this.updateData.bind(this);
-    setInterval(this.updateData, 50000);
+    //setInterval(this.updateData, 50000);
   }
 
   updateData() {

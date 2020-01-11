@@ -13,10 +13,10 @@ class Viewer extends Component{
   }
 
   render(){
-    console.log('**** this is', this.props);
+    //console.log('**** this is', this.props);
     let nodeArray = [];
     for(let key in this.props.data.nodeInfo.nodeMetricsRaw){
-      console.log('*****this is the key', key);
+      //console.log('*****this is the key', key);
       nodeArray.push(<Node node={this.props.data.nodeInfo.nodeMetricsRaw[key]}/>);
     }
     return(
