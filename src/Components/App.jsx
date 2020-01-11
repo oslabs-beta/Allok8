@@ -17,8 +17,11 @@ class App extends Component {
   render() {
     return (
       <DisplayPane
-        title=''
-        content='THIS WILL BECOME THE SIZE OF THE CONTENT IT DISPLAYS;---
+        // title='' // Only use if we want to title the pane.
+        content='THIS WILL BECOME THE SIZE OF THE CONTENT IT DISPLAYS; 
+        COMPONENTS ARE DISPLAYED HERE AND ARE HIDDEN BY DEFAULT, ONCLICK,
+        THE PAGE OPENS TO DISPLAY THE CONTENT OF PASSED IN COMPONENT, 
+        TAKING THE SIZE OF THE ELEMENT OR COMPONENT DISPLAYED---
         -----------------------------------------------------------------
         -----------------------------------------------------------------
         -----------------------------------------------------------------
@@ -28,16 +31,6 @@ class App extends Component {
         jksdnflkasndflkasndkjlfnasdjkflnasdlkjfnbasdklfnaskdjlfnalksdjnfksd
         lkjfnasldknjfklasjdncfkasdjnfcaisndflkcjasdncfkoasjdnfkljasdnfkasn'
       />
-      // <div>
-      //   <
-      //   DisplayPane 
-      //     content='Hello Worldngkljdfngklnsdfklnsdflkjgnsldkfgnsdkjfng'
-      //   />
-      //   <
-      //     DisplayPane
-      //     content='Hello Worldngkljdfngklnsdfklnsdflkjgnsldkfgnsdkjfng'
-      //   />
-      // </div>
       )
 
     // switch (this.props.page) {

@@ -3,6 +3,7 @@
 /* Style the accordion section */
 .accordion__section {
   display: flex;
+  /* position: left; */
   flex-direction: column;
 }
 
@@ -11,7 +12,7 @@
   background-color: #eee;
   color: #444;
   cursor: pointer;
-  padding: 18px;
+  padding: 25px;
   display: flex;
   align-items: left;
   border: none;
