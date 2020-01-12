@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/oslabs-beta/Allok8#readme",
   "dependencies": {
+    "@trendmicro/react-sidenav": "^0.4.5",
     "concurrently": "^5.0.2",
     "express": "^4.17.1",
     "node-cmd": "^3.0.0",
