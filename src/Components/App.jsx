@@ -6,6 +6,7 @@ import Landing from './Landing.jsx';
 import Dashboard from './Dashboard.jsx';
 
 
+
 const mapStateToProps = (store) => ({
   page: store.state.page,
   // payload: store.state.payload,

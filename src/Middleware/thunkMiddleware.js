@@ -3,8 +3,8 @@ import { updateData } from '../Actions/actionCreator';
 
 
 const getData = (api, token) => () => {
-  console.log(api);
-  console.log(token);
+  // console.log(api);
+  // console.log(token);
   fetch('/server/getInfo', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
