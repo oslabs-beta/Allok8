@@ -24,13 +24,29 @@ body {
 }
 
 #headerContainer {
-    width: 100%;
     padding: 16px;
     background-color: dodgerblue;
-    
+    display: flex;
+    justify-content: space-between;    
 }
 
 #headerContainer h1 {
     color: white;
+    text-decoration: none;    
+}
+
+#headerContainer img {
+    color: white;
     text-decoration: none;
+    width: 32px;
+    height: 32px;
+    margin: 2px 0px;
+}
+
+.clickable {
+    opacity: 100%;
+}
+
+.clickable:hover {
+    opacity: 50%;
 }
