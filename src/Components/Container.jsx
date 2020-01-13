@@ -3,9 +3,10 @@ import React, { Component } from 'react';
 class Container extends Component {
 
   render(){
+    console.log('*** IN CONTAINER:',this.props);
     return(
       <div>
-        <h5>THIS IS THE CONTAINER YO!</h5>
+        <h5>{this.props.spec.name}</h5>
       </div>
     )
   }

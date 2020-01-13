@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Pod from './Pod.jsx';
 
+// * this is the node component that is being displayed via the viewer container
 
+// * 
 class Node extends Component {
   render() {
     console.log('***** !!!!NODE PROPS:', this.props.node.pods);
@@ -9,7 +11,7 @@ class Node extends Component {
     const podArray = [];
     for (let i = 0; i < pods.length; i += 1) {
       if (pods[i].metadata) {
-        podArray.push(pods[i].metadata);
+        podArray.push(pods[i]);
       // console.log(podArray);
       } else {
         console.log('Error: no metadata in pod.');
