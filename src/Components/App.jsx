@@ -33,6 +33,7 @@ class App extends Component {
               <Dashboard />
             </Route>
           </Switch>
+          <div id="footer" />
         </div>
       </Router>
     );

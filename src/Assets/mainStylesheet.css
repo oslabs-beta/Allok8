@@ -24,10 +24,17 @@ body {
 }
 
 #headerContainer {
+    box-sizing: border-box;
+    width: 100%;
     padding: 16px;
     background-color: dodgerblue;
     display: flex;
-    justify-content: space-between;    
+    justify-content: space-between; 
+    
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    /* z-index: -1; */
 }
 
 #headerContainer h1 {
@@ -49,4 +56,11 @@ body {
 
 .clickable:hover {
     opacity: 50%;
+}
+
+#footer {
+    background-color: dodgerblue;
+    height: 64px;
+    width: 100%;
+    margin-top: -64px;
 }

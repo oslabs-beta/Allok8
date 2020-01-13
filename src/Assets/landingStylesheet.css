@@ -1,6 +1,10 @@
 #landingContainer {
+    display: flex;
+}
+
+#loginContainer {
     margin: auto;
-    width: 25%;
+    width: 240px;
     padding: 16px;
     text-align: center;
     background-color: rgb(250, 250, 250);
