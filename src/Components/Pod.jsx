@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Container from './Container.jsx';
 
 class Pod extends Component{
 
@@ -9,6 +10,7 @@ class Pod extends Component{
     return(
       <div>
         <h4>{metadata.name}</h4>
+        <h4><Container /></h4>
       </div>
     )
   }
