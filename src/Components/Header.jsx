@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
   }
 
-  render(){
-
-    return(
-      <div>
-        <h1>This is the header</h1>
+  render() {
+    return (
+      <div id="headerContainer">
+        <Link to="/" style={{ textDecoration: 'none' }}>
+          <h1>Allok8</h1>
+        </Link>
       </div>
-    )
+    );
   }
 }
 
