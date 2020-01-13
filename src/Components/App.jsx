@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Landing from './Landing.jsx';
 import Dashboard from './Dashboard.jsx';
+import DisplayPane from './DisplayPane.jsx';
 
 
 
