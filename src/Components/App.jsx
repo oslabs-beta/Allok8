@@ -16,34 +16,16 @@ const mapStateToProps = (store) => ({
 class App extends Component {
   // renders a button and a boolean; the button flips the boolean
   render() {
-    return (
-      <DisplayPane
-        // title='' // Only use if we want to title the pane.
-        content='THIS WILL BECOME THE SIZE OF THE CONTENT IT DISPLAYS; 
-        COMPONENTS ARE DISPLAYED HERE AND ARE HIDDEN BY DEFAULT, ONCLICK,
-        THE PAGE OPENS TO DISPLAY THE CONTENT OF PASSED IN COMPONENT, 
-        TAKING THE SIZE OF THE ELEMENT OR COMPONENT DISPLAYED---
-        -----------------------------------------------------------------
-        -----------------------------------------------------------------
-        -----------------------------------------------------------------
-        ------------------------------------------------------------------
-        ksdnfklsdnfkadsjnflksdnkflnsdljkfnasdjkfnskldfnlksalfnalsdnfldk
-        njksdnfkjadnskfhadsfkajsdnfklasdnflkaskjdfnlaskdnaskldhasldhjasl
-        jksdnflkasndflkasndkjlfnasdjkflnasdlkjfnbasdklfnaskdjlfnalksdjnfksd
-        lkjfnasldknjfklasjdncfkasdjnfcaisndflkcjasdncfkoasjdnfkljasdnfkasn'
-      />
-      )
-
-    // switch (this.props.page) {
-    //   case 'DASHBOARD':
-    //     console.log('Dashboard');
-    //     return (<Dashboard />);
-    //   case 'LANDING':
-    //     console.log('Landing');
-    //     return (<Landing />);
-    //   default:
-    //     return (<h1>ERROR</h1>);
-    // }
+    switch (this.props.page) {
+      case 'DASHBOARD':
+        console.log('Dashboard');
+        return (<Dashboard />);
+      case 'LANDING':
+        console.log('Landing');
+        return (<Landing />);
+      default:
+        return (<h1>ERROR</h1>);
+    }
   }
 }
 
