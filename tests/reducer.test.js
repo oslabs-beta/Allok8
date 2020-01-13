@@ -24,7 +24,6 @@ describe('curlReducer', () => {
 
   it('should return the same state object for unrecognized actions', () => {
     const result = curlReducer(startState, fakeAction);
-    // Why are we using "toBe" here instead of "toEqual"?
     expect(result).toBe(startState);
   });
 
@@ -44,7 +43,7 @@ describe('curlReducer', () => {
 
     it('should return a valid data object and not an error object', () => {
       const result = curlReducer(startState, action);
-      expect(result.data).toHaveProperty(node, {})
+      expect(result.data).toHaveProperty(nodeInfo, {})
     })
   });
 });
