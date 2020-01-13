@@ -7,6 +7,7 @@ import Dashboard from './Dashboard.jsx';
 import DisplayPane from './DisplayPane.jsx';
 
 
+
 const mapStateToProps = (store) => ({
   page: store.state.page,
   // payload: store.state.payload,
