@@ -10,6 +10,7 @@ import {
 import Landing from './Landing.jsx';
 import Dashboard from './Dashboard.jsx';
 import Header from './Header.jsx';
+import Footer from './Footer.jsx';
 import DisplayPane from './DisplayPane.jsx';
 
 
@@ -33,7 +34,7 @@ class App extends Component {
               <Dashboard />
             </Route>
           </Switch>
-          <div id="footer" />
+          <Footer />
         </div>
       </Router>
     );

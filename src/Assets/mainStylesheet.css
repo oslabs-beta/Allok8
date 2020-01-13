@@ -58,9 +58,22 @@ body {
     opacity: 50%;
 }
 
-#footer {
-    background-color: dodgerblue;
-    height: 64px;
+#footerContainer {
+    margin-top: -40px;
+    box-sizing: border-box;
     width: 100%;
-    margin-top: -64px;
+    background-color: dodgerblue;
+    padding: 12px;
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+#footLinks {
+    margin-left: auto;
+    display: flex;
+}
+
+#footerContainer h5 {
+    margin: auto 8px;
+    color: white;
 }
