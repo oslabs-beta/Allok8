@@ -6,9 +6,14 @@ import Pod from './Pod.jsx';
 // * 
 class Node extends Component {
   render() {
-    console.log('***** !!!!NODE PROPS:', this.props.node.pods);
+    // console.log('***** !!!!NODE PROPS IN NODE:', this.props.node.pods);
+    // * create a variable to store pods array to refer to it later
     const pods = this.props.node.pods;
+
+    // * create a new variable to store pod information to use later 
     const podArray = [];
+
+    // * loop through pods array and grab the name of the pod to display
     for (let i = 0; i < pods.length; i += 1) {
       if (pods[i].metadata) {
         podArray.push(pods[i]);

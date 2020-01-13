@@ -7,12 +7,12 @@ const mapStateToProps = (store) => ({
   data: store.state.data,
 });
 
-class Viewer extends Component{
-  constructor(props){
-    super(props)
+class Viewer extends Component {
+  constructor(props) {
+    super(props);
   }
 
-  render(){
+  render() {
     // console.log('**** this is', this.props);
     // let nodeArray = [];
     // for(let key in this.props.data.nodeInfo.nodeMetricsRaw){
@@ -22,32 +22,33 @@ class Viewer extends Component{
 
     // * refactor above to use cleaner code with objec.keys && forEach
 
-    // * store node names here for use later
-    let nodeArray = [];
-    console.log('*** NODE ARR b4 PUSH:', nodeArray);
+    // * create a variable to store node names here for use later
+    const nodeArray = [];
 
-    // * create a new var to store node info object
+    // * create a new variable to store node info object
     const nodePropsObj = this.props.data.nodeInfo.nodeMetricsRaw;
 
-    console.log('*****NODEPROPS:', nodePropsObj);
-   
+    // console.log('***NODEPROPS IN VIEWER:', nodePropsObj);
+
+    // * create a new var to store and iterate over key/val pairs from nodePropsObj
     const nodeMetricsArr = Object.entries(nodePropsObj);
-    console.log('***NODE METRICS:', nodeMetricsArr);
-    nodeMetricsArr.forEach(function(el){
-      nodeArray.push(<Node node={el[1]}/>);
-      console.log('****this is EL:', el)
+    // console.log('***NODE METRICS IN VIEWER:', nodeMetricsArr);
+    // * loop through array and grab the node name value
+    nodeMetricsArr.forEach((el) => {
+      nodeArray.push(<Node node={el[1]} />);
+      // console.log('****this is EL:', el);
     });
 
-    
+
     console.log(nodeArray);
 
 
-    return(
+    return (
       <div>
         <h4>THIS IS THE VIEWER</h4>
         {nodeArray}
       </div>
-    )
+    );
   }
 }
 
