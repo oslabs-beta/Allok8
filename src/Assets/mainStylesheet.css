@@ -27,7 +27,7 @@ body {
     box-sizing: border-box;
     width: 100%;
     padding: 16px;
-    background-color: dodgerblue;
+    background-color: #2E6CE6;
     display: flex;
     justify-content: space-between; 
     
@@ -63,7 +63,7 @@ body {
     margin-top: -40px;
     box-sizing: border-box;
     width: 100%;
-    background-color: dodgerblue;
+    background-color: #2E6CE6;
     padding: 12px;
     display: flex;
     /* justify-content: space-between; */
