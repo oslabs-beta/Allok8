@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+
+// * this is the container component that is being displayed via the pod  component
+
+
 class Container extends Component {
 
   render(){

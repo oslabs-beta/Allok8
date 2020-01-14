@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Container from './Container.jsx';
 
+// * this is the pod component that is being displayed via the node component
+
 class Pod extends Component{
 
   render(){
