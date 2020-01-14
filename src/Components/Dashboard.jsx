@@ -37,7 +37,6 @@ class Dashboard extends Component {
     return (
       <div>
         <div>
-          <Header/>
           <Display/>
         </div>
       <div id="DashboardContainer">
