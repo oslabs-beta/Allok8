@@ -39,7 +39,8 @@ body {
 
 #headerContainer h1 {
     color: white;
-    text-decoration: none;    
+    text-decoration: none; 
+    margin-right: auto;   
 }
 
 #headerContainer img {
