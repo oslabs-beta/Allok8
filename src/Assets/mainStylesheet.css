@@ -8,7 +8,7 @@ html {
 body {
     width: 100%;
     height: 100%;
-    background-color: rgb(71, 128, 243);
+    background-color: rgb(204, 204, 204);
     margin: 0px;
 }
 
@@ -35,8 +35,8 @@ body {
 
 #headerContainer h1 {
     color: white;
-    text-decoration: none; 
-    margin-right: auto;   
+    text-decoration: none;  
+    margin: 0px auto;
 }
 
 #headerContainer img {
@@ -79,4 +79,15 @@ body {
 #footerContainer h5 {
     margin: auto 8px;
     color: white;
+}
+
+#backImg {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    opacity: 33%;
+    z-index: -1;
+
+    top: 12%;
+    left: 10%;
 }

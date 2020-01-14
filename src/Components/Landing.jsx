@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import thunks from '../Middleware/thunkMiddleware';
 import Login from './Login.jsx';
 import LoginInst from './LoginInst.jsx';
+import AboutBox from './AboutBox.jsx';
 
 
 const mapStateToProps = (store) => ({
@@ -22,9 +23,15 @@ class Landing extends Component {
   render() {
     return (
       <div id="landingContainer" className="max">
-        <div className="column">
-          <Login />
-          <LoginInst />
+        <img id="backImg" src="../Assets/Logo-Blu.svg" alt="" />
+        <div className="colContainer">
+          <div className="column">
+            <AboutBox />
+          </div>
+          <div className="column">
+            <Login />
+            <LoginInst />
+          </div>
         </div>
       </div>
     );

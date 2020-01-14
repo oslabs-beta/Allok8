@@ -24,13 +24,22 @@
     box-shadow: 0px 0px 15px rgba(0, 0, 0, .5);
 }
 
+.colContainer {
+    display: flex;
+    margin: auto
+}
+
 .column {
-    margin: auto;
-    width: 32%;
+    /* margin: 32px; */
+    width: 300px;
     text-align: center;
 }
 
-h1 {
+.iconsBox a{
+    margin-left: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
     color: #2E6CE6;
     margin: 0px auto;
 }
@@ -66,23 +75,6 @@ hr {
     cursor: pointer;
 }
 
+
+
 /* #2E6CE6 */
-
-h2 {
-    margin: 4px 0px;
-    color: rgb(74, 150, 24);
-}
-
-h3 {
-    margin: 4px 0px 4px 16px;
-    color: red;
-}
-
-h4 {
-    margin: 4px 0px 0px 32px;
-    color: rgb(199, 120, 1);
-}
-
-h6 {
-    margin: 0px 0px 4px 40px;
-}
