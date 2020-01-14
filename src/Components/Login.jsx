@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // We will be doing fetches so we will need thunks
 import thunks from '../Middleware/thunkMiddleware';
-import Login from './Login.jsx';
 
 
 const mapStateToProps = (store) => ({
@@ -17,11 +16,17 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
-class Landing extends Component {
+class Login extends Component {
   render() {
     return (
-      <div id="landingContainer" className="max">
-        <Login />
+      <div id="loginContainer">
+        <h1>Allok8</h1>
+        <hr />
+        <input id="apiInput" placeholder="Api" type="text" defaultValue={this.props.api} />
+        <br />
+        <input id="tokenInput" placeholder="Token" type="text" defaultValue={this.props.token} />
+        <br />
+        <button type="button" className="clickable" onClick={() => this.props.getData()}>FETCH</button>
       </div>
     );
   }
@@ -31,4 +36,4 @@ class Landing extends Component {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Landing);
+)(Login);

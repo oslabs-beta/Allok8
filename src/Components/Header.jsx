@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
+import GithubLogo from './GitHubLogo.jsx';
 
 class Header extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
   }
 
-  render(){
-
-    return(
-      <div>
-        <h1>This is the header</h1>
+  //! Needs func to change to homepage
+  render() {
+    return (
+      <div id="headerContainer">
+        <button>
+          <h1 className="clickable">Allok8</h1>
+        </button>
+        <GithubLogo />
       </div>
-    )
+    );
   }
 }
 

@@ -8,11 +8,73 @@ html {
 body {
     width: 100%;
     height: 100%;
-    background-color: rgb(230, 230, 230)
+    background-color: rgb(230, 230, 230);
+    margin: 0px;
+}
+
+.max {
+    width: 100%;
+    height: 100%;
 }
 
 #root {
     width: 100%;
     height: 100%;
     display: flex;
+}
+
+#headerContainer {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 16px;
+    background-color: #2E6CE6;
+    display: flex;
+    justify-content: space-between; 
+    
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    /* z-index: -1; */
+}
+
+#headerContainer h1 {
+    color: white;
+    text-decoration: none; 
+    margin-right: auto;   
+}
+
+#headerContainer img {
+    color: white;
+    text-decoration: none;
+    width: 32px;
+    height: 32px;
+    margin: 2px 0px;
+}
+
+.clickable {
+    opacity: 100%;
+}
+
+.clickable:hover {
+    opacity: 50%;
+}
+
+#footerContainer {
+    margin-top: -40px;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: #2E6CE6;
+    padding: 12px;
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+#footLinks {
+    margin-left: auto;
+    display: flex;
+}
+
+#footerContainer h5 {
+    margin: auto 8px;
+    color: white;
 }
