@@ -2,7 +2,6 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 // We will be doing fetches so we will need thunks
 import thunks from '../Middleware/thunkMiddleware';
 import Login from './Login.jsx';

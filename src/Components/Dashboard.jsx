@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { submitApiToken } from '../Actions/actionCreator.js';
-import * as types from '../Actions/actionTypes';
 // We will be doing fetches so we will need thunks
 import thunks from '../Middleware/thunkMiddleware.js';
 

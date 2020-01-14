@@ -2,7 +2,6 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 // We will be doing fetches so we will need thunks
 import thunks from '../Middleware/thunkMiddleware';
 
@@ -27,7 +26,7 @@ class Login extends Component {
         <br />
         <input id="tokenInput" placeholder="Token" type="text" defaultValue={this.props.token} />
         <br />
-        <button type="button" onClick={() => this.props.getData()}>=></button>
+        <button type="button" className="clickable" onClick={() => this.props.getData()}>=></button>
       </div>
     );
   }

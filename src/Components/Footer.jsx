@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import GithubLogo from './GitHubLogo.jsx';
 
 class Footer extends Component {
   constructor(props) {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import GithubLogo from './GitHubLogo.jsx';
 
 class Header extends Component {
@@ -11,9 +10,9 @@ class Header extends Component {
   render() {
     return (
       <div id="headerContainer">
-        {/* <Link to="/" style={{ textDecoration: 'none' }}> */}
-        <h1 className="clickable">Allok8</h1>
-        {/* </Link> */}
+        <button>
+          <h1 className="clickable">Allok8</h1>
+        </button>
         <GithubLogo />
       </div>
     );
