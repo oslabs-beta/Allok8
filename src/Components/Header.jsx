@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import GithubLogo from './GitHubLogo.jsx';
+import { goTo } from '../Actions/actionCreator';
+
+
+const mapDispatchToProps = (dispatch) => ({
+  goHome: () => dispatch(goTo('LANDING')),
+});
 
 class Header extends Component {
   constructor(props) {
@@ -10,7 +17,7 @@ class Header extends Component {
   render() {
     return (
       <div id="headerContainer">
-        <button>
+        <button onClick={() => this.props.goHome()}>
           <h1 className="clickable">Allok8</h1>
         </button>
         <GithubLogo />
@@ -19,4 +26,7 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default connect(
+  null,
+  mapDispatchToProps,
+)(Header);

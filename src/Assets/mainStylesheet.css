@@ -51,6 +51,10 @@ body {
     margin: 2px 0px;
 }
 
+#headerContainer button {
+    margin: 0px;
+}
+
 .clickable {
     opacity: 100%;
 }

@@ -22,6 +22,11 @@ const reducer = (state = initialState, action) => {
         ...state, api: action.payload.api, token: action.payload.token, data: action.payload.data, page: 'DASHBOARD',
       });
 
+    case type.GOTO:
+      return ({
+        ...state, page: action.payload,
+      });
+
     default: return { ...state };
   }
 };
