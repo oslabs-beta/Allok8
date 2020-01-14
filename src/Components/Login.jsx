@@ -20,8 +20,6 @@ class Login extends Component {
   render() {
     return (
       <div id="loginContainer">
-        <h1>Allok8</h1>
-        <hr />
         <input id="apiInput" placeholder="Api" type="text" defaultValue={this.props.api} />
         <br />
         <input id="tokenInput" placeholder="Token" type="text" defaultValue={this.props.token} />
