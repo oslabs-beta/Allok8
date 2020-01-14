@@ -8,8 +8,19 @@ describe('updateData', () => {
     const infoToUpdate = { data: {}, api: 'api', token: 'token'}
     const expectedAction = {
       type: types.UPDATE_DATA,
-      payload: infoToUpdate
+      payload: infoToUpdate,
     }
     expect(actions.updateData({}, 'api', 'token')).toEqual(expectedAction);
+  });
+})
+
+describe('getData', () => {
+  it('should pass the api and token to the thunk middleware', () => {
+    const payload = { api: 'api', token: 'token' };
+    const expectedAction = {
+      type: types.GET_DATA,
+      payload,
+    }
+    expect(actions.getData('api, token')).toEqual(expectedAction);
   });
 })
