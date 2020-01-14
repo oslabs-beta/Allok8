@@ -4,10 +4,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Landing from './Landing.jsx';
 import Dashboard from './Dashboard.jsx';
-import LineChart from './LineChart.jsx';
-import Sunburst from './SunburstChart.jsx';
-import InfoPane from './InfoPanel.jsx';
-import DisplayPane from './DisplayPane.jsx';
 
 
 const mapStateToProps = (store) => ({
@@ -21,13 +17,7 @@ class App extends Component {
     switch (this.props.page) {
       case 'DASHBOARD':
         console.log('Dashboard');
-        return (
-          <div>
-            {/* <InfoPane /> */}
-            <Sunburst />
-            {/* <LineChart /> */}
-          </div>
-        );
+        return (<Dashboard />);
       case 'LANDING':
         console.log('Landing');
         return (<Landing />);
