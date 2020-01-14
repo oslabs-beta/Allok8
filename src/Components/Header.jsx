@@ -7,12 +7,13 @@ class Header extends Component {
     super(props);
   }
 
+  //! Needs func to change to homepage
   render() {
     return (
       <div id="headerContainer">
-        <Link to="/" style={{ textDecoration: 'none' }}>
-          <h1 className="clickable">Allok8</h1>
-        </Link>
+        {/* <Link to="/" style={{ textDecoration: 'none' }}> */}
+        <h1 className="clickable">Allok8</h1>
+        {/* </Link> */}
         <GithubLogo />
       </div>
     );

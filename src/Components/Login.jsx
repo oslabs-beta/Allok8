@@ -27,9 +27,7 @@ class Login extends Component {
         <br />
         <input id="tokenInput" placeholder="Token" type="text" defaultValue={this.props.token} />
         <br />
-        <Link to="/dashboard" style={{ textDecoration: 'none' }}>
-          <button type="button" onClick={() => this.props.getData()}>=></button>
-        </Link>
+        <button type="button" onClick={() => this.props.getData()}>=></button>
       </div>
     );
   }

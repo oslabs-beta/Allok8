@@ -7,19 +7,14 @@ class Footer extends Component {
     super(props);
   }
 
+  //! Needs func to change pages
   render() {
     return (
       <div id="footerContainer">
         <div id="footLinks">
-          <Link to="/About" style={{ textDecoration: 'none' }}>
-            <h5 className="clickable">About</h5>
-          </Link>
-          <Link to="/Contact" style={{ textDecoration: 'none' }}>
-            <h5 className="clickable">Contact</h5>
-          </Link>
-          <Link to="/Terms" style={{ textDecoration: 'none' }}>
-            <h5 className="clickable">Terms</h5>
-          </Link>
+          <h5 className="clickable">About</h5>
+          <h5 className="clickable">Contact</h5>
+          <h5 className="clickable">Terms</h5>
         </div>
       </div>
     );
