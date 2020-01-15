@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Node from '../Components/Node.jsx';
+import Node from './Node.jsx';
 
 
 const mapStateToProps = (store) => ({
@@ -13,15 +13,6 @@ class Viewer extends Component {
   }
 
   render() {
-    // console.log('**** this is', this.props);
-    // let nodeArray = [];
-    // for(let key in this.props.data.nodeInfo.nodeMetricsRaw){
-    //   //console.log('*****this is the key', key);
-    //   nodeArray.push(<Node node={this.props.data.nodeInfo.nodeMetricsRaw[key]}/>);
-    // }
-
-    // * refactor above to use cleaner code with objec.keys && forEach
-
     // * create a variable to store node names here for use later
     const nodeArray = [];
 
@@ -39,13 +30,10 @@ class Viewer extends Component {
       // console.log('****this is EL:', el);
     });
 
-
     console.log(nodeArray);
 
-
     return (
-      <div>
-        <h4>THIS IS THE VIEWER</h4>
+      <div id="viewer">
         {nodeArray}
       </div>
     );

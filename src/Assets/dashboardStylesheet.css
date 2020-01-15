@@ -1,0 +1,29 @@
+#dashboardContainer {
+  display: flex;
+}
+
+#sidebar {
+  width: 16%;
+  height: 100%;
+  background-color: rgb(64, 123, 240);
+  margin: 0;
+}
+
+#mainView {
+  width: 84%;
+  height: 100%;
+}
+
+#viewer {
+  width: 100%;
+  height: 60%;
+  /* background-color: rgb(204, 204, 204); */
+  overflow: scroll;
+}
+
+#infoPanel {
+  width: 100%;
+  height: 40%;
+  background-color: rgb(204, 204, 204);
+}
+

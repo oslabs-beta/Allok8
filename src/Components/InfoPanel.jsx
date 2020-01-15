@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 
-class InfoPanel extends Component{
-  constructor(props){
-    super(props)
+class InfoPanel extends Component {
+  constructor(props) {
+    super(props);
   }
 
-  render(){
-
-    return(
-      <div>
-      <h4>THIS IS THE INFO PANEL</h4>
+  render() {
+    return (
+      <div id="infoPanel">
+        <h4>INFO PANEL</h4>
       </div>
-    )
+    );
   }
 }
 
