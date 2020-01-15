@@ -21,7 +21,6 @@ class App extends Component {
       case 'LANDING':
         return (
           <div className="max">
-            <TreeComponent />
             <Header />
             <Landing />
             <Footer />
@@ -32,6 +31,7 @@ class App extends Component {
           <div className="max">
             <Header />
             <Dashboard />
+            <TreeComponent />
           </div>
         );
       default:
