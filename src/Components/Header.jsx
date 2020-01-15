@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import GithubLogo from './GitHubLogo.jsx';
 import { goTo } from '../Actions/actionCreator';
+import IconsBox from './IconsBox.jsx';
 
 
 const mapDispatchToProps = (dispatch) => ({
@@ -20,7 +20,7 @@ class Header extends Component {
         <button onClick={() => this.props.goHome()}>
           <h1 className="clickable">Allok8</h1>
         </button>
-        <GithubLogo />
+        <IconsBox />
       </div>
     );
   }

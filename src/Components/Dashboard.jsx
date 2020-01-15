@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 // We will be doing fetches so we will need thunks
 import thunks from '../Middleware/thunkMiddleware.js';
 
-// import header
-import Header from './Header.jsx';
 import Display from '../Containers/Display.jsx';
+import Sidebar from '../Containers/Sidebar.jsx';
 
 const mapStateToProps = (store) => ({
   data: store.state.data,
@@ -24,7 +23,7 @@ class Dashboard extends Component {
 
     // this.buildDataDisp = this.buildDataDisp.bind(this);
     this.updateData = this.updateData.bind(this);
-    //setInterval(this.updateData, 50000);
+    // setInterval(this.updateData, 50000);
   }
 
   updateData() {
@@ -35,15 +34,9 @@ class Dashboard extends Component {
   render() {
     console.log(this.props.data);
     return (
-      <div>
-        <div>
-          <Display/>
-        </div>
       <div id="DashboardContainer">
-        {/* <h1>DASHBOARD</h1> */}
-        {/* <div>{this.buildDataDisp()}</div> */}
-
-      </div>
+        <Sidebar />
+        <Display />
       </div>
     );
   }

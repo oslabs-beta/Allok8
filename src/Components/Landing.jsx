@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 // We will be doing fetches so we will need thunks
 import thunks from '../Middleware/thunkMiddleware';
 import Login from './Login.jsx';
+import LoginInst from './LoginInst.jsx';
+import AboutBox from './AboutBox.jsx';
 
 
 const mapStateToProps = (store) => ({
@@ -21,7 +23,16 @@ class Landing extends Component {
   render() {
     return (
       <div id="landingContainer" className="max">
-        <Login />
+        <img id="backImg" src="../Assets/Logo-Blu.svg" alt="" />
+        <div className="colContainer">
+          <div className="column">
+            <AboutBox />
+          </div>
+          <div className="column">
+            <Login />
+            <LoginInst />
+          </div>
+        </div>
       </div>
     );
   }
