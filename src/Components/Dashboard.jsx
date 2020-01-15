@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // We will be doing fetches so we will need thunks
 import thunks from '../Middleware/thunkMiddleware.js';
-
-import Display from '../Containers/Display.jsx';
-import Sidebar from '../Containers/Sidebar.jsx';
+import Sidebar from './Sidebar.jsx';
+import MainView from './MainView.jsx';
 
 const mapStateToProps = (store) => ({
   data: store.state.data,
@@ -34,9 +33,10 @@ class Dashboard extends Component {
   render() {
     console.log(this.props.data);
     return (
-      <div id="DashboardContainer">
+      <div id="dashboardContainer" className="max">
+        <img id="backImg" src="../Assets/Logo-Blu.svg" alt="" />
         <Sidebar />
-        <Display />
+        <MainView />
       </div>
     );
   }
