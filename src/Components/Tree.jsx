@@ -97,6 +97,9 @@ const myTreeData = [
         //   }
         // ];
 
+mapStateToProps = (store) => ({
+  data: store.props.data
+})
 class TreeComponent extends Component {
 
   render() {
