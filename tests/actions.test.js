@@ -1,6 +1,5 @@
 import * as types from '../src/Actions/actionTypes.js';
 import * as actions from '../src/Actions/actionCreator.js';
-import thunkAction from '../src/Middleware/thunkMiddleware.js';
 
 describe('updateData', () => {
   it('should create an object with data in the payload', () => {
@@ -12,7 +11,7 @@ describe('updateData', () => {
     expect(actions.updateData({}, 'api', 'token')).toEqual(expectedAction);
   });
 });
-//probably doe
+
 describe('saveData', () => {
   it('should pass the api and token to the thunk middleware', () => {
     const payload = { api: 'api', token: 'token' };
@@ -26,7 +25,7 @@ describe('saveData', () => {
 
 describe('GOTO', () => {
   it('should pass a string of which page to render', () => {
-    const payload = { page: 'page' };
+    const payload = 'page';
     const expectedAction = {
       type: types.GOTO,
       payload,
