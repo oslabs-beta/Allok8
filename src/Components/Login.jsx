@@ -4,9 +4,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // We will be doing fetches so we will need thunks
 import thunks from '../Middleware/thunkMiddleware';
-import Login from './Login.jsx';
-import LoginInst from './LoginInst.jsx';
-import AboutBox from './AboutBox.jsx';
 
 
 const mapStateToProps = (store) => ({
@@ -19,20 +16,15 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
-class Landing extends Component {
+class Login extends Component {
   render() {
     return (
-      <div id="landingContainer" className="max">
-        <img id="backImg" src="../Assets/Logo-Blu.svg" alt="" />
-        <div className="colContainer">
-          <div className="column">
-            <AboutBox />
-          </div>
-          <div className="column">
-            <Login />
-            <LoginInst />
-          </div>
-        </div>
+      <div id="loginContainer">
+        <input id="apiInput" placeholder="Api" type="text" defaultValue={this.props.api} />
+        <br />
+        <input id="tokenInput" placeholder="Token" type="text" defaultValue={this.props.token} />
+        <br />
+        <button type="button" className="clickable" onClick={() => this.props.getData()}>FETCH</button>
       </div>
     );
   }
@@ -42,4 +34,4 @@ class Landing extends Component {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Landing);
+)(Login);
