@@ -1,7 +1,7 @@
 import * as type from './actionTypes';
 
 export const saveData = (api, token) => ({
-  type: type.GET_DATA,
+  type: type.SAVE_DATA,
   payload: { api, token },
 });
 
