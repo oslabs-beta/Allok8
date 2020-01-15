@@ -6,7 +6,7 @@ import Landing from './Landing.jsx';
 import Dashboard from './Dashboard.jsx';
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
-import Tree from './Tree.jsx';
+import TreeComponent from './Tree.jsx';
 
 
 const mapStateToProps = (store) => ({
@@ -30,7 +30,7 @@ class App extends Component {
         return (
           <div className="max">
             <Header />
-            <Tree />
+            <TreeComponent />
             <Dashboard />
           </div>
         );

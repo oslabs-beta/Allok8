@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import Tree from 'react-d3-tree';
 
 
-class Tree extends Component {
+class TreeComponent extends Component {
   constructor(props) {
     super(props)
 
@@ -17,4 +18,4 @@ class Tree extends Component {
 
 }
 
-export default Tree;
+export default TreeComponent;
