@@ -58,53 +58,14 @@ const myTreeData = [
   },
 ];
 
-// const myTreeData = {
-//   "title": "KubernetesCluster",
-//     "color": "#12939A",
-//       "label": "myCluster", // This is the root
-        // const myTreeData = [
-        //   {
-        //     "title": "Node1", "label": "ABC", // This is the Node level
-        //     "children": [
-        //       {
-        //         "title": "Node1_pod1", "color": "#12939A",  // This is the pod level
-        //         // Add children one level deeper; Container level;
-        //         "children": [
-        //           { "title": "Node1_pod1_container1", "color": '#12939A', "size": 3000 },
-        //           { "title": "Node1_pod1_container2", "color": '#12939A', "size": 3000 }
-        //         ]
-        //       },
-        //       { "title": "Node1_pod2", "color": "#12939A", "size": 3000 },
-        //       { "title": "Node1_pod3", "color": "#12939A", "size": 3000 },
-        //       { "title": "Node1_pod4", "color": "#12939A", "size": 3000 }
-        //     ]
-        //   },
-        //   {
-        //     "title": "Node2",
-        //     "children": [
-        //       { "title": "Node2_pod1", "color": "#12939A", "size": 3000 },
-        //       { "title": "Node2_pod2", "color": "#12939A", "size": 3000 },
-        //       { "title": "Node2_pod3", "color": "#12939A", "size": 3000 },
-        //       { "title": "Node2_pod4", "color": "#12939A", "size": 3000 },
-        //       { "title": "Node2_pod5", "color": "#12939A", "size": 3000 }
-        //     ]
-        //   },
-        //   {
-        //     "title": "Node3",
-        //     "children": [
-        //       { "title": "Node3_pod1", "color": "#12939A", "size": 3000 }
-        //     ]
-        //   }
-        // ];
-
-mapStateToProps = (store) => ({
-  data: store.props.data
-})
+// mapStateToProps = (store) => ({
+//   data: store.props.data
+// })
 class TreeComponent extends Component {
 
   render() {
     return (
-      <div id="treeWrapper" style={{width: '50em', height: '100em'}}>
+      <div id="treeWrapper" style={{width: '500px', height: '700px'}}>
         <Tree data={myTreeData} />
       </div>
     )
