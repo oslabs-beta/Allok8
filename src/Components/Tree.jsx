@@ -30,7 +30,7 @@ class TreeComponent extends Component {
 
   render() {
     return (
-      <div id="treeWrapper" style={{width: '50em', heigh: '200em'}}>
+      <div id="treeWrapper" style={{width: '50em', height: '200em'}}>
         <Tree data={myTreeData} />
       </div>
     )
