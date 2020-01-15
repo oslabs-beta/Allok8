@@ -1,8 +1,6 @@
 import React, { useState, useRef } from "react";
 import Chevron from "./Chevron.jsx";
 
-// import "../Assets/displayPane.css";
-
 function Accordion(props) {
   const [setActive, setActiveState] = useState("");
   const [setHeight, setHeightState] = useState("0px");
