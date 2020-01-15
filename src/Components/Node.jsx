@@ -3,14 +3,14 @@ import Pod from './Pod.jsx';
 
 // * this is the node component that is being displayed via the viewer container
 
-// * 
+// *
 class Node extends Component {
   render() {
     // console.log('***** !!!!NODE PROPS IN NODE:', this.props.node.pods);
     // * create a variable to store pods array to refer to it later
-    const pods = this.props.node.pods;
+    const { pods } = this.props.node;
 
-    // * create a new variable to store pod information to use later 
+    // * create a new variable to store pod information to use later
     const podArray = [];
 
     // * loop through pods array and grab the name of the pod to display
@@ -24,11 +24,11 @@ class Node extends Component {
 
       console.log('***** PODARRAY IS:', podArray);
     }
-    
+
     return (
-      <div>
+      <div className="node">
         <h3>{this.props.node.nodeUsage.metadata.name}</h3>
-        {podArray.map(el => <Pod podInfo={el} />)}
+        {podArray.map((el) => <Pod podInfo={el} />)}
       </div>
     );
   }

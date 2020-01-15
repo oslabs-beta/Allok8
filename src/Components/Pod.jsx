@@ -22,10 +22,10 @@ class Pod extends Component {
 
 
     return (
-      <div>
-        <h4>IN THE POD</h4>
+      <div className="pod">
+        {/* <h4>IN THE POD</h4> */}
         <h4>{podInfo.metadata.name}</h4>
-        <h4>{containerArr}</h4>
+        {containerArr}
       </div>
     );
   }
