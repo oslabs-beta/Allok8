@@ -53,6 +53,9 @@ const myTreeData = [
       },
       {
         name: 'Level 2: B',
+        attributes: {
+          pro: 'newAtt'
+        }
       },
     ],
   },
@@ -62,6 +65,36 @@ const myTreeData = [
 //   data: store.props.data
 // })
 class TreeComponent extends Component {
+
+ 
+  loadData() {
+    const myTreeData = [];
+
+    for (let n = 0; n < this.props.data.nodeInfo.nodeNameArray.length; n += 1) {
+      let nodeName = this.props.data.nodeInfo.nodeNameArray[n];
+      let node = this.props.data.nodeInfo.nodeMetricsRaw[nodeName];
+      // Construct the top level of data(nodeLevel) here
+      myTreeData.push({
+        "name": nodeName,
+        "attributes": {
+          "nodeProp1": "nodePropVal1",
+          "nodeProp1": "nodePropVal1"
+        }
+      });
+      for (let p = 0; p < node.pods.length; p += 1) {
+        let pod = node.pods[i];
+        // Construct the second level of data(podLevel) here
+
+        for (let c = 0; p < pod.podUsage.containers.length; c += 1) {
+          let containers = pod.podUsage.containers[c];
+
+          // Contruct the third level of data(containerLevel) here
+
+        }
+      }
+    }
+    return myTreeData;
+  }
 
   render() {
     return (
