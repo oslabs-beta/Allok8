@@ -23,7 +23,7 @@ class Table extends Component {
           <div className="col">
             <table id="simple-table">
               <tbody>
-                <h1>Simple Table</h1>
+                <h1>Table Component</h1>
                 {rows}
               </tbody>
             </table>
