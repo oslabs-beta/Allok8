@@ -33,4 +33,61 @@ describe('getData thunk', () => {
       expect(store.getActions()).toEqual(expectedActions)
     })
   })
+});
+describe('dispatch functionality with middleware', () => {
+  //imitates the intercepting behavior of thunk middleware
+  const fakeThunk = ({ dispatch, getState }) => next => action => {
+    if (typeof action === 'function') {
+      return action(dispatch, getState)
+    }
+    return next(action)
+  }
+  //creates store with mock methods
+  const create = () => {
+    const store = {
+      getState: jest.fn(() => ({})),
+      dispatch: jest.fn()
+    }
+    const next = jest.fn()
+    const invoke = action => fakeThunk(store)(next)(action)
+    return { store, next, invoke }
+  }
+  
+  it('passes through non-function action', () => {
+    const { next, invoke } = create()
+    const action = { type: 'TEST' }
+    invoke(action)
+    expect(next).toHaveBeenCalledWith(action)
+  })
+  it('calls the function', () => {
+    const { invoke } = create()
+    const fn = jest.fn()
+    invoke(fn)
+    expect(fn).toHaveBeenCalled()
+  })
+  it('passes dispatch and getState', () => {
+    const { store, invoke } = create()
+    invoke((dispatch, getState) => {
+      dispatch('TEST DISPATCH')
+      getState()
+    })
+    expect(store.dispatch).toHaveBeenCalledWith('TEST DISPATCH')
+    expect(store.getState).toHaveBeenCalled()
+  })
 })
+/*
+import { updateData } from '../Actions/actionCreator';
+
+
+const getData = (api, token) => dispatch => {
+
+  fetch('/server/getInfo', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ api, token }),
+  })
+    .then((res) => res.json())
+    .then((data) => { dispatch(updateData(data, api, token)); })
+    .catch((err) => { console.log('Whoops', err); });
+};
+*/
