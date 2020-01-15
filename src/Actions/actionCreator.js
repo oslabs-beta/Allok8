@@ -9,3 +9,8 @@ export const updateData = (data, api, token) => ({
   type: type.UPDATE_DATA,
   payload: { data, api, token },
 });
+
+export const goTo = (str) => ({
+  type: type.GOTO,
+  payload: str,
+});

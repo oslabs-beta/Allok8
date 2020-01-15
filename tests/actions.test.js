@@ -31,6 +31,6 @@ describe('GOTO', () => {
       type: types.GOTO,
       payload,
     }
-    expect(actions.goTO('page')).toEqual(expectedAction);
+    expect(actions.goTo('page')).toEqual(expectedAction);
   });
 });

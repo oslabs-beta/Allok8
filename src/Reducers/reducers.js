@@ -30,6 +30,11 @@ const reducer = (state = initialState, action) => {
         token,
       })
 
+    case type.GOTO:
+      return ({
+        ...state, page: action.payload,
+      });
+
     default: return { ...state };
   }
 };
