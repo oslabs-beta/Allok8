@@ -13,9 +13,9 @@ class Table extends Component {
       let cell = [];
       for (let j = 0; j < this.state.size; j += 1) {
         let cellId = `cell${i} - ${j}`;
-        cell.push(<td key={cellId} id={cellId}>I am columns</td>)
+        cell.push(<td key={cellId} id={cellId}>I'm columns</td>)
       }
-      rows.push(<tr key={i} id={rowId}>I am rows{cell}</tr>)
+      rows.push(<tr key={i} id={rowId}>I'm rows{cell}</tr>)
     }
     return(
       <div className="tabContainer">
