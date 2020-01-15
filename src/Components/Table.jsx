@@ -7,23 +7,25 @@ class Table extends Component {
   }
 
   render() {
+    const tableStyle = {
+      "border": "1px solid black"
+    };
     let rows = [];
     for (let i = 0; i < this.state.size; i += 1) {
       let rowId = `row${i}`;
       let cell = [];
       for (let j = 0; j < this.state.size; j += 1) {
         let cellId = `cell${i} - ${j}`;
-        cell.push(<td key={cellId} id={cellId}>I'm columns</td>)
+        cell.push(<td key={cellId} id={cellId}>I am tabData</td>)
       }
-      rows.push(<tr key={i} id={rowId}>I'm rows{cell}</tr>)
+      rows.push(<tr key={i} id={rowId}>{cell}</tr>)
     }
     return(
       <div className="tabContainer">
         <div className="row">
           <div className="col">
-            <table id="simple-table">
-              <tbody>
-                <h1>Table Component</h1>
+            <table id="table" style={tableStyle}>
+              <tbody style={tableStyle}>
                 {rows}
               </tbody>
             </table>
@@ -33,5 +35,8 @@ class Table extends Component {
     )
   }
 }
+
+
+
 
 export default Table;
