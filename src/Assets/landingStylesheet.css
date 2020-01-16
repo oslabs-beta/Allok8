@@ -1,4 +1,4 @@
-#landingContainer {
+.landingContainer {
     display: flex;
     margin-top: -72px;
 }
@@ -75,6 +75,10 @@ hr {
     cursor: pointer;
 }
 
-
+#about {
+    margin: auto;
+    margin-top: 160px;    
+    width: 66%;
+}
 
 /* #2E6CE6 */
