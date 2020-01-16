@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch) => ({
 class Landing extends Component {
   render() {
     return (
-      <div id="landingContainer" className="max">
+      <div id="landingContainer" className="max landingContainer">
         <img id="backImg" src="../Assets/Logo-Blu.svg" alt="" />
         <div className="colContainer">
           {/* <div className="column">
