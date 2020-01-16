@@ -6,8 +6,8 @@ describe('curlReducer', () => {
 
   beforeEach(() => {
      startState = {
-      api: 'api',
-      token: 'token',
+      api: '',
+      token: '',
       page: 'LANDING',
       data: {},
       selected: {},
@@ -17,8 +17,8 @@ describe('curlReducer', () => {
 
   xit('should provide a default state', () => {
     const result = curlReducer(undefined, fakeAction);
-    expect(result).toEqual( { api: 'api',
-    token: 'token',
+    expect(result).toEqual( { api: '',
+    token: '',
     page: 'LANDING',
     data: {},
     selected: {},
