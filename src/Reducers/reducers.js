@@ -23,14 +23,14 @@ const reducer = (state = initialState, action) => {
       return ({
         ...state, api: action.payload.api, token: action.payload.token, data: action.payload.data, page: 'DASHBOARD',
       });
-    
+
     case type.SAVE_DATA:
       const { api, token } = action.payload;
       return ({
         ...state,
         api,
         token,
-      })
+      });
 
     case type.GOTO:
       return ({
@@ -51,13 +51,14 @@ const reducer = (state = initialState, action) => {
       });
 
     case type.CHANGE_VIEW:
+      console.log(action.payload);
       const viewSwitches = document.getElementsByClassName('viewSwitch');
       for (let i = 0; i < viewSwitches.length; i += 1) {
-        if (viewSwitches[i].id !== action.payload.str) viewSwitches[i].checked = false;
+        if (viewSwitches[i].id !== action.payload) viewSwitches[i].checked = false;
       }
 
       return ({
-        ...state, view: action.payload.str,
+        ...state, view: action.payload,
       });
 
     default: return { ...state };
