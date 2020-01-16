@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Landing from './Landing.jsx';
 import Dashboard from './Dashboard.jsx';
-
+import Header from './Header.jsx';
+import Footer from './Footer.jsx';
 
 
 const mapStateToProps = (store) => ({
@@ -16,12 +17,21 @@ class App extends Component {
   // renders a button and a boolean; the button flips the boolean
   render() {
     switch (this.props.page) {
-      case 'DASHBOARD':
-        console.log('Dashboard');
-        return (<Dashboard />);
       case 'LANDING':
-        console.log('Landing');
-        return (<Landing />);
+        return (
+          <div className="max">
+            <Header />
+            <Landing />
+            <Footer />
+          </div>
+        );
+      case 'DASHBOARD':
+        return (
+          <div className="max">
+            <Header />
+            <Dashboard />
+          </div>
+        );
       default:
         return (<h1>ERROR</h1>);
     }
