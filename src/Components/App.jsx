@@ -6,7 +6,6 @@ import Landing from './Landing.jsx';
 import Dashboard from './Dashboard.jsx';
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
-import TreeComponent from './Tree.jsx';
 
 
 const mapStateToProps = (store) => ({
