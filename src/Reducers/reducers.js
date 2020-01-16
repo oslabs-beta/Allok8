@@ -22,6 +22,14 @@ const reducer = (state = initialState, action) => {
       return ({
         ...state, api: action.payload.api, token: action.payload.token, data: action.payload.data, page: 'DASHBOARD',
       });
+    
+    case type.SAVE_DATA:
+      const { api, token } = action.payload;
+      return ({
+        ...state,
+        api,
+        token,
+      })
 
     case type.GOTO:
       return ({
