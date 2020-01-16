@@ -79,7 +79,7 @@ We chose not to use expose the proxy for further security and prevent MITM attac
 
 🔖⛴
 
-This project is licensed under the MIT License - see the LICENSE.md file for details.
+Pending...
 
 
 
