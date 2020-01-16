@@ -15,12 +15,12 @@ class InfoPanel extends Component {
     const tempD = this.props.selected;
     let data = {};
     if (tempD.node) {
-      console.log('node');
+      // console.log('node');
       data.name = tempD.node.nodeUsage.metadata.name;
       data.usage = tempD.node.nodeUsage.usage;
-      console.log(tempD.node.nodeUsage.usage);
+      // console.log(tempD.node.nodeUsage.usage);
     } else if (tempD.podInfo) {
-      console.log('pod');
+      // console.log('pod');
       data.name = tempD.podInfo.metadata.name;
       data.usage = tempD.podInfo.spec.containers.reduce((acc, el) => {
         if (el.usage.cpu) acc.cpu = `${parseInt(el.usage.cpu, 10) + parseInt(acc.cpu, 10)}n`;
@@ -29,7 +29,7 @@ class InfoPanel extends Component {
         return acc;
       }, { cpu: '0', memory: '0' });
     } else if (tempD.spec) {
-      console.log('container');
+      // console.log('container');
       data.name = tempD.spec.name;
       data.usage = tempD.spec.usage;
     } else { data = null; }
@@ -38,7 +38,7 @@ class InfoPanel extends Component {
   }
 
   render() {
-    console.log(this.props.selected);
+    // console.log(this.props.selected);
     const data = this.formatData();
     if (data) {
       return (

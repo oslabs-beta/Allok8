@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 
 
 const mapStateToProps = (store) => ({
-  data: store.state.data
-})
+  data: store.state.data,
+});
 class TreeComponent extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.getData = this.getData.bind(this);
   }
 
@@ -16,8 +16,8 @@ class TreeComponent extends Component {
     // console.log('this is store state in Tree: ', this.props);
     const myTreeData = [
       {
-        "name": "myK8Cluster",
-        "attributes": {
+        name: 'myK8Cluster',
+        attributes: {
           // "attr": "cluterVal"
         },
         children: [],
@@ -25,12 +25,12 @@ class TreeComponent extends Component {
     ];
 
     for (let n = 0; n < this.props.data.nodeInfo.nodeNameArray.length; n += 1) {
-      let nodeName = this.props.data.nodeInfo.nodeNameArray[n];
-      let node = this.props.data.nodeInfo.nodeMetricsRaw[nodeName];
+      const nodeName = this.props.data.nodeInfo.nodeNameArray[n];
+      const node = this.props.data.nodeInfo.nodeMetricsRaw[nodeName];
       // Construct the top level of data(nodeLevel) here
       const nodeObj = {
-        "name": nodeName,
-        "attributes": {
+        name: nodeName,
+        attributes: {
           // "nodeProp1": "nodePropVal1",
           // "nodeProp1": "nodePropVal1"
         },
@@ -48,8 +48,8 @@ class TreeComponent extends Component {
         // Construct the second level of data(podLevel) here
         // console.log("this should be pod name: ", pod);
         const podObj = {
-          "name": pod.metadata.name,
-          "attributes": {
+          name: pod.metadata.name,
+          attributes: {
             // "podProp": "podPropVal",
             // "podProp": "podPropVal"
           },
@@ -69,35 +69,36 @@ class TreeComponent extends Component {
           // console.log("this should be cont name: ",containers, ", ", pod.podUsage.containers, c);
 
           const contObj = {
-            "name": containers.name,
-            "attributest": {
+            name: containers.name,
+            attributest: {
               // "memory": parseInt(containers.usage.memory, 10),
               // "contProp": "contPropVal"
-            }
+            },
           };
           podObj.children.push(contObj);
         }
       }
     }
-    console.log("this is my treeData: ", myTreeData);
+    console.log('this is my treeData: ', myTreeData);
     return myTreeData;
   }
 
   render() {
     // console.log("this should be props: ", this.props.data);
     return (
-      <div id="treeWrapper" style={{width: '50em', height: '20em'}}>
-        <Tree data={this.getData()} 
-          orientation={"vertical"}
-          translate={{x: 100, y: 50}}
+      <div id="treeWrapper" className="max">
+        <Tree
+          data={this.getData()}
+          orientation="vertical"
+          translate={{ x: 100, y: 50 }}
           circleRadius={10}
         />
       </div>
-    )
+    );
   }
 }
 
 // export default TreeComponent;
 export default connect(
   mapStateToProps,
-  )(TreeComponent);
+)(TreeComponent);

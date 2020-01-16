@@ -26,7 +26,10 @@ class Switch extends Component {
         <input id={this.props.setting} className="viewSwitch" type="checkbox" />
         <span
           className="slider"
-          onClick={() => this.props.changeView(this.props.setting)}
+          onClick={() => {
+            console.log(this.props.setting);
+            this.props.changeView(this.props.setting);
+          }}
         />
       </label>
     );
