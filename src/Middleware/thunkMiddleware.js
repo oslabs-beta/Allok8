@@ -1,8 +1,7 @@
-import store from '../Store/store';
 import { updateData } from '../Actions/actionCreator';
 
 
-const getData = (api, token) => () => {
+const getData = (api, token) => dispatch => {
   // removes http(s)://
   if (api.includes('http')) api = api.substring(api.indexOf('//') + 2);
 
@@ -12,7 +11,7 @@ const getData = (api, token) => () => {
     body: JSON.stringify({ api, token }),
   })
     .then((res) => res.json())
-    .then((data) => { store.dispatch(updateData(data, api, token)); })
+    .then((data) => { dispatch(updateData(data, api, token)); })
     .catch((err) => { console.log('Error: wrong api or token:', err); });
 };
 
