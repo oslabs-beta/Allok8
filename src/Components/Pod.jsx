@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Container from './Container.jsx';
+import { select } from '../Actions/actionCreator';
 
 // * this is the pod component that is being displayed via the node component
+const mapStateToProps = (store) => ({
+  selected: store.state.selected,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  select: (obj) => dispatch(select(obj)),
+});
 
 class Pod extends Component {
   render() {
@@ -16,19 +25,23 @@ class Pod extends Component {
     for (let i = 0; i < podInfo.spec.containers.length; i += 1) {
       const contInfo = podInfo.spec.containers[i];
       contInfo.usage = podInfo.podUsage.containers[i].usage;
-      containerArr.push(<Container spec={contInfo} />);
+      containerArr.push(<Container key={contInfo.name} spec={contInfo} />);
       // console.log('container info in pod', contInfo);
     }
 
 
     return (
-      <div className="pod">
-        {/* <h4>IN THE POD</h4> */}
+      <div className="pod card" onClick={(e) => this.props.select({ props: this.props, el: e.target })}>
         <h4>{podInfo.metadata.name}</h4>
-        {containerArr}
+        <div style={{ display: 'flex', 'flex-wrap': 'wrap' }}>
+          {containerArr}
+        </div>
       </div>
     );
   }
 }
 
-export default Pod;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Pod);

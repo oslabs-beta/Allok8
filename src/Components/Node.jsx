@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Pod from './Pod.jsx';
+import { select } from '../Actions/actionCreator';
 
 // * this is the node component that is being displayed via the viewer container
 
-// *
+const mapStateToProps = (store) => ({
+  selected: store.state.selected,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  select: (obj) => dispatch(select(obj)),
+});
+
 class Node extends Component {
   render() {
     // console.log('***** !!!!NODE PROPS IN NODE:', this.props.node.pods);
@@ -26,12 +35,14 @@ class Node extends Component {
     }
 
     return (
-      <div className="node">
+      <div className="node card" onClick={(e) => this.props.select({ props: this.props, el: e.target })}>
         <h3>{this.props.node.nodeUsage.metadata.name}</h3>
-        {podArray.map((el) => <Pod podInfo={el} />)}
+        {podArray.map((el, i) => <Pod key={`i${el.metadata.name}`} podInfo={el} />)}
       </div>
     );
   }
 }
-
-export default Node;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Node);

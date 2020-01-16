@@ -35,7 +35,7 @@
 
 /* Style the accordion chevron icon */
 .accordion__icon {
-  margin: auto 0px auto auto;
+  margin: auto 4px auto auto;
   transition: transform 0.6s ease;
 }
 
