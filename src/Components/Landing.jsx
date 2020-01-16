@@ -25,9 +25,9 @@ class Landing extends Component {
       <div id="landingContainer" className="max">
         <img id="backImg" src="../Assets/Logo-Blu.svg" alt="" />
         <div className="colContainer">
-          <div className="column">
+          {/* <div className="column">
             <AboutBox />
-          </div>
+          </div> */}
           <div className="column">
             <Login />
             <LoginInst />
