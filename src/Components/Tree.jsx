@@ -86,7 +86,7 @@ class TreeComponent extends Component {
   render() {
     // console.log("this should be props: ", this.props.data);
     return (
-      <div id="treeWrapper" style={{width: '100%', height: '100vh'}}>
+      <div id="treeWrapper" style={{width: '50em', height: '20em'}}>
         <Tree data={this.getData()} 
           orientation={"vertical"}
           translate={{x: 100, y: 50}}
