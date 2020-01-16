@@ -26,6 +26,7 @@ class Header extends Component {
   }
 }
 
+
 export default connect(
   null,
   mapDispatchToProps,
