@@ -51,7 +51,6 @@ const reducer = (state = initialState, action) => {
       });
 
     case type.CHANGE_VIEW:
-      console.log(action.payload);
       const viewSwitches = document.getElementsByClassName('viewSwitch');
       for (let i = 0; i < viewSwitches.length; i += 1) {
         if (viewSwitches[i].id !== action.payload) viewSwitches[i].checked = false;
