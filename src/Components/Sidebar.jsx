@@ -11,7 +11,7 @@ class Sidebar extends Component {
     return (
       <div id="sidebar">
         <MenuItem inner="Cards" />
-        <MenuItem inner="Table" />
+        {/* <MenuItem inner="Table" /> */}
         <MenuItem inner="Tree" />
         {/* <MenuItem inner="Sunburst" /> */}
       </div>
