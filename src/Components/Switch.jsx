@@ -7,9 +7,17 @@ const mapDispatchToProps = (dispatch) => ({
   changeView: (str) => dispatch(changeView(str)),
 });
 
+const mapStateToProps = (store) => ({
+  view: store.state.view,
+});
+
 class Switch extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    if (this.props.view === this.props.setting) document.getElementById(this.props.setting).checked = true;
   }
 
   render() {
@@ -26,6 +34,6 @@ class Switch extends Component {
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(Switch);
