@@ -83,3 +83,10 @@
   box-shadow: 0px 0px 12px rgba(18, 70, 212, 0.7);
 }
 
+.menuItem {
+  height: 24px;
+  padding: 4px;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(230, 230, 230);
+}
