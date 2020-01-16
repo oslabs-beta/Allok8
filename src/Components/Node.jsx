@@ -31,11 +31,17 @@ class Node extends Component {
         console.log('Error: no metadata in pod.');
       }
 
-      console.log('***** PODARRAY IS:', podArray);
+      // console.log('***** PODARRAY IS:', podArray);
     }
 
     return (
-      <div className="node card" onClick={(e) => this.props.select({ props: this.props, el: e.target })}>
+      <div
+        className="node card"
+        onClick={(e) => {
+          e.stopPropagation();
+          return this.props.select({ props: this.props, el: e.target });
+        }}
+      >
         <h3>{this.props.node.nodeUsage.metadata.name}</h3>
         {podArray.map((el, i) => <Pod key={`i${el.metadata.name}`} podInfo={el} />)}
       </div>

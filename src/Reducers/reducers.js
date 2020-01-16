@@ -29,7 +29,7 @@ const reducer = (state = initialState, action) => {
       });
 
     case type.SELECT:
-      console.log(action.payload);
+      // console.log(action.payload);
 
       // let element = e.target;
       while (!action.payload.el.classList.contains('card')) action.payload.el = action.payload.el.parentElement;

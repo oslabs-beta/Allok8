@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 class Pod extends Component {
   render() {
-    console.log('****PODS PROPS IN POD:', this.props.podInfo);
+    // console.log('****PODS PROPS IN POD:', this.props.podInfo);
     // * create a variable to store pod information to refer to later
     const { podInfo } = this.props;
 
@@ -31,9 +31,15 @@ class Pod extends Component {
 
 
     return (
-      <div className="pod card" onClick={(e) => this.props.select({ props: this.props, el: e.target })}>
+      <div
+        className="pod card"
+        onClick={(e) => {
+          e.stopPropagation();
+          return this.props.select({ props: this.props, el: e.target });
+        }}
+      >
         <h4>{podInfo.metadata.name}</h4>
-        <div style={{ display: 'flex', 'flex-wrap': 'wrap' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
           {containerArr}
         </div>
       </div>
