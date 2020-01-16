@@ -19,3 +19,8 @@ export const select = (obj) => ({
   type: type.SELECT,
   payload: obj,
 });
+
+export const changeView = (str) => ({
+  type: type.CHANGE_VIEW,
+  payload: str,
+});

@@ -10,6 +10,7 @@ const initialState = {
   page: 'LANDING',
   data: {},
   selected: {},
+  view: 'Cards',
 };
 
 const reducer = (state = initialState, action) => {
@@ -39,6 +40,16 @@ const reducer = (state = initialState, action) => {
       action.payload.el.setAttribute('id', 'selected');
       return ({
         ...state, selected: action.payload.props,
+      });
+
+    case type.CHANGE_VIEW:
+      const viewSwitches = document.getElementsByClassName('viewSwitch');
+      for (let i = 0; i < viewSwitches.length; i += 1) {
+        if (viewSwitches[i].id !== action.payload.str) viewSwitches[i].checked = false;
+      }
+
+      return ({
+        ...state, view: action.payload.str,
       });
 
     default: return { ...state };
