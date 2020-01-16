@@ -30,8 +30,8 @@ class App extends Component {
         return (
           <div className="max">
             <Header />
-            <Dashboard />
             <TreeComponent />
+            <Dashboard />
           </div>
         );
       default:
