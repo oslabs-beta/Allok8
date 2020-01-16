@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DisplayPane from './DisplayPane.jsx';
+import MenuItem from './MenuItem.jsx';
 
 
 class Sidebar extends Component {
@@ -8,18 +8,12 @@ class Sidebar extends Component {
   }
 
   render() {
-    const test = [
-      <div className="option">
-        <p>Cards</p>
-      </div>,
-    ];
     return (
       <div id="sidebar">
-        {/* REPLACE WITH LIST */}
-        <DisplayPane title="View" content="test" />
-        <DisplayPane title="Namespaces" content="default" />
-        <DisplayPane title="Stuff" content="options" />
-        <DisplayPane title="Stuff" content="options" />
+        <MenuItem inner="Cards" />
+        <MenuItem inner="Table" />
+        <MenuItem inner="Tree" />
+        {/* <MenuItem inner="Sunburst" /> */}
       </div>
     );
   }

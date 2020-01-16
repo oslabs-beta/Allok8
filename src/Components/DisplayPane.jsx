@@ -1,8 +1,5 @@
 import React, { useState, useRef } from 'react';
 import Chevron from './Chevron.jsx';
-import Switch from './Switch.jsx';
-
-// import "../Assets/displayPane.css";
 
 function Accordion(props) {
   const [setActive, setActiveState] = useState('');

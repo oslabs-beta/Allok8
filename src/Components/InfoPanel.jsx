@@ -16,21 +16,20 @@ class InfoPanel extends Component {
     console.log('this is tempd', tempD)
     let data = {};
     if (tempD.node) {
-      console.log('node');
-      console.log(tempD.node)
+      // console.log('node');
+      // console.log(tempD.node)
       data.name = tempD.node.nodeUsage.metadata.name;
       data.usage = tempD.node.nodeUsage.usage;
-      console.log(tempD.node.nodeUsage.usage);
+      // console.log(tempD.node.nodeUsage.usage);
       data.cap = {};
       data.cap = tempD.node.capacity.memory;
 
       data.address = [];
       tempD.node.addresses.forEach(el=>  data.address.push(el))
-      console.log('ARRRRRRRRRRAY', data.address)
-
-
+      // console.log('ARRRRRRRRRRAY', data.address)
+        
     } else if (tempD.podInfo) {
-      console.log('pod');
+      // console.log('pod');
       data.name = tempD.podInfo.metadata.name;
       data.usage = tempD.podInfo.spec.containers.reduce((acc, el) => {
         if (el.usage.cpu) acc.cpu = `${parseInt(el.usage.cpu, 10) + parseInt(acc.cpu, 10)}n`;
@@ -49,8 +48,9 @@ class InfoPanel extends Component {
 
 
     } else if (tempD.spec) {
-      console.log('container');
-      console.log('this is what i need', tempD.spec.resources.requests.cpu)
+      // console.log('container');
+      // console.log('this is what i need', tempD.spec.resources.requests.cpu)
+        
       data.name = tempD.spec.name;
       data.usage = tempD.spec.usage;
       data.capReq = {}
@@ -63,7 +63,7 @@ class InfoPanel extends Component {
   }
 
   render() {
-    console.log(this.props.selected);
+    // console.log(this.props.selected);
     const data = this.formatData();
     console.log('THIS IS DATA', data)
     if (data) {
