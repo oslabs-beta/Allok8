@@ -18,7 +18,7 @@ class TreeComponent extends Component {
       {
         "name": "myK8Cluster",
         "attributes": {
-          "attr": "cluterVal"
+          // "attr": "cluterVal"
         },
         children: [],
       },
@@ -31,8 +31,13 @@ class TreeComponent extends Component {
       const nodeObj = {
         "name": nodeName,
         "attributes": {
-          "nodeProp1": "nodePropVal1",
-          "nodeProp1": "nodePropVal1"
+          // "nodeProp1": "nodePropVal1",
+          // "nodeProp1": "nodePropVal1"
+        },
+        nodeSvgShape: {
+          shapeProps: {
+            fill: 'red',
+          },
         },
         children: [],
       };
@@ -45,8 +50,13 @@ class TreeComponent extends Component {
         const podObj = {
           "name": pod.metadata.name,
           "attributes": {
-            "podProp": "podPropVal",
-            "podProp": "podPropVal"
+            // "podProp": "podPropVal",
+            // "podProp": "podPropVal"
+          },
+          nodeSvgShape: {
+            shapeProps: {
+              fill: 'red',
+            },
           },
           children: [],
         };
@@ -61,8 +71,8 @@ class TreeComponent extends Component {
           const contObj = {
             "name": containers.name,
             "attributest": {
-              "memory": parseInt(containers.usage.memory, 10),
-              "contProp": "contPropVal"
+              // "memory": parseInt(containers.usage.memory, 10),
+              // "contProp": "contPropVal"
             }
           };
           podObj.children.push(contObj);
@@ -76,9 +86,11 @@ class TreeComponent extends Component {
   render() {
     // console.log("this should be props: ", this.props.data);
     return (
-      <div id="treeWrapper" style={{width: '50em', height: '100em'}}>
+      <div id="treeWrapper" style={{width: '100%', height: '100vh'}}>
         <Tree data={this.getData()} 
           orientation={"vertical"}
+          translate={{x: 100, y: 50}}
+          circleRadius={10}
         />
       </div>
     )
