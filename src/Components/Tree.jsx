@@ -30,7 +30,6 @@ class TreeComponent extends Component {
       // Construct the top level of data(nodeLevel) here
       const nodeObj = {
         name: nodeName,
-        _collapsed: false,
         attributes: {
           // "nodeProp1": "nodePropVal1",
           // "nodeProp1": "nodePropVal1"

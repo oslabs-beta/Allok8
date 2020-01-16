@@ -65,6 +65,7 @@ class InfoPanel extends Component {
       data.capReq.cpu = tempD.spec.resources.requests.cpu;
       console.log('THIS IS WHERE IT BREAKS', data.capReq.cpu)
       data.capReq.memory = tempD.spec.resources.requests.memory ;
+      if (!data.capReq.memory) data.capReq.memory = data.usage.memory;
     } else { data = null; }
 
     return data;
