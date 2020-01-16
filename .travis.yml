@@ -1,2 +1,5 @@
-services: -docker
-script: docker-compose -f docker-compose-test.yml up --abort-on-container-exit
+language: node_js
+node_js:
+  - '4'
+# services: -docker
+# script: docker-compose -f docker-compose-test.yml up --abort-on-container-exit
