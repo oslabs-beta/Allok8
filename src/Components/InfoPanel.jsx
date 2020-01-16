@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Addresses from './Addresses.jsx'
+
 
 const mapStateToProps = (store) => ({
   selected: store.state.selected,
@@ -20,17 +22,23 @@ class InfoPanel extends Component {
       // console.log(tempD.node)
       data.name = tempD.node.nodeUsage.metadata.name;
       data.usage = tempD.node.nodeUsage.usage;
+      data.time = tempD.node.nodeUsage.metadata.creationTimestamp;
       // console.log(tempD.node.nodeUsage.usage);
       data.cap = {};
       data.cap = tempD.node.capacity.memory;
 
       data.address = [];
-      tempD.node.addresses.forEach(el=>  data.address.push(el))
+      tempD.node.addresses.forEach(el=>  {
+        console.log('this is el ', el)
+        data.address.push(<Addresses line={el}/>)
+        
+      })
       // console.log('ARRRRRRRRRRAY', data.address)
         
     } else if (tempD.podInfo) {
       // console.log('pod');
       data.name = tempD.podInfo.metadata.name;
+      data.time = tempD.podInfo.metadata.creationTimestamp;
       data.usage = tempD.podInfo.spec.containers.reduce((acc, el) => {
         if (el.usage.cpu) acc.cpu = `${parseInt(el.usage.cpu, 10) + parseInt(acc.cpu, 10)}n`;
         if (el.usage.memory) acc.memory = `${parseInt(el.usage.memory, 10) + parseInt(acc.memory, 10)}Ki`;
@@ -50,7 +58,7 @@ class InfoPanel extends Component {
     } else if (tempD.spec) {
       // console.log('container');
       // console.log('this is what i need', tempD.spec.resources.requests.cpu)
-        
+      
       data.name = tempD.spec.name;
       data.usage = tempD.spec.usage;
       data.capReq = {}
@@ -84,6 +92,13 @@ class InfoPanel extends Component {
           <h4>Capacity Usage:</h4>
           <p>{`CPU: ${(((parseInt(data.usage.cpu, 10)*0.000001)/1000) * 100).toFixed(2)}%`}</p>
           <p>{`Memory: ${((parseInt(data.usage.memory, 10))/ parseInt(data.cap, 10)).toFixed(2)}%`}</p>
+          <h4>Creation Time:</h4>
+          <p>{data.time}</p>
+          <h4>Addresses:</h4>
+          {data.address}
+          <p>n</p>
+          <p>n</p>
+        
         </div>
       );
     }} else {

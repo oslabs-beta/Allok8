@@ -29,7 +29,8 @@
   padding: 8px;
   border-top-style: solid;
   border-width: 3px;
-  border-color: rgba(170, 170, 170, .7)
+  border-color: rgba(170, 170, 170, .7);
+  overflow: auto;
 }
 
 .card {
