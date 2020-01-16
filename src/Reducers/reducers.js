@@ -9,6 +9,7 @@ const initialState = {
   token: 'eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZWZhdWx0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6ImRlZmF1bHQtdG9rZW4tbHN2a24iLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZGVmYXVsdCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImVkMGViNTNkLTMxNjUtMTFlYS05OTZlLTQyMDEwYTk2MDA3NSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRlZmF1bHQifQ.QOMQt2I6tWcojSh2702D7peJzbKa0jh-03WNborgw8C3pYne0rxVjbwk-W43sHvbwXQ5y_ku-UzFYrAmUEtWP7Xv6wik2CFTILt7K9UjJrmvEyM-WpHwlVMYSK0I7shV5mTrRJxhKSXvW2JRKflc0mt97fm0eMXlgYX_oGXv9DsAnyoMQxGxqYFsjJx8_RK-_LSXdVcRxi3Gi_aCuBqyEbrt5cEMKVyaBcJfxs0-G-_N-SMAwk878hfcBbz3BPuEMniAYEdIU9MKVMCkwSEmNIwUVmWIA4ZmltlgWIYS2ZY6EcPSdOZ9zRM4kQnaqWEGsoD-aqp5WyoE6PPQ4b-2-g',
   page: 'LANDING',
   data: {},
+  selected: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -25,6 +26,19 @@ const reducer = (state = initialState, action) => {
     case type.GOTO:
       return ({
         ...state, page: action.payload,
+      });
+
+    case type.SELECT:
+      // console.log(action.payload);
+
+      // let element = e.target;
+      while (!action.payload.el.classList.contains('card')) action.payload.el = action.payload.el.parentElement;
+
+      const temp = document.getElementById('selected');
+      if (temp) temp.removeAttribute('id');
+      action.payload.el.setAttribute('id', 'selected');
+      return ({
+        ...state, selected: action.payload.props,
       });
 
     default: return { ...state };
