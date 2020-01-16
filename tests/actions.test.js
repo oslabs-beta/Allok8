@@ -33,3 +33,25 @@ describe('GOTO', () => {
     expect(actions.goTo('page')).toEqual(expectedAction);
   });
 });
+
+describe('SELECT', () => {
+  it('should pass an object of which component to select', () => {
+    const payload = {};
+    const expectedAction = {
+      type: types.SELECT,
+      payload,
+    }
+    expect(actions.select({})).toEqual(expectedAction);
+  });
+});
+
+describe('CHANGE_VIEW', () => {
+  it('should pass a string of which view to render', () => {
+    const payload = 'view';
+    const expectedAction = {
+      type: types.CHANGE_VIEW,
+      payload,
+    }
+    expect(actions.changeView('view')).toEqual(expectedAction);
+  });
+});
