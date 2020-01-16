@@ -1,0 +1,13 @@
+version: '3'
+services:
+  test:
+    image: bahrambds/allok8
+    container_name: 'mm-test'
+    ports:
+    - '3000:3000'
+    volumes:
+      - ./:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
+    command: npm run test
+volumes:
+  node_modules:
