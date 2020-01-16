@@ -1,5 +1,5 @@
 language: node_js
 node_js:
-  - '4'
+  - 10.16.3
 # services: -docker
 # script: docker-compose -f docker-compose-test.yml up --abort-on-container-exit
