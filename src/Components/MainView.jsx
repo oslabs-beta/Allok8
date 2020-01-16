@@ -13,6 +13,7 @@ class MainView extends Component {
         {/* <ViewNav /> */}
         <Viewer />
         <InfoPanel />
+        <div className="padder" />
       </div>
     );
   }

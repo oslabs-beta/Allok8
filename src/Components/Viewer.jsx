@@ -25,8 +25,8 @@ class Viewer extends Component {
     const nodeMetricsArr = Object.entries(nodePropsObj);
     // console.log('***NODE METRICS IN VIEWER:', nodeMetricsArr);
     // * loop through array and grab the node name value
-    nodeMetricsArr.forEach((el) => {
-      nodeArray.push(<Node node={el[1]} />);
+    nodeMetricsArr.forEach((el, i) => {
+      nodeArray.push(<Node key={`node${i}`} node={el[1]} />);
       // console.log('****this is EL:', el);
     });
 
