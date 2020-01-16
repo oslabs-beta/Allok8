@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { goTo } from '../Actions/actionCreator';
 
+
+const mapDispatchToProps = (dispatch) => ({
+  goToAbout: () => dispatch(goTo('ABOUT')),
+});
 class Footer extends Component {
   constructor(props) {
     super(props);
@@ -10,13 +16,16 @@ class Footer extends Component {
     return (
       <div id="footerContainer">
         <div id="footLinks">
-          <h5 className="clickable">About</h5>
-          <h5 className="clickable">Contact</h5>
-          <h5 className="clickable">Terms</h5>
+          <h5 className="clickable" onClick={() => this.props.goToAbout()}>About</h5>
+          {/* <h5 className="clickable">Contact</h5> */}
+          <h5 className="clickable">Blog</h5>
         </div>
       </div>
     );
   }
 }
 
-export default Footer;
+export default connect(
+  null,
+  mapDispatchToProps,
+)(Footer);
