@@ -14,3 +14,8 @@ export const goTo = (str) => ({
   type: type.GOTO,
   payload: str,
 });
+
+export const select = (obj) => ({
+  type: type.SELECT,
+  payload: obj,
+});
