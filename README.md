@@ -37,7 +37,7 @@ To access a cluster, you would need the location of the cluster and have credent
 
 * Enter API and Token and hit fetch!
 * Default viewer will be under the cards layout.
-* Information panel below will populate reports on usage based on the level selected: Node, Pod, or Component. 
+* Information panel below will populate reports on usage based on the level selected: Node, Pod, or Container. 
 
 **Graph**
 
