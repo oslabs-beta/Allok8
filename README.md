@@ -85,7 +85,7 @@ We love feedback! We are always looking to improve. For major changes, please op
 
 ✏️👩‍💻👨‍💻📓
 
-* Bahram Bagherzadeh - [@bbagher](https://github.com/bbagher)
+* Bahram Bagher - [@bbagher](https://github.com/bbagher)
 * Jason Seidler - [@jsonseidler](https://github.com/jsonseidler)
 * Rella Cruz - [@rllzrc](https://github.com/rllzrc)
 * Rex Osariemen - [@rexosariemen](https://github.com/rexosariemen)
