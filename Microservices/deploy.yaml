@@ -80,9 +80,9 @@ spec:
         - name: postgres
           resources: 
             limits:
-              cpu: "1"
+              cpu: "0.3"
             requests:
-              cpu: "1"
+              cpu: "0.3"
           image: postgres:12.2
           ports:
             - containerPort: 5432
@@ -153,9 +153,9 @@ spec:
         - name: backend-container
           resources: 
             limits:
-              cpu: "1"
+              cpu: "0.3"
             requests:
-              cpu: "1"
+              cpu: "0.3"
           image: docker.io/rbargues32/backend:test
           ports:
             - containerPort: 3000
@@ -198,9 +198,9 @@ spec:
         - name: testing-docker
           resources: 
             limits:
-              cpu: "1"
+              cpu: "0.3"
             requests:
-              cpu: "1"
+              cpu: "0.3"
           image: docker.io/rbargues32/frontend:test
           ports:
             - containerPort: 8080
