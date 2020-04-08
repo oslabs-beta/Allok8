@@ -78,6 +78,11 @@ spec:
           mountPath: /tmp/data
       containers:
         - name: postgres
+          resources: 
+            limits:
+              cpu: "1"
+            requests:
+              cpu: "1"
           image: postgres:12.2
           ports:
             - containerPort: 5432
@@ -146,6 +151,11 @@ spec:
     spec:
       containers:
         - name: backend-container
+          resources: 
+            limits:
+              cpu: "1"
+            requests:
+              cpu: "1"
           image: docker.io/rbargues32/backend:test
           ports:
             - containerPort: 3000
@@ -186,6 +196,11 @@ spec:
     spec:
       containers:
         - name: testing-docker
+          resources: 
+            limits:
+              cpu: "1"
+            requests:
+              cpu: "1"
           image: docker.io/rbargues32/frontend:test
           ports:
             - containerPort: 8080
