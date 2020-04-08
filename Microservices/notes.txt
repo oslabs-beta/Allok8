@@ -1,3 +1,12 @@
+Steps:
+minikube start
+minikube addons enable metrics-server
+kubectl apply -f metrics-server-yaml/
+kubectl apply -f deploy.yaml
+kubectl proxy
+
+
+
 kubectl apply -f metrics-server/deploy/kubernetes
 
 minikube addons enable metrics-server
