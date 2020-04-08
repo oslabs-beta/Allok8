@@ -1,0 +1,14 @@
+kubectl apply -f metrics-server/deploy/kubernetes
+
+minikube addons enable metrics-server
+
+TOKEN=$(kubectl get secret $(kubectl get serviceaccount default -o jsonpath='{.secrets[0].name}') -o jsonpath='{.data.token}' | base64 --decode )
+
+containers:
+      - name: metrics-server
+        image: k8s.gcr.io/metrics-server-amd64:v0.3.6
+        // added command to metrics-server-deployment.yaml
+        command:
+          - /metrics-server
+          - --kubelet-insecure-tls
+          - --kubelet-preferred-address-types=InternalIP

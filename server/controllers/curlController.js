@@ -3,10 +3,11 @@ const cmd = require('node-cmd');
 const k8 = {};
 
 k8.getNodeInfo = (req, res, next) => {
+  console.log("node")
   // todo switch from body to using cookies, I think
   const { api, token } = req.body;
   cmd.get(
-    `curl https://${api}/api/v1/nodes?limit=500 --header "Authorization: Bearer ${token}" --insecure`,
+    `curl http://${api}/api/v1/nodes?limit=500 --header "Authorization: Bearer ${token}" --insecure`,
     (err, data, stderr) => {
       // error handle if needed
       if (err) {
@@ -17,11 +18,16 @@ k8.getNodeInfo = (req, res, next) => {
       const numOfNodes = obj.items.length;
       const nodeNameArray = [];
       const nodeMetricsRaw = {};
-
       // loop through nodes
       obj.items.forEach((item) => {
         // and add each node to an array
-        nodeNameArray.push(item.metadata.name);
+        console.log(nodeNameArray);
+        console.log(typeof nodeNameArray)
+        console.log(item.metadata.name);
+        if (nodeNameArray !== undefined) {
+          nodeNameArray.push(item.metadata.name);
+        }
+        
         // keep track of each nodes usage metrics in an object
         nodeMetricsRaw[item.metadata.name] = item.status;
       });
@@ -37,12 +43,13 @@ k8.getNodeInfo = (req, res, next) => {
 
 
 k8.getPodInfo = (req, res, next) => {
+  console.log("pod info")
   // todo switch from body to using cookies, I think
   const { api, token } = req.body;
   //! hard coded for now
   const namespace = 'default';
   cmd.get(
-    `curl https://${api}/api/v1/namespaces/${namespace}/pods?limit=500 --header "Authorization: Bearer ${token}" --insecure`,
+    `curl http://${api}/api/v1/namespaces/${namespace}/pods?limit=500 --header "Authorization: Bearer ${token}" --insecure`,
     (err, data, stderr) => {
       // error handle if needed
       if (err) {
@@ -76,11 +83,12 @@ k8.getPodInfo = (req, res, next) => {
 };
 
 k8.getNodesUsage = (req, res, next) => {
+  console.log("nodes")
   // todo switch from body to using cookies, I think
   const { api, token } = req.body;
   //! hard coded for now
   cmd.get(
-    `curl https://${api}/apis/metrics.k8s.io/v1beta1/nodes --header "Authorization: Bearer ${token}" --insecure`,
+    `curl http://${api}/apis/metrics.k8s.io/v1beta1/nodes --header "Authorization: Bearer ${token}" --insecure`,
     (err, data, stderr) => {
       // error handle if needed
       if (err) {
@@ -96,12 +104,13 @@ k8.getNodesUsage = (req, res, next) => {
 };
 
 k8.getPodsUsage = (req, res, next) => {
+  console.log("pods")
   // todo switch from body to using cookies, I think
   const { api, token } = req.body;
   //! hard coded for now
   const namespace = 'default';
   cmd.get(
-    `curl https://${api}/apis/metrics.k8s.io/v1beta1/namespaces/${namespace}/pods --header "Authorization: Bearer ${token}" --insecure`,
+    `curl http://${api}/apis/metrics.k8s.io/v1beta1/namespaces/${namespace}/pods --header "Authorization: Bearer ${token}" --insecure`,
     (err, data, stderr) => {
       // error handle if needed
       if (err) {
@@ -117,15 +126,20 @@ k8.getPodsUsage = (req, res, next) => {
 
 k8.structureData = (req, res, next) => {
   const { podUsage, nodeUsage, podsInfo, nodeInfo } = res.locals;
-
+  console.log(nodeInfo);
   Object.keys(nodeInfo.nodeMetricsRaw).forEach(nodeName => {
-
+    console.log(nodeName);
+    console.log(nodeUsage);
     nodeUsage.items.forEach(eachNode => {
+      console.log(eachNode);
       if (eachNode.metadata.name === nodeName) {
         nodeInfo.nodeMetricsRaw[nodeName]['nodeUsage'] = eachNode
         nodeInfo.nodeMetricsRaw[nodeName]['pods'] = [];
       }
     })
+    if (nodeUsage.items.length === 0) {
+      nodeInfo.nodeMetricsRaw[nodeName]['pods'] = [];
+    }
 
 
     Object.keys(podsInfo.podInfo).forEach(podName => {
@@ -139,6 +153,8 @@ k8.structureData = (req, res, next) => {
       })
 
       if (nodeName === currNodeName) {
+        console.log("here")
+        console.log(nodeInfo.nodeMetricsRaw[nodeName]['pods']);
         nodeInfo.nodeMetricsRaw[nodeName]['pods'].push(podsInfo.podInfo[podName]);
       }
     
