@@ -204,3 +204,48 @@ spec:
           image: docker.io/rbargues32/frontend:test
           ports:
             - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: allok8
+  labels:
+    app: app
+    tier: allok8
+spec:
+  ports:
+  - port: 50
+    name: allok8-service
+    targetPort: 3000
+  type: NodePort
+  selector:
+    app: app
+    tier: allok8
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: allok8
+  labels:
+    app: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+        tier: allok8
+    spec:
+      containers:
+        - name: allok8-container
+          resources: 
+            limits:
+              cpu: "0.3"
+            requests:
+              cpu: "0.3"
+          image: docker.io/rbargues32/allok8:latest
+          ports:
+            - containerPort: 3000

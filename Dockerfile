@@ -12,9 +12,11 @@ COPY package*.json ./
 
 # Install production dependencies.
 RUN npm install 
-
+RUN apt-get update && apt-get install -y curl
 # Copy local code to the container image.
 COPY . ./
 
 # Run the web service on container startup.
 CMD [ "npm", "start" ]
+
+EXPOSE 3000
