@@ -11,6 +11,7 @@ kubectl apply -f metrics-server/deploy/kubernetes
 
 minikube addons enable metrics-server
 
+APISERVER=$(kubectl config view --minify -o jsonpath='{.clusters[0].cluster.server}')
 TOKEN=$(kubectl get secret $(kubectl get serviceaccount default -o jsonpath='{.secrets[0].name}') -o jsonpath='{.data.token}' | base64 --decode )
 
 containers:

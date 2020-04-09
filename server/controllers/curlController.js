@@ -7,7 +7,7 @@ k8.getNodeInfo = (req, res, next) => {
   // todo switch from body to using cookies, I think
   const { api, token } = req.body;
   cmd.get(
-    `curl http://${api}/api/v1/nodes?limit=500 --header "Authorization: Bearer ${token}" --insecure`,
+    `curl https://${api}/api/v1/nodes?limit=500 --header "Authorization: Bearer ${token}" --insecure`,
     (err, data, stderr) => {
       // error handle if needed
       if (err) {
@@ -49,7 +49,7 @@ k8.getPodInfo = (req, res, next) => {
   //! hard coded for now
   const namespace = 'default';
   cmd.get(
-    `curl http://${api}/api/v1/namespaces/${namespace}/pods?limit=500 --header "Authorization: Bearer ${token}" --insecure`,
+    `curl https://${api}/api/v1/namespaces/${namespace}/pods?limit=500 --header "Authorization: Bearer ${token}" --insecure`,
     (err, data, stderr) => {
       // error handle if needed
       if (err) {
@@ -88,7 +88,7 @@ k8.getNodesUsage = (req, res, next) => {
   const { api, token } = req.body;
   //! hard coded for now
   cmd.get(
-    `curl http://${api}/apis/metrics.k8s.io/v1beta1/nodes --header "Authorization: Bearer ${token}" --insecure`,
+    `curl https://${api}/apis/metrics.k8s.io/v1beta1/nodes --header "Authorization: Bearer ${token}" --insecure`,
     (err, data, stderr) => {
       // error handle if needed
       if (err) {
@@ -110,7 +110,7 @@ k8.getPodsUsage = (req, res, next) => {
   //! hard coded for now
   const namespace = 'default';
   cmd.get(
-    `curl http://${api}/apis/metrics.k8s.io/v1beta1/namespaces/${namespace}/pods --header "Authorization: Bearer ${token}" --insecure`,
+    `curl https://${api}/apis/metrics.k8s.io/v1beta1/namespaces/${namespace}/pods --header "Authorization: Bearer ${token}" --insecure`,
     (err, data, stderr) => {
       // error handle if needed
       if (err) {
