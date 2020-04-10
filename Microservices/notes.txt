@@ -1,6 +1,9 @@
 Steps:
 minikube start
 minikube addons enable metrics-server
+in Allok8 directory:
+kubectl apply -f fabric8-rbac.yaml/
+in Microservices directory:
 kubectl apply -f metrics-server-yaml/
 kubectl apply -f deploy.yaml
 kubectl proxy
