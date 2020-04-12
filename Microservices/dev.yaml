@@ -51,9 +51,6 @@ data:
   POSTGRES_DB: postgres
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: postgres
-  initdb.sql: | 
-    CREATE TABLE public.users (user_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,username VARCHAR NOT NULL,password VARCHAR NOT NULL);
-    INSERT INTO public.users (username, password) VALUES ('raph', 'pwd1');
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -69,8 +66,23 @@ spec:
       labels:
         app: postgres
     spec:
+      initContainers:
+      - name: init-script-download
+        image: appropriate/curl
+        args:
+          - "-o"
+          - "tmp/data/init.sql"
+          - "https://raw.githubusercontent.com/rbargues/kubernetes-practice/master/init.sql"
+        volumeMounts:
+        - name: init-script
+          mountPath: /tmp/data
       containers:
         - name: postgres
+          resources: 
+            limits:
+              cpu: "0.3"
+            requests:
+              cpu: "0.3"
           image: postgres:12.2
           ports:
             - containerPort: 5432
@@ -80,10 +92,15 @@ spec:
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: postgresdb
+            - name: init-script
+              mountPath: /docker-entrypoint-initdb.d
       volumes:
         - name: postgresdb
           persistentVolumeClaim:
             claimName: postgres-pv-claim
+        - name: init-script 
+          persistentVolumeClaim:
+            claimName: init-script
 ---
 apiVersion: v1
 kind: Service
@@ -96,4 +113,4 @@ spec:
   ports:
    - port: 5432
   selector:
-   app: postgres              
+   app: postgres         

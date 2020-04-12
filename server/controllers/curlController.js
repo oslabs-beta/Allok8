@@ -11,7 +11,6 @@ k8.getNodeInfo = (req, res, next) => {
     (err, data, stderr) => {
       // error handle if needed
       if (err) {
-
         return next(err);
       }
       const obj = JSON.parse(data);
