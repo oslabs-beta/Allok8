@@ -99,9 +99,6 @@ cleaner.podClean = (req, res, next) => {
       const podData = podMetrics(pods[j], nodeData[nodeName].usedCPU, nodeData[nodeName].usedMemory);
       nodeData[nodeName].pods.push(podData);
     }
-
-    
-
   }
 
 

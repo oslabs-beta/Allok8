@@ -1,0 +1,70 @@
+{
+    "minikube": {
+        "allocatableMemory": "3633760Ki",
+        "allocatableCPU": "2",
+        "usedCPU": "184294452n",
+        "usedMemory": "1608808Ki",
+        "pods": [
+            {
+                "allok8-79fb795f9d-2dwqg": {
+                    "status": "Running",
+                    "timestamp": "2020-04-13T19:09:28Z",
+                    "containers": {
+                        "allok8-container": {
+                            "cpuUsed": "0",
+                            "memoryUsed": "31012Ki",
+                            "cpuPercent": null,
+                            "memoryPercent": 1.9276383508784145,
+                            "cpuRequested": "300m"
+                        }
+                    }
+                }
+            },
+            {
+                "backend-5b646c545d-ssqzw": {
+                    "status": "Running",
+                    "timestamp": "2020-04-13T19:09:20Z",
+                    "containers": {
+                        "backend-container": {
+                            "cpuUsed": "0",
+                            "memoryUsed": "16976Ki",
+                            "cpuPercent": null,
+                            "memoryPercent": 1.0551911725948653,
+                            "cpuRequested": "300m"
+                        }
+                    }
+                }
+            },
+            {
+                "frontend-5c65d4f784-vpzms": {
+                    "status": "Running",
+                    "timestamp": "2020-04-13T19:09:16Z",
+                    "containers": {
+                        "testing-docker": {
+                            "cpuUsed": "0",
+                            "memoryUsed": "14752Ki",
+                            "cpuPercent": null,
+                            "memoryPercent": 0.916952178258686,
+                            "cpuRequested": "300m"
+                        }
+                    }
+                }
+            },
+            {
+                "postgres-576d8cd8f8-c8th9": {
+                    "status": "Running",
+                    "timestamp": "2020-04-13T19:09:16Z",
+                    "containers": {
+                        "postgres": {
+                            "cpuUsed": "1280658n",
+                            "memoryUsed": "60756Ki",
+                            "cpuPercent": 0.6948977498248293,
+                            "memoryPercent": 3.7764605844824244,
+                            "cpuRequested": "300m"
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}
