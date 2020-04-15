@@ -3,6 +3,7 @@ const express = require('express');
 const { getNodesUsage, getPodsUsage, getNodeInfo, getPodInfo, structureData } = require('../controllers/curlController');
 const cleaner = require("../controllers/apiclean");
 const dbEntry = require("../controllers/dbEntry");
+const dbGet = require("../controllers/dbGet");
 
 const curlRouter = express.Router();
 
@@ -21,11 +22,9 @@ curlRouter.get('/dev', dbEntry.getAPI, getPodsUsage, getNodesUsage, getPodInfo, 
   // }
   return res.status(200).json(res.locals.nodeData);
 });
-curlRouter.get('/temp', dbEntry.getAPI, (req, res) => {
-  console.log(res.locals);
-  return res.status(200).json({'hi':'there'});
+curlRouter.get('/dbInfo', dbGet.dbInformation, dbGet.cleanOutput,(req, res) => {
+  return res.status(200).json(res.locals.cleanedOuput);
 })
-
 
 
 module.exports = curlRouter;
