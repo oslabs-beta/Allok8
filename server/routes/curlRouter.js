@@ -22,8 +22,8 @@ curlRouter.get('/dev', dbEntry.getAPI, getPodsUsage, getNodesUsage, getPodInfo, 
   // }
   return res.status(200).json(res.locals.nodeData);
 });
-curlRouter.get('/dbInfo', dbGet.dbInformation, dbGet.cleanOutput,(req, res) => {
-  return res.status(200).json(res.locals.cleanedOuput);
+curlRouter.get('/dbInfo', dbGet.dbInformation, dbGet.cleanOutput, dbGet.orderOuput, (req, res) => {
+  return res.status(200).json(res.locals.orderedOutput);
 })
 
 

@@ -11,7 +11,6 @@ dbGet.dbInformation = (req, res, next) => {
   `, (err, sqlres) => {
     if (err) return next(err);
     const results = sqlres.rows;
-    console.log(results);
     res.locals.dbResults = results;
     return next();
   })
@@ -19,7 +18,7 @@ dbGet.dbInformation = (req, res, next) => {
 
 dbGet.cleanOutput = (req, res, next) => {
   const { dbResults } = res.locals;
-  const cleanedOuput = {};
+  const cleanedOutput = {};
   dbResults.forEach((info) => {
     const nodeName = info.node_name;
     const containerName = info.container_name;
@@ -34,18 +33,18 @@ dbGet.cleanOutput = (req, res, next) => {
     const memoryUsed = info.memory_used;
     const cpuPercent = info.cpu_percent;
     const memoryPercent = info.memory_percent;
-    if (!cleanedOuput[timestamp]) {
-      cleanedOuput[timestamp] = {};
-      cleanedOuput[timestamp][nodeName] = {
+    if (!cleanedOutput[timestamp]) {
+      cleanedOutput[timestamp] = {};
+      cleanedOutput[timestamp][nodeName] = {
         usedCPU,
         usedMemory
       };
-      cleanedOuput[timestamp][nodeName].pods = {};
-      cleanedOuput[timestamp][nodeName].pods[podName] = {
+      cleanedOutput[timestamp][nodeName].pods = {};
+      cleanedOutput[timestamp][nodeName].pods[podName] = {
         status,
         containers: {}
       }
-      cleanedOuput[timestamp][nodeName].pods[podName].containers[containerName] = {
+      cleanedOutput[timestamp][nodeName].pods[podName].containers[containerName] = {
         cpuUsed,
         memoryUsed,
         cpuPercent,
@@ -53,11 +52,11 @@ dbGet.cleanOutput = (req, res, next) => {
       };
     }
     else {
-      if (!cleanedOuput[timestamp][nodeName].pods[podName]) {
-        cleanedOuput[timestamp][nodeName].pods[podName] = {};
-        cleanedOuput[timestamp][nodeName].pods[podName].containers = {};
+      if (!cleanedOutput[timestamp][nodeName].pods[podName]) {
+        cleanedOutput[timestamp][nodeName].pods[podName] = {};
+        cleanedOutput[timestamp][nodeName].pods[podName].containers = {};
       }
-      cleanedOuput[timestamp][nodeName].pods[podName].containers[containerName] = {
+      cleanedOutput[timestamp][nodeName].pods[podName].containers[containerName] = {
         cpuUsed,
         memoryUsed,
         cpuPercent,
@@ -65,8 +64,29 @@ dbGet.cleanOutput = (req, res, next) => {
       }
     }
   })
-  res.locals.cleanedOuput = cleanedOuput;
+  res.locals.cleanedOutput = cleanedOutput;
   return next();
 }
 
+dbGet.orderOuput = (req, res, next) => {
+  const cleanedOutput = res.locals.cleanedOutput;
+  const timestamps = Object.keys(cleanedOutput);
+  console.log(timestamps)
+  timestamps.forEach((tm) => {
+    const nodes = Object.keys(cleanedOutput[tm]);
+    nodes.forEach((node) => {
+      const pods = Object.keys(cleanedOutput[tm][node].pods);
+      pods.sort();
+      cleanedOutput[tm][node].sortedPods = pods;
+      cleanedOutput[tm][node].sortedContainers = [];
+      pods.forEach((pod) => {
+        const containers = Object.keys(cleanedOutput[tm][node].pods[pod].containers);
+        cleanedOutput[tm][node].sortedContainers = cleanedOutput[tm][node].sortedContainers.concat(containers);
+      })
+      cleanedOutput[tm][node].sortedContainers = [... new Set(cleanedOutput[tm][node].sortedContainers)];
+    })
+  })
+  res.locals.orderedOutput = cleanedOutput;
+  return next();
+}
 module.exports = dbGet;
