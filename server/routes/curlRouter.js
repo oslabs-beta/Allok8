@@ -22,8 +22,10 @@ curlRouter.get('/dev', dbEntry.getAPI, getPodsUsage, getNodesUsage, getPodInfo, 
   // }
   return res.status(200).json(res.locals.nodeData);
 });
-curlRouter.get('/dbInfo', dbGet.dbInformation, dbGet.cleanOutput, dbGet.orderOuput, (req, res) => {
-  return res.status(200).json(res.locals.orderedOutput);
+curlRouter.get('/dbInfo', dbGet.dbInformation, dbGet.cleanOutput, (req, res) => {
+  // console.log(res.locals.dbResults)
+  // return res.status(200).json(res.locals.orderedOutput);
+  return res.status(200).json(res.locals.cleanedOutput);
 })
 
 
