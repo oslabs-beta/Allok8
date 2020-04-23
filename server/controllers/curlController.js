@@ -4,24 +4,29 @@ const k8 = {};
 
 k8.getNodeInfo = (req, res, next) => {
   // todo switch from body to using cookies, I think
-  const { api, token } = req.body;
+  let { api, token } = req.body;
+  if (!api && !token) {
+    api = res.locals.api;
+    token = res.locals.token;
+  }
   cmd.get(
     `curl https://${api}/api/v1/nodes?limit=500 --header "Authorization: Bearer ${token}" --insecure`,
     (err, data, stderr) => {
       // error handle if needed
       if (err) {
-
         return next(err);
       }
       const obj = JSON.parse(data);
-      const numOfNodes = obj.items.length;
+      // const numOfNodes = obj.items.length;
       const nodeNameArray = [];
       const nodeMetricsRaw = {};
-
       // loop through nodes
       obj.items.forEach((item) => {
         // and add each node to an array
-        nodeNameArray.push(item.metadata.name);
+        if (nodeNameArray !== undefined) {
+          nodeNameArray.push(item.metadata.name);
+        }
+        
         // keep track of each nodes usage metrics in an object
         nodeMetricsRaw[item.metadata.name] = item.status;
       });
@@ -38,7 +43,11 @@ k8.getNodeInfo = (req, res, next) => {
 
 k8.getPodInfo = (req, res, next) => {
   // todo switch from body to using cookies, I think
-  const { api, token } = req.body;
+  let { api, token } = req.body;
+  if (!api && !token) {
+    api = res.locals.api;
+    token = res.locals.token;
+  }
   //! hard coded for now
   const namespace = 'default';
   cmd.get(
@@ -77,7 +86,11 @@ k8.getPodInfo = (req, res, next) => {
 
 k8.getNodesUsage = (req, res, next) => {
   // todo switch from body to using cookies, I think
-  const { api, token } = req.body;
+  let { api, token } = req.body;
+  if (!api && !token) {
+    api = res.locals.api;
+    token = res.locals.token;
+  }
   //! hard coded for now
   cmd.get(
     `curl https://${api}/apis/metrics.k8s.io/v1beta1/nodes --header "Authorization: Bearer ${token}" --insecure`,
@@ -97,7 +110,11 @@ k8.getNodesUsage = (req, res, next) => {
 
 k8.getPodsUsage = (req, res, next) => {
   // todo switch from body to using cookies, I think
-  const { api, token } = req.body;
+  let { api, token } = req.body;
+  if (!api && !token) {
+    api = res.locals.api;
+    token = res.locals.token;
+  }
   //! hard coded for now
   const namespace = 'default';
   cmd.get(
@@ -117,15 +134,16 @@ k8.getPodsUsage = (req, res, next) => {
 
 k8.structureData = (req, res, next) => {
   const { podUsage, nodeUsage, podsInfo, nodeInfo } = res.locals;
-
   Object.keys(nodeInfo.nodeMetricsRaw).forEach(nodeName => {
-
     nodeUsage.items.forEach(eachNode => {
       if (eachNode.metadata.name === nodeName) {
         nodeInfo.nodeMetricsRaw[nodeName]['nodeUsage'] = eachNode
         nodeInfo.nodeMetricsRaw[nodeName]['pods'] = [];
       }
     })
+    if (nodeUsage.items.length === 0) {
+      nodeInfo.nodeMetricsRaw[nodeName]['pods'] = [];
+    }
 
 
     Object.keys(podsInfo.podInfo).forEach(podName => {
