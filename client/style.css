@@ -47,11 +47,10 @@ html {
   margin: 0;
   margin-top: -250px;
   font-size: 15px;
-  background-color: rgb(7, 7, 7);
+  background-color: rgb(19, 19, 19);
   padding-bottom: 50px;
   padding-top: 60px;
   padding: 30px;
-  overflow: scroll;
 }
 
 #texts {
@@ -67,7 +66,7 @@ html {
 #get {
   text-align: center;
   cursor: pointer;
-  border: rgb(7, 7, 7);
+  border: rgb(19, 19, 19);
   border-bottom: rgb(41, 39, 39);
   border-style: solid;
   padding: 10px;

@@ -1,56 +1,45 @@
 {
-  "name": "Allok8",
+  "name": "front-end-testing",
   "version": "1.0.0",
-  "description": "Kubernetes visualization tool",
-  "main": "index.js",
+  "description": "",
+  "main": "webpack.config.js",
   "scripts": {
-    "test": "jest",
     "start": "nodemon server/server.js",
-    "build": "NODE_ENV=production webpack",
+    "build": "webpack --mode production",
     "both": "concurrently \"npm run dev\" \"npm run start\"",
-    "dev": "NODE_ENV=development webpack-dev-server --open --hot"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/oslabs-beta/Allok8.git"
+    "dev": "NODE_ENV=development webpack-dev-server --open --hot",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/oslabs-beta/Allok8/issues"
-  },
-  "homepage": "https://github.com/oslabs-beta/Allok8#readme",
-  "dependencies": {
-    "@trendmicro/react-sidenav": "^0.4.5",
-    "concurrently": "^5.0.2",
-    "express": "^4.17.1",
-    "node-cmd": "^3.0.0",
-    "pg": "^8.0.2",
-    "react": "^16.12.0",
-    "react-d3-tree": "^1.16.1",
-    "react-dom": "^16.12.0",
-    "react-redux": "^7.1.3",
-    "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
-  },
   "devDependencies": {
-    "@babel/core": "^7.7.7",
-    "@babel/preset-env": "^7.7.7",
-    "@babel/preset-react": "^7.7.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "babel-loader": "^8.1.0"
+  },
+  "dependencies": {
     "babel": "^6.23.0",
-    "babel-jest": "^24.9.0",
-    "babel-loader": "^8.0.6",
-    "css-loader": "^3.4.0",
-    "fetch-mock": "^8.3.1",
-    "jest": "^24.9.0",
+    "babel-core": "^6.26.3",
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.1.0",
+    "css-loader": "^3.5.2",
+    "express": "^4.17.1",
+    "html-loader": "^1.1.0",
+    "html-webpack-plugin": "^4.2.0",
+    "node-cmd": "^3.0.0",
     "node-fetch": "^2.6.0",
-    "nodemon": "^2.0.2",
-    "redux-mock-store": "^1.5.4",
-    "style-loader": "^1.1.2",
-    "supertest": "^4.0.2",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.1"
+    "nodemon": "^2.0.3",
+    "pg": "^8.0.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-hooks": "^1.0.1",
+    "react-modal": "^3.11.2",
+    "react-router-dom": "^5.1.2",
+    "style-loader": "^1.1.3",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   }
 }

@@ -1,31 +1,31 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = {
   mode: process.env.NODE_ENV,
 
-  entry: './src/index.js',
+  entry: "./client/index.jsx",
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
   },
   devServer: {
     proxy: {
-      '/server': 'http://localhost:3000',
+      "/server": "http://localhost:3000",
     },
-    contentBase: './src',
-    publicPath: '/dist',
+    contentBase: "./client",
+    publicPath: "/dist",
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: ["babel-loader"],
       },
       {
         test: /\.css/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader'],
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
