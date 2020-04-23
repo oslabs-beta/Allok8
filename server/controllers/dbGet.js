@@ -15,7 +15,19 @@ dbGet.dbInformation = (req, res, next) => {
     return next();
   })
 }
-
+dbGet.architecture = (req, res, next) => {
+  db.query(`
+  SELECT DISTINCT node_name, container_name, pod_name
+  FROM public.containers as c
+  JOIN public.pods as p on p.pod_id = c.pod_id
+  JOIN public.nodes as n on n.node_id = p.node_id
+  `, (err, sqlres) => {
+    if (err) return next(err);
+    const results = sqlres.rows;
+    res.locals.dbResults = results;
+    return next();
+  })
+}
 dbGet.findIndex = (array, key, val) => {
   for (let i = 0; i < array.length; i ++) {
     if (array[i][key] === val) {
@@ -24,7 +36,45 @@ dbGet.findIndex = (array, key, val) => {
   }
   return -1;
 }
+dbGet.overview = (req, res, next) => {
+  const { dbResults } = res.locals;
+  const overview = [];
+  dbResults.forEach((info) => {
+    const nodeName = info.node_name;
+    const containerName = info.container_name;
+    const podName = info.pod_name;
 
+    let nodeInfo;
+    let nodeIndex = dbGet.findIndex(overview, "node", nodeName);
+    if (nodeIndex === -1 ) {
+      nodeInfo = {
+        "node": nodeName,
+        "pods": []
+      };
+      nodeIndex = overview.length;
+      overview.push(nodeInfo);
+    }
+    else {
+      nodeInfo = overview[nodeIndex];
+    }
+    let podIndex = dbGet.findIndex(nodeInfo.pods, "pod", podName);
+    let podInfo;
+    if (podIndex === -1) {
+      podInfo = {
+        "pod": podName,
+        "containers": []
+      };
+      podIndex = nodeInfo.pods.length;
+      nodeInfo.pods.push(podInfo);
+    }
+    else {
+      podInfo = nodeInfo.pods[podIndex];
+    }
+    podInfo.containers.push(containerName);
+  });
+  res.locals.clusterOverview = overview;
+  return next();
+}
 dbGet.cleanOutput = (req, res, next) => {
   const { dbResults } = res.locals;
   const cleanedOutput = [];
