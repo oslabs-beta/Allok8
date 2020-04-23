@@ -9,6 +9,7 @@ const newPod = (props) => {
   }
   return (
     <div className = "pod">
+      <span>{props.podName}</span>
       {containers}
     </div>
   )

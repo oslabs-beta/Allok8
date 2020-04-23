@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 const newContainer = (props) => {
   return (
-    <div className = "pod">
+    <div className = "container">
       <span>{props.containerName}</span>
     </div>
   )
