@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import newCards from "../components/newCards.jsx";
+import NewCard from "../components/NewCard.jsx";
 
 class Dashboard extends Component {
   constructor(props){
@@ -10,7 +10,7 @@ class Dashboard extends Component {
 
   render() {
     return (
-     <newCards />
+     <NewCard />
     );
   }
 }

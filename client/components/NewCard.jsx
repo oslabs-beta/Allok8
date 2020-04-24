@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import newNode from "./newNode.jsx";
+import NewNode from "./NewNode.jsx";
 
-class newCard extends Component {
+class NewCard extends Component {
   constructor() {
     super();
     this.state = {
@@ -10,8 +10,11 @@ class newCard extends Component {
   }
   componentDidMount() {
     fetch("/server/overview")
-    .then(res => res.json())
+    .then(res => {
+      return res.json();
+    })
     .then(json => {
+      console.log(json);
       this.setState({apiresponse: json});
     })
     .catch(err => {
@@ -19,9 +22,9 @@ class newCard extends Component {
     })
   }
   render() {
-    nodes = [];
+    const nodes = [];
     for (let i = 0; i < this.state.apiresponse.length; i++) {
-      nodes.push(<newNode nodeName = {this.state.apiresponse[i].node} pods = {this.state.apiresponse[i].pods}/>)
+      nodes.push(<NewNode nodeName = {this.state.apiresponse[i].node} pods = {this.state.apiresponse[i].pods}/>)
     }
     return (
       <div className = "card">
@@ -31,4 +34,4 @@ class newCard extends Component {
   }
 }
 
-export default newCard;
+export default NewCard;

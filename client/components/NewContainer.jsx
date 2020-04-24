@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-const newContainer = (props) => {
+const NewContainer = (props) => {
   return (
     <div className = "container">
       <span>{props.containerName}</span>
@@ -8,4 +8,4 @@ const newContainer = (props) => {
   )
 }
 
-export default newContainer;
+export default NewContainer;

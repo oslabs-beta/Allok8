@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Auth from './Auth';
-import Sidebar from './Sidebar';
+import Auth from './Auth.jsx';
+import Sidebar from './Sidebar.jsx';
 
 class Login extends Component {
   constructor(props){
@@ -10,24 +10,37 @@ class Login extends Component {
       token: '',
       warning: ''   
     }
+    this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange = e => {
+  handleChange(e) {
     this.setState({
       [e.target.id]: e.target.value
     })
   }
 
-  handleClick = () => {
+  handleClick() {
     const { link, token } = this.state;
-
     if(link === '' || token === ''){
       alert('Input Values!!');
     } else {
-      fetch('/')
-      Auth.login(() => {
-        this.props.history.push('/')
-      }, this.state.link);
+      fetch('/server/getInfo', {
+        "method": "POST",
+        "headers": {
+          "Content-Type":"application/json"
+        },
+        "body": JSON.stringify({
+          "api": link,
+          "token": token
+        })
+      })
+      .then(res => {
+        Auth.login(() => {
+          this.props.history.push('/')
+        }, this.state.link);
+      })
+      
     }
   }
 

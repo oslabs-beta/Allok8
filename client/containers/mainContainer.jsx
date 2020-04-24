@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Login from '../components/Login';
-import Dashboard from './dashboard';
-import PrivateRoute from '../components/PrivateRoute';
+import Login from '../components/Login.jsx';
+import Dashboard from './dashboard.jsx';
+import PrivateRoute from '../components/PrivateRoute.jsx';
 
 class MainContainer extends Component {
   render() {

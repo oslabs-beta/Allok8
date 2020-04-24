@@ -20,20 +20,16 @@ app.get("/test", (req, res) => {
 app.use(bodyParser.json());
 
 
-// root, send index.html
-app.get('/', (req, res) => {
-  return res.status(200).sendFile(path.resolve(__dirname, '../src/index.html'));
-});
 
 
 //route handlers
 app.use('/server', curlRouter);
 
-setInterval(() => {
-  fetch("http://localhost:3000/server/dev")
-  .then(result => result.json())
-  .then(json => console.log(json))
-}, 60000);
+// setInterval(() => {
+//   fetch("http://localhost:3000/server/dev")
+//   .then(result => result.json())
+//   .then(json => console.log(json))
+// }, 60000);
 
 
 // // catch-all route handler for any requests to an unknown route
@@ -41,6 +37,10 @@ setInterval(() => {
 //   console.log(res.status);
 //   return res.status(404).json('Page not found');
 // });
+// root, send index.html
+app.get('/', (req, res) => {
+  return res.status(200).sendFile(path.resolve(__dirname, '../src/index.html'));
+});
 
 // global error handler
 app.use((err, req, res, next) => {
