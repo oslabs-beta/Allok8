@@ -25,11 +25,11 @@ app.use(bodyParser.json());
 //route handlers
 app.use('/server', curlRouter);
 
-// setInterval(() => {
-//   fetch("http://localhost:3000/server/dev")
-//   .then(result => result.json())
-//   .then(json => console.log(json))
-// }, 60000);
+setInterval(() => {
+  fetch("http://localhost:3000/server/dev")
+  .then(result => result.json())
+  .then(json => console.log(json))
+}, 60000);
 
 
 // // catch-all route handler for any requests to an unknown route

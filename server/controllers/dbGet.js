@@ -30,7 +30,7 @@ dbGet.architecture = (req, res, next) => {
 }
 dbGet.findIndex = (array, key, val) => {
   for (let i = 0; i < array.length; i ++) {
-    if (array[i][key] === val) {
+    if (JSON.stringify(array[i][key]) === JSON.stringify(val)) {
       return i;
     }
   }
