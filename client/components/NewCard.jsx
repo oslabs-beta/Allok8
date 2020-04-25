@@ -8,19 +8,21 @@ class NewCard extends Component {
       apiresponse: []
     }
   }
+  //version used for prod
   componentDidMount() {
-    fetch("/server/overview")
+    // fetch("/server/overview")
+    fetch("/local")
     .then(res => {
       return res.json();
     })
     .then(json => {
-      console.log(json);
-      this.setState({apiresponse: json});
+      this.setState({apiresponse: JSON.parse(json)});
     })
     .catch(err => {
       console.log(err);
     })
   }
+
   render() {
     const nodes = [];
     for (let i = 0; i < this.state.apiresponse.length; i++) {

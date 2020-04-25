@@ -19,31 +19,37 @@ class Login extends Component {
       [e.target.id]: e.target.value
     })
   }
-
+  //version for prod
+  // handleClick() {
+  //   const { link, token } = this.state;
+  //   if(link === '' || token === ''){
+  //     alert('Input Values!!');
+  //   } else {
+  //     fetch('/server/getInfo', {
+  //       "method": "POST",
+  //       "headers": {
+  //         "Content-Type":"application/json"
+  //       },
+  //       "body": JSON.stringify({
+  //         "api": link,
+  //         "token": token
+  //       })
+  //     })
+  //     .then(res => {
+  //       Auth.login(() => {
+  //         this.props.history.push('/')
+  //       }, this.state.link);
+  //     })
+      
+  //   }
+  // }
+  // version for dev
   handleClick() {
     const { link, token } = this.state;
-    if(link === '' || token === ''){
-      alert('Input Values!!');
-    } else {
-      fetch('/server/getInfo', {
-        "method": "POST",
-        "headers": {
-          "Content-Type":"application/json"
-        },
-        "body": JSON.stringify({
-          "api": link,
-          "token": token
-        })
-      })
-      .then(res => {
-        Auth.login(() => {
-          this.props.history.push('/')
-        }, this.state.link);
-      })
-      
-    }
+    Auth.login(() => {
+      this.props.history.push('/')
+    }, this.state.link);     
   }
-
   render(){
     return (
       <div>
