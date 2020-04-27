@@ -100,3 +100,22 @@ html {
      right: 0;
      padding: 30px; 
  } 
+
+ .pod {
+     text-align: right;
+     color: red;
+ }
+
+ .node {
+     display: flex;
+     flex-direction: column-reverse;
+     justify-content: flex-end;
+     color: white;
+ }
+
+ .card {
+     display: flex;
+     flex-direction: column-reverse;
+     justify-content: flex-start;
+     color: green;
+ }

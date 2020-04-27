@@ -1,5 +1,5 @@
 {
-  "name": "Allok8",
+  "name": "allok8",
   "version": "1.0.0",
   "description": "Kubernetes visualization tool",
   "main": "index.js",
