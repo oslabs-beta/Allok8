@@ -27,9 +27,17 @@ curlRouter.get('/overview', dbGet.architecture, dbGet.overview, (req, res) => {
 })
 curlRouter.get('/dbInfo', dbGet.dbInformation, dbGet.cleanOutput, (req, res) => {
   // console.log(res.locals.dbResults)
-  // return res.status(200).json(res.locals.orderedOutput);
-  return res.status(200).json(res.locals.cleanedOutput);
+  return res.status(200).json(res.locals.dbResults);
+  // return res.status(200).json(res.locals.cleanedOutput);
 })
-
+curlRouter.post('/node', dbGet.nodeDB, dbGet.formatContainerInfo, (req, res) => {
+  return res.status(200).json(res.locals.containerInfo);
+})
+curlRouter.post('/pod', dbGet.podDB, dbGet.formatContainerInfo, (req, res) => {
+  return res.status(200).json(res.locals.containerInfo);
+})
+curlRouter.post('/container', dbGet.containerDB, dbGet.formatContainerInfo, (req, res) => {
+  return res.status(200).json(res.locals.containerInfo);
+})
 
 module.exports = curlRouter;

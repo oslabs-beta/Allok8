@@ -28,6 +28,82 @@ dbGet.architecture = (req, res, next) => {
     return next();
   })
 }
+dbGet.containerDB = (req, res, next) => {
+  const { containerName } = req.body;
+  db.query(`
+  SELECT *
+  FROM public.containers as c
+  WHERE c.container_name = $1
+  ORDER BY c.tm ASC;
+  `,[containerName], (err, sqlres) => {
+    if (err) return next(err);
+    const results = sqlres.rows;
+    res.locals.containerResults = results;
+    return next();
+  })
+}
+dbGet.nodeDB = (req, res, next) => {
+  const { nodeName } = req.body;
+  db.query(`
+  SELECT *
+  FROM public.containers as c
+  JOIN public.nodes as n 
+    ON n.node_id = c.node_id
+  WHERE n.node_name = $1
+  ORDER BY c.tm ASC;
+  `, [nodeName], (err, sqlres) => {
+    if (err) return next(err);
+    const results = sqlres.rows;
+    res.locals.containerResults = results;
+    return next();
+  })
+}
+dbGet.podDB = (req, res, next) => {
+  const { podName } = req.body;
+  db.query(`
+  SELECT * 
+  FROM public.containers as c
+  JOIN public.pods as p
+    ON p.pod_id = c.pod_id
+  WHERE p.pod_name = $1
+  ORDER BY c.tm ASC;
+  `, [podName], (err, sqlres) => {
+    if (err) return next(err);
+    const results = sqlres.rows;
+    res.locals.containerResults = results;
+    return next();
+  })
+}
+dbGet.formatContainerInfo = (req, res, next) => {
+  const { mode } = req.body;
+  const { containerResults } = res.locals;
+  const output = [];
+  for (let i = 0; i < containerResults.length; i ++) {
+    const dataPoint = containerResults[i];
+
+    const { container_name, tm } = dataPoint;
+    const dataModeVal = dataPoint[mode];
+    let containerIndex = dbGet.findIndex(output, "id", container_name);
+    let containerInfo;
+    if (containerIndex === -1) {
+      containerInfo = {
+        id: container_name,
+        data: []
+      }
+      output.push(containerInfo);
+    }
+    else {
+      containerInfo = output[containerIndex];
+    }
+    containerInfo.data.push({
+      x: tm,
+      y: dataModeVal
+    })
+  }
+  res.locals.containerInfo = output;
+  return next();
+}
+
 dbGet.findIndex = (array, key, val) => {
   for (let i = 0; i < array.length; i ++) {
     if (JSON.stringify(array[i][key]) === JSON.stringify(val)) {
@@ -135,7 +211,7 @@ dbGet.cleanOutput = (req, res, next) => {
       podInfo = objInfo.nodes[nodeIndex].pods[podIndex];
     }
 
-    containerInfo = {
+    const containerInfo = {
       id: containerName,
       cpuUsed: cpuUsed,
       memoryUsed: memoryUsed,
