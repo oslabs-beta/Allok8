@@ -3,7 +3,7 @@ import { ResponsiveLine } from "@nivo/line";
 
 const theme = {
   textColor: "#f7fbff",
-  fontSize: "12px",
+  fontSize: 12,
   tickColor: "#f7fbff",
 };
 
