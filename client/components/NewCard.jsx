@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import NewNode from "./NewNode.jsx";
 
 class NewCard extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       apiresponse: []
     }
@@ -29,7 +29,7 @@ class NewCard extends Component {
       nodes.push(<NewNode nodeName = {this.state.apiresponse[i].node} pods = {this.state.apiresponse[i].pods}/>)
     }
     return (
-      <div className = "card">
+      <div className = "card" onClick = {this.props.selectObject}>
         {nodes}
       </div>
     )

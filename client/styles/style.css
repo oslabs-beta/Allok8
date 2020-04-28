@@ -100,3 +100,17 @@ html {
      right: 0;
      padding: 30px; 
  } 
+ div {
+     border: white;
+     border-style: solid;
+     border-width: 1px;
+ }
+ .node {
+     z-index: 1;
+ }
+ .pod {
+     z-index: 2;
+ }
+ .container {
+     z-index:3;
+ }
