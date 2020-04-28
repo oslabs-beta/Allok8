@@ -1,7 +1,7 @@
 html {
     font-family: 'Andale Mono';
     color: #0F99FF;
-    background-color: rgb(7, 7, 7);
+    background-color: rgb(10, 10, 10);
     font-size: 20px;
 }
 
@@ -47,7 +47,7 @@ html {
   margin: 0;
   margin-top: -250px;
   font-size: 15px;
-  background-color: rgb(7, 7, 7);
+  background-color: rgb(10, 10, 10);
   padding-bottom: 50px;
   padding-top: 60px;
   padding: 30px;
@@ -67,7 +67,7 @@ html {
 #get {
     text-align: center;
     cursor: pointer;
-    border: rgb(7, 7, 7);
+    border: rgb(10, 10, 10);
     border-bottom: rgb(41, 39, 39);
     border-style: solid;
     padding: 10px;
@@ -100,3 +100,30 @@ html {
      right: 0;
      padding: 30px; 
  } 
+
+ /* .pod {
+     text-align: right;
+     color: red;
+ }
+
+ .node {
+     display: flex;
+     flex-direction: column-reverse;
+     justify-content: flex-end;
+     color: white;
+ }
+
+ .card {
+     display: flex;
+     flex-direction: column-reverse;
+     justify-content: flex-start;
+     color: green;
+ } */
+
+ .graphs {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-content: center;
+     align-items: center;
+ }

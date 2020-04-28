@@ -1,5 +1,5 @@
 {
-  "name": "front-end-testing",
+  "name": "allok8",
   "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
@@ -20,11 +20,10 @@
     "babel-loader": "^8.1.0"
   },
   "dependencies": {
-    "babel": "^6.23.0",
-    "babel-core": "^6.26.3",
-    "body-parser": "^1.19.0",
-    "concurrently": "^5.1.0",
-    "css-loader": "^3.5.2",
+    "@nivo/circle-packing": "^0.61.0",
+    "@nivo/line": "^0.61.1",
+    "@trendmicro/react-sidenav": "^0.4.5",
+    "concurrently": "^5.0.2",
     "express": "^4.17.1",
     "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.2.0",
