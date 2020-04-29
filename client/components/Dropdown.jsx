@@ -2,8 +2,8 @@ import React from "react";
 
 const Dropdown = (props) => {
   return (
-    <div class="dataSelector">
-      <label for="data">Select data to chart:</label>
+    <div className="dataSelector">
+      <label htmlFor="data">Select data to chart:</label>
       <select id="data">
         <option value="memoryPercent">Memory Percent</option>
         <option value="memoryUsed">Memory Used</option>
