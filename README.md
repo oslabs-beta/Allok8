@@ -59,7 +59,7 @@ We love feedback! We are always looking to improve. For major changes, please op
 
 🧰🚢🐳
 
-* [Nivo] (https://github.com/plouc/nivo) 
+* [Nivo](https://github.com/plouc/nivo) 
 * [Docker](https://github.com/docker/cli)
 * [Express](https://github.com/expressjs/express)
 * [Jest](https://github.com/facebook/jest)
