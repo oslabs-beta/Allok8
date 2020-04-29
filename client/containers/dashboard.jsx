@@ -13,10 +13,12 @@ class Dashboard extends Component {
       selectedObj: "",
       restObjType: "",
       chartData: [],
+      method: "memory_percent",
     };
     this.selectObject = this.selectObject.bind(this);
+    this.setMethod = this.setMethod.bind(this);
   }
-  selectObject(event, method = "memory_percent") {
+  selectObject(event) {
     const restObjName = event.target.innerText;
     const restObjType = event.target.className;
     if (restObjType === "node") {
@@ -27,7 +29,7 @@ class Dashboard extends Component {
         },
         body: JSON.stringify({
           nodeName: restObjName,
-          mode: method,
+          mode: this.state.method,
         }),
       })
         .then((res) => res.json())
@@ -47,7 +49,7 @@ class Dashboard extends Component {
         },
         body: JSON.stringify({
           containerName: restObjName,
-          mode: method,
+          mode: this.state.method,
         }),
       })
         .then((res) => res.json())
@@ -67,7 +69,7 @@ class Dashboard extends Component {
         },
         body: JSON.stringify({
           podName: restObjName,
-          mode: method,
+          mode: this.state.method,
         }),
       })
         .then((res) => res.json())
@@ -81,6 +83,11 @@ class Dashboard extends Component {
         });
     }
   }
+  setMethod(newMethod) {
+    this.setState({
+      method: newMethod,
+    });
+  }
   render() {
     console.log(this.state.selectedObj);
     return (
@@ -92,7 +99,7 @@ class Dashboard extends Component {
           </div>
           <div id="line" style={{ width: 900, height: 600 }}>
             <Line data={this.state.chartData} />
-            <Dropdown />
+            <Dropdown setMethod={this.setMethod} method={this.state.method} />
           </div>
         </div>
       </div>
