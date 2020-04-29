@@ -12,7 +12,7 @@ module.exports = {
     proxy: {
       '/': 'http://localhost:3000/',
     },
-    contentBase: './src',
+    contentBase: './client',
     publicPath: '/dist',
     historyApiFallback: true
   },

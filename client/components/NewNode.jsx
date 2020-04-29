@@ -5,7 +5,7 @@ import NewPod from "./NewPod.jsx";
 const NewNode = (props) => {
   const pods = [];
   for (let i = 0; i < props.pods.length; i ++) {
-    pods.push(<NewPod  podName = {props.pods[i].pod} containers = {props.pods[i].containers}/>)
+    pods.push(<NewPod key={props.pods[i].pod} podName = {props.pods[i].pod} containers = {props.pods[i].containers}/>)
   }
   return (
     <div className = "node" >

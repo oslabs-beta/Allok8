@@ -74,6 +74,10 @@ dbGet.podDB = (req, res, next) => {
     return next();
   })
 }
+dbGet.formatBubbleInfo = (req, res, next) => {
+  const data = {};
+  const { db }
+}
 dbGet.formatContainerInfo = (req, res, next) => {
   const { mode } = req.body;
   const { containerResults } = res.locals;

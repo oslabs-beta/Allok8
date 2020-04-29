@@ -5,12 +5,13 @@ const TEST_URI = "postgres://postgres:postgres@192.168.99.100:31398/postgres";
 const PG_URI = TEST_URI;//process.env.NODE_ENV === 'test' ? TEST_URI : GEN_URI;
 
 const pool = new Pool({
-  connectionString: PG_URI
+  //this is alec i put this here for testing
+  connectionString: "postgres://postgres:postgres@127.0.0.1:64990/postgres",
 });
 
 module.exports = {
   query: (text, params, callback) => {
     console.log(`Executed query: ${text}`);
     return pool.query(text, params, callback);
-  }
+  },
 };

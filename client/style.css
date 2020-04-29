@@ -1,0 +1,114 @@
+html {
+  font-family: "Andale Mono";
+  color: #0f99ff;
+  background-color: rgb(19, 19, 19);
+  font-size: 20px;
+}
+
+#title {
+  padding-left: 20%;
+  font-size: 25px;
+}
+
+.fetch {
+  margin: 0 auto;
+  margin-top: 10%;
+  width: 25%;
+  padding: 45px;
+  text-align: center;
+  background-color: #0f0e0e;
+  border: rgb(3, 47, 119);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 15px;
+}
+
+#input {
+  padding: 10px;
+  width: 85%;
+  height: 1px;
+  background-color: black;
+  border: rgb(3, 47, 119);
+  border-style: solid;
+  border-width: 1px;
+  font-family: "Andale Mono";
+  color: #0f99ff;
+}
+
+::placeholder {
+  color: #0f99ff;
+  font-family: "Andale Mono";
+  opacity: 1;
+}
+
+.sidebar {
+  height: 100%;
+  width: 20%;
+  margin: 0;
+  margin-top: -250px;
+  font-size: 15px;
+  background-color: rgb(19, 19, 19);
+  padding-bottom: 50px;
+  padding-top: 60px;
+  padding: 30px;
+}
+
+#texts {
+  font-size: 12px;
+  text-align: center;
+}
+
+#copies {
+  text-align: center;
+  padding: 5px;
+}
+
+#get {
+  text-align: center;
+  cursor: pointer;
+  border: rgb(19, 19, 19);
+  border-bottom: rgb(41, 39, 39);
+  border-style: solid;
+  padding: 10px;
+  border-width: 1px;
+}
+
+.clickable {
+  cursor: pointer;
+  background: #0f0e0e;
+  color: #0f99ff;
+  border: 5px;
+  height: 20px;
+  width: 25%;
+  background-color: black;
+  font-family: Andale Mono;
+  border: rgb(3, 47, 119);
+  border-style: solid;
+  border-width: 1px;
+}
+
+.modal-close {
+  text-align: right;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 30px;
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 2000ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
