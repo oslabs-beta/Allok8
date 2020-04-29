@@ -110,7 +110,7 @@ function MyResponsiveLine(props) {
   if (props.method === "memory_percent" || props.method === "cpu_percent") {
     return (
       <ResponsiveLine
-        data={data}
+        data={props.data}
         margin={{ top: 50, right: 150, bottom: 50, left: 60 }}
         xScale={{
           type: "time",
@@ -229,7 +229,7 @@ function MyResponsiveLine(props) {
   } else if (props.method === "memory_used") {
     return (
       <ResponsiveLine
-        data={data}
+        data={props.data}
         margin={{ top: 50, right: 150, bottom: 50, left: 60 }}
         xScale={{
           type: "time",
@@ -348,7 +348,7 @@ function MyResponsiveLine(props) {
   } else if (props.method === "cpu_used") {
     return (
       <ResponsiveLine
-        data={data}
+        data={props.data}
         margin={{ top: 50, right: 150, bottom: 50, left: 60 }}
         xScale={{
           type: "time",
