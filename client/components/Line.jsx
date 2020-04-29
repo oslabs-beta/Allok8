@@ -108,7 +108,7 @@ const theme = {
 
 const MyResponsiveLine = (props) => (
   <ResponsiveLine
-    data={props.data}
+    data={data}
     margin={{ top: 50, right: 150, bottom: 50, left: 60 }}
     xScale={{
       type: "time",
@@ -166,11 +166,36 @@ const MyResponsiveLine = (props) => (
     pointLabel="y"
     pointLabelYOffset={-12}
     enableArea={true}
+    enableSlices="x"
+    sliceTooltip={({ slice }) => {
+      return (
+        <div
+          style={{
+            background: "rgb(50, 50, 50)",
+            padding: "9px 12px",
+            border: "1px solid #d6e7f4",
+          }}
+        >
+          {slice.points.map((point) => (
+            <div
+              key={point.id}
+              style={{
+                color: point.serieColor,
+                padding: "3px 0",
+              }}
+            >
+              <strong>{point.serieId}:</strong> {point.data.yFormatted}
+            </div>
+          ))}
+        </div>
+      );
+    }}
     areaBlendMode="normal"
     areaOpacity={0.8}
     useMesh={true}
     itemTextColor="white"
     theme={theme}
+    tooltip={tooltip}
     legends={[
       {
         anchor: "bottom-right",
