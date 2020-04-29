@@ -14,7 +14,6 @@ class Dashboard extends Component {
       chartData: []
     };
     this.selectObject = this.selectObject.bind(this);
-    this.obtainChartData = this.obtainChartData.bind(this);
   }
   selectObject(event, method = "memory_percent") {
     const restObjName = event.target.innerText;

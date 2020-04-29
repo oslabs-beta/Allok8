@@ -13,7 +13,8 @@ CREATE TABLE public.pods (
       node_id INT REFERENCES public.nodes (node_id),
       pod_name VARCHAR NOT NULL,
       tm TIMESTAMP NOT NULL,
-      pod_status VARCHAR NOT NULL
+      pod_status VARCHAR NOT NULL,
+      UNIQUE (pod_name, tm)
 );
 CREATE TABLE public.containers (
       container_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -26,7 +27,9 @@ CREATE TABLE public.containers (
       cpu_used VARCHAR,
       memory_used VARCHAR,
       cpu_percent NUMERIC (6,3),
-      memory_percent NUMERIC (6,3) 
+      memory_percent NUMERIC (6,3),
+      UNIQUE (pod_name, tm)
+
 );
 
 

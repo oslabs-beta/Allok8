@@ -31,7 +31,12 @@ dbGet.architecture = (req, res, next) => {
 dbGet.containerDB = (req, res, next) => {
   const { containerName } = req.body;
   db.query(`
-  SELECT *
+  SELECT DISTINCT c.container_name
+                  , c.tm
+                  , c.cpu_used
+                  , c.memory_used
+                  , c.cpu_percent
+                  , c.memory_percent 
   FROM public.containers as c
   WHERE c.container_name = $1
   ORDER BY c.tm ASC;
@@ -45,7 +50,12 @@ dbGet.containerDB = (req, res, next) => {
 dbGet.nodeDB = (req, res, next) => {
   const { nodeName } = req.body;
   db.query(`
-  SELECT *
+  SELECT DISTINCT c.container_name
+                  , c.tm
+                  , c.cpu_used
+                  , c.memory_used
+                  , c.cpu_percent
+                  , c.memory_percent 
   FROM public.containers as c
   JOIN public.nodes as n 
     ON n.node_id = c.node_id
@@ -61,7 +71,12 @@ dbGet.nodeDB = (req, res, next) => {
 dbGet.podDB = (req, res, next) => {
   const { podName } = req.body;
   db.query(`
-  SELECT * 
+  SELECT DISTINCT c.container_name
+                  , c.tm
+                  , c.cpu_used
+                  , c.memory_used
+                  , c.cpu_percent
+                  , c.memory_percent 
   FROM public.containers as c
   JOIN public.pods as p
     ON p.pod_id = c.pod_id
@@ -76,7 +91,7 @@ dbGet.podDB = (req, res, next) => {
 }
 dbGet.formatBubbleInfo = (req, res, next) => {
   const data = {};
-  const { db }
+  // const { db }
 }
 dbGet.formatContainerInfo = (req, res, next) => {
   const { mode } = req.body;
