@@ -42,7 +42,7 @@ setInterval(() => {
 //   return res.status(404).json('Page not found');
 // });
 // root, send index.html
-app.get('/', (req, res) => {
+app.get('*/', (req, res) => {
   return res.status(200).sendFile(path.resolve(__dirname, '../src/index.html'));
 });
 
