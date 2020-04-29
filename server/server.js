@@ -33,7 +33,7 @@ setInterval(() => {
   fetch("http://localhost:3000/server/dev")
   .then(result => result.json())
   .then(json => console.log(json))
-}, 30000);
+}, 10000);
 
 
 // // catch-all route handler for any requests to an unknown route
