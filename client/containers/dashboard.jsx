@@ -85,12 +85,12 @@ class Dashboard extends Component {
     console.log(this.state.selectedObj);
     return (
       <div id="dashboard">
-        <NewCard selectObject={this.selectObject} />
+        {/* <NewCard selectObject={this.selectObject} /> */}
         <div id="graphs">
-          <div id="circle-component" style={{ width: 900, height: 600 }}>
+          <div id="circle" style={{ width: 900, height: 600 }}>
             <Circle />
           </div>
-          <div id="line-component" style={{ width: 900, height: 600 }}>
+          <div id="line" style={{ width: 900, height: 600 }}>
             <Line data={this.state.chartData} />
             <Dropdown />
           </div>
