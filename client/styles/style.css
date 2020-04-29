@@ -1,48 +1,48 @@
 html {
-    font-family: 'Andale Mono';
-    color: #0F99FF;
-    background-color: rgb(10, 10, 10);
-    font-size: 20px;
+  font-family: "Andale Mono";
+  color: #0f99ff;
+  background-color: rgb(10, 10, 10);
+  font-size: 20px;
 }
 
 #title {
-    padding-left: 20%;
-    font-size: 25px;
+  padding-left: 20%;
+  font-size: 25px;
 }
 
 .fetch {
-    margin: 0 auto;
-    margin-top: 10%;
-    width: 25%;
-    padding: 45px;
-    text-align: center;
-    background-color:#0F0E0E;
-    border: rgb(3, 47, 119);
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 15px;
+  margin: 0 auto;
+  margin-top: 10%;
+  width: 25%;
+  padding: 45px;
+  text-align: center;
+  background-color: #0f0e0e;
+  border: rgb(3, 47, 119);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 15px;
 }
 
 .input {
-    padding: 10px;
-    width: 85%;
-    height: 1px;
-    background-color: black;
-    border: rgb(3, 47, 119);
-    border-style: solid;
-    border-width: 1px;
-    font-family: 'Andale Mono';
-    color:#0F99FF; 
-} 
+  padding: 10px;
+  width: 85%;
+  height: 1px;
+  background-color: black;
+  border: rgb(3, 47, 119);
+  border-style: solid;
+  border-width: 1px;
+  font-family: "Andale Mono";
+  color: #0f99ff;
+}
 
 ::placeholder {
-    color: #0F99FF;
-    font-family: 'Andale Mono';
-    opacity: 1;
+  color: #0f99ff;
+  font-family: "Andale Mono";
+  opacity: 1;
 }
 
 .sidebar {
-  height: 100%;;
+  height: 100%;
   width: 20%;
   margin: 0;
   margin-top: -250px;
@@ -55,53 +55,53 @@ html {
 }
 
 #texts {
-    font-size: 12px;
-    text-align: center;
+  font-size: 12px;
+  text-align: center;
 }
 
 #copies {
-    text-align: center;
-    padding: 5px;
+  text-align: center;
+  padding: 5px;
 }
 
 #get {
-    text-align: center;
-    cursor: pointer;
-    border: rgb(10, 10, 10);
-    border-bottom: rgb(41, 39, 39);
-    border-style: solid;
-    padding: 10px;
-    border-width: 1px;
+  text-align: center;
+  cursor: pointer;
+  border: rgb(10, 10, 10);
+  border-bottom: rgb(61, 58, 58);
+  border-style: solid;
+  padding: 10px;
+  border-width: 1px;
 }
 
 .clickable {
-    cursor: pointer;
-    background: #0F0E0E;
-    color: #0F99FF;
-    border: 5px;
-    height: 20px;
-    width: 25%;
-    background-color: black;
-    font-family: Andale Mono;
-    border: rgb(3, 47, 119);
-    border-style: solid;
-    border-width: 1px;
+  cursor: pointer;
+  background: #0f0e0e;
+  color: #0f99ff;
+  border: 5px;
+  height: 20px;
+  width: 25%;
+  background-color: black;
+  font-family: "Andale Mono";
+  border: rgb(3, 47, 119);
+  border-style: solid;
+  border-width: 1px;
 }
 
- .modal-close {
-      text-align: right;
-      cursor: pointer;
-      font-size: 15px;
- }
+.modal-close {
+  text-align: right;
+  cursor: pointer;
+  font-size: 15px;
+}
 
- .footer {
-     position: absolute;
-     bottom: 0;
-     right: 0;
-     padding: 30px; 
- } 
+.footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 30px;
+}
 
- /* .pod {
+/* .pod {
      text-align: right;
      color: red;
  }
@@ -120,10 +120,23 @@ html {
      color: green;
  } */
 
- .graphs {
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-content: center;
-     align-items: center;
- }
+#graphs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  padding-top: 20px;
+  padding-right: 35px;
+}
+
+#circle {
+  border: rgb(10, 10, 10);
+  border-right: rgb(61, 58, 58);
+  border-width: 1px;
+  border-style: solid;
+}
+
+#line {
+  padding-left: 25px;
+}
