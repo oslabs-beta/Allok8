@@ -195,7 +195,6 @@ const MyResponsiveLine = (props) => (
     useMesh={true}
     itemTextColor="white"
     theme={theme}
-    tooltip={tooltip}
     legends={[
       {
         anchor: "bottom-right",
