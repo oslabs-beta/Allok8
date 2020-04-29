@@ -69,10 +69,6 @@ dbEntry.addNode = (req, res, next) => {
         SELECT pod_id FROM public.pods
         WHERE  pod_name = $5
         LIMIT  1;
-        /*
-        INSERT INTO public.pods (node_id, pod_name, tm, pod_status)
-        VALUES ($1, $2, date_trunc('minute',$3::TIMESTAMP), $4, $5)
-        RETURNING pod_id*/
         `, [node_id, podName, timestamp, status, podName], (err, sqlres) => {
           if (err) return next(err);
           const pod_id = sqlres.rows[0].pod_id;
