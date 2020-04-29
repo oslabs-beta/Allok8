@@ -2,8 +2,8 @@ import React from 'react';
 
 const NewContainer = (props) => {
   return (
-    <div className = "container" >
-      <span>{props.containerName}</span>
+    <div className = "container-div" >
+      <span className = "container">{props.containerName}</span>
     </div>
   )
 }

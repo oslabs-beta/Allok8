@@ -108,7 +108,7 @@ const theme = {
 
 const MyResponsiveLine = (props) => (
   <ResponsiveLine
-    data={data}
+    data={props.data}
     margin={{ top: 50, right: 150, bottom: 50, left: 60 }}
     xScale={{
       type: "time",

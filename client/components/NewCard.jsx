@@ -10,13 +10,13 @@ class NewCard extends Component {
   }
   //version used for prod
   componentDidMount() {
-    // fetch("/server/overview")
-    fetch("/local")
+    fetch("/server/overview")
+    // fetch("local")
     .then(res => {
       return res.json();
     })
     .then(json => {
-      this.setState({apiresponse: JSON.parse(json)});
+      this.setState({apiresponse: json});
     })
     .catch(err => {
       console.log(err);

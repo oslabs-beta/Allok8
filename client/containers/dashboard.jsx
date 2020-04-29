@@ -35,7 +35,7 @@ class Dashboard extends Component {
         .then((res) => res.json())
         .then((json) => {
           const newState = Object.assign(this.state, {
-            selectObject: restObjName,
+            selectedObj: restObjName,
             restObjType: "node",
             chartData: json,
           });
@@ -55,7 +55,7 @@ class Dashboard extends Component {
         .then((res) => res.json())
         .then((json) => {
           const newState = Object.assign(this.state, {
-            selectObject: restObjName,
+            selectedObj: restObjName,
             restObjType: "container",
             chartData: json,
           });
@@ -75,7 +75,7 @@ class Dashboard extends Component {
         .then((res) => res.json())
         .then((json) => {
           const newState = Object.assign(this.state, {
-            selectObject: restObjName,
+            selectedObj: restObjName,
             restObjType: "pod",
             chartData: json,
           });
@@ -100,11 +100,8 @@ class Dashboard extends Component {
     }
     return (
       <div id="dashboard">
-        {/* <NewCard selectObject={this.selectObject} /> */}
+        <NewCard selectObject={this.selectObject} />
         <div id="graphs">
-          <div id="circle" style={{ width: 900, height: 600 }}>
-            <Circle />
-          </div>
           {charts}
         </div>
       </div>

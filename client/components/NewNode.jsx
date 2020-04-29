@@ -8,8 +8,8 @@ const NewNode = (props) => {
     pods.push(<NewPod key={props.pods[i].pod} podName = {props.pods[i].pod} containers = {props.pods[i].containers}/>)
   }
   return (
-    <div className = "node" >
-      <span>{props.nodeName}</span>
+    <div className = "node-div" >
+      <span className = "node">{props.nodeName}</span>
       {pods}
     </div>
   )

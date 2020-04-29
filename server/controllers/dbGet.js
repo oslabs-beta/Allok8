@@ -98,6 +98,7 @@ dbGet.podDB = (req, res, next) => {
     if (err) return next(err);
     const results = sqlres.rows;
     res.locals.containerResults = results;
+    console.log(podName,results)
     return next();
   })
 }
