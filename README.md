@@ -41,13 +41,12 @@ To access a cluster, you would need the location of the cluster and have credent
 
 **Graph**
 
-* On the left is a sidebar, click to toggle between cards and tree view.
 * The tree nodes will expand upon load, selecting the gray nodes will compress to the particular level of choice.
 * Zoom in and out to access information accordingly, click to grab structure to move across the main viewer.
 
 **Views** 
 
-* Information panel will dynamically change based on the level selected in the cards view.
+* Information panel will dynamically change based on the card selected.
 * Once the card is selected it will be highlighted as a feedback to the user to cue that they are in the right area. 
 
 ## Contributing
@@ -56,24 +55,17 @@ To access a cluster, you would need the location of the cluster and have credent
 
 We love feedback! We are always looking to improve. For major changes, please open an issue first to discuss what you would like to change, pull requests are welcome.
 
-###### Currently on our to-do list:
-
-* Enable info panel to show a list of resources of nodes selected in tree view.
-* Add table view in side panel.
-* Create an on hover functionality for each displayed node in different views.
-
 ## Built With 
 
 🧰🚢🐳
 
-* [D3](https://github.com/d3/d3)
+* [Nivo] (https://github.com/plouc/nivo) 
 * [Docker](https://github.com/docker/cli)
 * [Express](https://github.com/expressjs/express)
 * [Jest](https://github.com/facebook/jest)
 * [Kubernetes](https://github.com/kubernetes/kubernetes)
 * [React](https://github.com/facebook/react)
 * [React-Router](https://github.com/ReactTraining/react-router)
-* [Redux](https://github.com/facebook/react)
 * [Supertest](https://github.com/visionmedia/supertest)
 * [Travis-CI](https://github.com/travis-ci/travis-ci)
 * [Webpack](https://github.com/webpack/webpack)
@@ -82,11 +74,11 @@ We love feedback! We are always looking to improve. For major changes, please op
 
 ✏️👩‍💻👨‍💻📓
 
-* Bahram Bagher - [@bbagher](https://github.com/bbagher)
-* Jason Seidler - [@jsonseidler](https://github.com/jsonseidler)
-* Rella Cruz - [@rllzrc](https://github.com/rllzrc)
-* Rex Osariemen - [@rexosariemen](https://github.com/rexosariemen)
-* Tyler Meyerson - [@tdmeyerson](https://github.com/Tdmeyerson)
+* Raphael Bargues - (https://github.com/rbargues)
+* Alec Below - (https://github.com/georgia0nmymind)
+* Jordan Kelly - (https://github.com/jorbreezy)
+* Justin Gillespie - (https://github.com/jgillespie0715)
+* Natalia Vargas-Caba - (https://github.com/nataliavc08)
 
 ## License
 
