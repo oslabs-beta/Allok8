@@ -43,7 +43,7 @@ To access a cluster, you would need the location of the cluster and have credent
 - Deploy Allok8 and DB (kubectl apply -f deploy.yaml)
 - Navigate to allok8 service
   
-  **Usage**
+**Usage**
 - Enter API and TOKEN in Allok8
 - Allow for time as server will aggregate data
 - Navigate to Allok8
