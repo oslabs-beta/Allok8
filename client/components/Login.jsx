@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Auth from './Auth.jsx';
 import Sidebar from './Sidebar.jsx';
-
 class Login extends Component {
   constructor(props){
     super(props)
@@ -46,7 +45,7 @@ class Login extends Component {
   render(){
     return (
       <div>
-        <p id="title">Jordanetes</p>
+        <img src = "https://raw.githubusercontent.com/Jordanetes/Allok8/integration/client/assets/allok8.png"></img>
         <div className='fetch'>
 
           <input type='text' className='input' placeholder='API' id='link' name='link' onChange={ this.handleChange }/>
@@ -59,7 +58,6 @@ class Login extends Component {
           <button className='clickable' onClick={ this.handleClick }>FETCH</button>
         </div>
         <Sidebar />
-        <footer className="footer">An Allok8 Iteration</footer>
       </div>
     );
   }

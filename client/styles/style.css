@@ -12,7 +12,6 @@ html {
 
 .fetch {
   margin: 0 auto;
-  margin-top: 10%;
   width: 25%;
   padding: 45px;
   text-align: center;
@@ -100,25 +99,6 @@ html {
   padding: 30px;
 }
 
-/* .pod {
-     text-align: right;
-     color: red;
- }
-
- .node {
-     display: flex;
-     flex-direction: column-reverse;
-     justify-content: flex-end;
-     color: white;
- }
-
- .card {
-     display: flex;
-     flex-direction: column-reverse;
-     justify-content: flex-start;
-     color: green;
- } */
-
 #graphs {
   display: flex;
   flex-direction: row;
@@ -178,4 +158,9 @@ html {
   text-align: center;
   align-items: center;
   margin: auto;
+}
+img {
+  width: 400px;
+  height: auto;
+  margin-left: 35%;
 }
