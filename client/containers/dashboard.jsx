@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import NewCard from "../components/NewCard.jsx";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Circle from "../components/Circle.jsx";
 import Line from "../components/Line.jsx";
 import Dropdown from "../components/Dropdown.jsx";
 //import NewCard from "../components/NewCard.jsx";
