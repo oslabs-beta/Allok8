@@ -6,21 +6,23 @@ describe('curlReducer', () => {
 
   beforeEach(() => {
      startState = {
-      api: 'api',
-      token: 'token',
+      api: '',
+      token: '',
       page: 'LANDING',
-      data: false,
-      page: '',
+      data: {},
+      selected: {},
+      view: 'Cards',
     };
   });
 
   xit('should provide a default state', () => {
     const result = curlReducer(undefined, fakeAction);
-    expect(result).toEqual( { api: 'api',
-    token: 'token',
+    expect(result).toEqual( { api: '',
+    token: '',
     page: 'LANDING',
-    data: false,
-    page: '',
+    data: {},
+    selected: {},
+    view: 'Cards',
     });
   });
 
@@ -67,6 +69,36 @@ describe('curlReducer', () => {
     it('should return a new value for page', () => {
       const result = curlReducer(startState, action);
       expect(result).toHaveProperty('page', 'location');
+    });
+
+    it('should return a new state object', () => {
+      const result = curlReducer(startState, action);
+      expect(result).toBeTruthy();
+      expect(result).not.toBe(startState);
+    });
+  });
+
+  xdescribe('SELECT', () => {
+    let action = { type: 'SELECT', payload: { selected: 'someValue'} };
+
+    it('should return a new value for selected', () => {
+      const result = curlReducer(startState, action);
+      expect(result).toHaveProperty(selected, 'someValue');
+    });
+
+    it('should return a new state object', () => {
+      const result = curlReducer(startState, action);
+      expect(result).toBeTruthy();
+      expect(result).not.toBe(startState);
+    });
+  });
+
+  describe('CHANGE_VIEW', () => {
+    let action = { type: 'CHANGE_VIEW', payload: 'view' };
+
+    it('should return a new value for view', () => {
+      const result = curlReducer(startState, action);
+      expect(result).toHaveProperty('view', 'view');
     });
 
     it('should return a new state object', () => {
