@@ -129,13 +129,6 @@ html {
   padding-right: 35px;
 }
 
-#circle {
-  border: rgb(10, 10, 10);
-  border-right: rgb(61, 58, 58);
-  border-width: 1px;
-  border-style: solid;
-}
-
 #line {
   padding-left: 25px;
 }
@@ -148,6 +141,7 @@ html {
   text-align: center;
   align-items: center;
   margin: auto;
+  background-color: rgb(30, 30, 30);
 }
 
 .container-div {
@@ -159,6 +153,7 @@ html {
   text-align: center;
   align-items: center;
   margin: auto;
+  background-color: rgb(50, 50, 50);
 }
 
 .pod-div {
@@ -172,6 +167,7 @@ html {
   margin: auto;
   margin-top: 5px;
   margin-bottom: 5px;
+  background-color: rgb(40, 40, 40);
 }
 
 .card {
