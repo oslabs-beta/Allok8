@@ -78,7 +78,7 @@ dbEntry.addNode = (req, res, next) => {
             const { cpuUsed, memoryUsed, cpuPercent, memoryPercent } = containers[containerName];
             db.query(`
             INSERT INTO public.containers (container_name, pod_id, node_id, tm, cpu_used, memory_used, cpu_percent, memory_percent)
-            VALUES ($1, $2, $3, date_trunc('minute',$4::TIMESTAMP), $5, $6, $7, $8)
+            VALUES ($1, $2, $3, date_trunc('minute',$4::TIMESTAMP), $5, $6, $7::NUMERIC (6,3), $8::NUMERIC (6,3))
             ON CONFLICT (container_name, tm) DO NOTHING;
             `, [containerName, pod_id, node_id, timestamp, cpuUsed, memoryUsed, cpuPercent, memoryPercent], (err, sqlres) => {
               if (err) return next(err);

@@ -90,10 +90,11 @@ class Dashboard extends Component {
   }
   render() {
     let charts;
+    console.log(this.state.chartData)
     if (this.state.chartData.length > 0) {
       charts = (
         <div id="line" style={{ width: 900, height: 600 }}>
-            <Line data={this.state.chartData} />
+            <Line method = {this.state.method} data={this.state.chartData} />
             <Dropdown setMethod={this.setMethod} method={this.state.method} />
           </div>
       )
