@@ -1,5 +1,5 @@
 # Allok8
-
+![image](https://raw.githubusercontent.com/rbargues/kubernetes-practice/master/allok8.png)
 ⚓️⚡️🔦
 
 Allok8 is a dynamic, conventional, and uncomplicated web-based UI Kubernetes visualization tool. Current tooling only enables resource portraits at the pod level. When the application adds layers of complexity, it is advantageous to visualize when pods have multiple containers. This enables users to manage resource levels, navigate clusters, and display all relevant information down to the container level.
@@ -13,6 +13,9 @@ Further data within containers that is provided (but not limited to):
 - Capacity
 - Addresses
 
+## Screenshots
+![image](https://raw.githubusercontent.com/rbargues/kubernetes-practice/master/Login.png)
+![image](https://raw.githubusercontent.com/rbargues/kubernetes-practice/master/Demo.png)
 ## Getting Started
 
 🏗⚙️🛠
@@ -39,6 +42,7 @@ To access a cluster, you would need the location of the cluster and have credent
 - Deploy metrics-server-yaml (kubectl apply -f metrics-server-yaml/)
 - Deploy Allok8 and DB (kubectl apply -f deploy.yaml)
 - Navigate to allok8 service
+  
   **Usage**
 - Enter API and TOKEN in Allok8
 - Allow for time as server will aggregate data
