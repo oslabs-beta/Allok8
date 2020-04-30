@@ -33,21 +33,15 @@ To access a cluster, you would need the location of the cluster and have credent
 
 🗺📙📊
 
-**Navigation**
-
-* Enter API and Token and hit fetch!
-* Default viewer will be under the cards layout.
-* Information panel below will populate reports on usage based on the level selected: Node, Pod, or Container. 
-
-**Graph**
-
-* The tree nodes will expand upon load, selecting the gray nodes will compress to the particular level of choice.
-* Zoom in and out to access information accordingly, click to grab structure to move across the main viewer.
-
-**Views** 
-
-* Information panel will dynamically change based on the card selected.
-* Once the card is selected it will be highlighted as a feedback to the user to cue that they are in the right area. 
+**Deployment**
+* make sure the metrics-server addon is enable
+* Deploy metrics-server-yaml (kubectl apply -f metrics-server-yaml/)
+* Deploy Allok8 and DB (kubectl apply -f deploy.yaml)
+* Navigate to allok8 service
+**Usage**
+* Enter API and TOKEN in Allok8
+* Allow for time as server will aggregate data
+* Navigate to Allok8
 
 ## Contributing
 
@@ -79,6 +73,14 @@ We love feedback! We are always looking to improve. For major changes, please op
 * Jordan Kelly - (https://github.com/jorbreezy)
 * Justin Gillespie - (https://github.com/jgillespie0715)
 * Natalia Vargas-Caba - (https://github.com/nataliavc08)
+
+Previous Authors:
+* Bahram Bagher - @bbagher
+* Jason Seidler - @jsonseidler
+* Rella Cruz - @rllzrc
+* Rex Osariemen - @rexosariemen
+* Tyler Meyerson - @tdmeyerson
+
 
 ## License
 
