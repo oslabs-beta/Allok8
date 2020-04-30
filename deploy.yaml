@@ -72,7 +72,7 @@ spec:
         args:
           - "-o"
           - "tmp/data/init.sql"
-          - "https://raw.githubusercontent.com/Jordanetes/Allok8/integration/init.sql"
+          - "https://raw.githubusercontent.com/rbargues/kubernetes-practice/master/init.sql"
         volumeMounts:
         - name: init-script
           mountPath: /tmp/data
