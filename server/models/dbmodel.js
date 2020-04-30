@@ -6,7 +6,7 @@ const PG_URI = TEST_URI;//process.env.NODE_ENV === 'test' ? TEST_URI : GEN_URI;
 
 const pool = new Pool({
   //this is alec i put this here for testing
-  connectionString: "postgres://postgres:postgres@192.168.99.100:30712/postgres",
+  connectionString: "postgres://postgres:postgres@postgres/postgres",
 });
 
 module.exports = {
