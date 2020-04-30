@@ -58,10 +58,18 @@ dbEntry.addNode = (req, res, next) => {
         const podName = Object.keys(pod)[0];
         const { status, timestamp, containers } = pod[podName];
         db.query(`
-        INSERT INTO public.pods (node_id, pod_name, tm, pod_status)
-        VALUES ($1, $2, date_trunc('minute',$3::TIMESTAMP), $4)
-        RETURNING pod_id
-        `, [node_id, podName, timestamp, status], (err, sqlres) => {
+        WITH insert_cte AS (
+          INSERT INTO public.pods (node_id, pod_name, tm, pod_status)
+          VALUES ($1, $2, date_trunc('minute',$3::TIMESTAMP), $4)
+          ON CONFLICT (pod_name, tm) DO NOTHING  
+          RETURNING pod_id
+          )
+        SELECT pod_id FROM insert_cte
+        UNION  ALL
+        SELECT pod_id FROM public.pods
+        WHERE  pod_name = $5
+        LIMIT  1;
+        `, [node_id, podName, timestamp, status, podName], (err, sqlres) => {
           if (err) return next(err);
           const pod_id = sqlres.rows[0].pod_id;
           const containerNames = Object.keys(containers);
@@ -70,7 +78,8 @@ dbEntry.addNode = (req, res, next) => {
             const { cpuUsed, memoryUsed, cpuPercent, memoryPercent } = containers[containerName];
             db.query(`
             INSERT INTO public.containers (container_name, pod_id, node_id, tm, cpu_used, memory_used, cpu_percent, memory_percent)
-            VALUES ($1, $2, $3, date_trunc('minute',$4::TIMESTAMP), $5, $6, $7, $8);
+            VALUES ($1, $2, $3, date_trunc('minute',$4::TIMESTAMP), $5, $6, $7::NUMERIC (6,3), $8::NUMERIC (6,3))
+            ON CONFLICT (container_name, tm) DO NOTHING;
             `, [containerName, pod_id, node_id, timestamp, cpuUsed, memoryUsed, cpuPercent, memoryPercent], (err, sqlres) => {
               if (err) return next(err);
               return next();

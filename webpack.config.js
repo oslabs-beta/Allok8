@@ -3,17 +3,18 @@ const path = require('path');
 module.exports = {
   mode: process.env.NODE_ENV,
 
-  entry: './src/index.js',
+  entry: './client/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
   },
   devServer: {
     proxy: {
-      '/server': 'http://localhost:3000',
+      '/': 'http://localhost:3000/',
     },
-    contentBase: './src',
+    contentBase: './client',
     publicPath: '/dist',
+    historyApiFallback: true
   },
   module: {
     rules: [
@@ -26,6 +27,17 @@ module.exports = {
         test: /\.css/,
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 25000,
+            },
+          },
+        ],
       },
     ],
   },
