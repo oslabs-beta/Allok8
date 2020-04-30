@@ -51,7 +51,6 @@ html {
   padding-bottom: 50px;
   padding-top: 60px;
   padding: 30px;
-  overflow: scroll;
 }
 
 #texts {
@@ -139,4 +138,48 @@ html {
 
 #line {
   padding-left: 25px;
+}
+
+.node-div {
+  display: flex;
+  border: rgb(3, 47, 119) solid 1px;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  margin: auto;
+}
+
+.container-div {
+  display: flex;
+  border: rgb(3, 47, 119) solid 1px;
+  flex-direction: column;
+  padding: 15px;
+  width: 80%;
+  text-align: center;
+  align-items: center;
+  margin: auto;
+}
+
+.pod-div {
+  display: flex;
+  border: rgb(3, 47, 119) solid 1px;
+  flex-direction: column;
+  padding: 15px;
+  width: 80%;
+  text-align: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.card {
+  display: flex;
+  border: rgb(3, 47, 119) solid 1px;
+  flex-direction: column;
+  width: 50%;
+  text-align: center;
+  align-items: center;
+  margin: auto;
 }

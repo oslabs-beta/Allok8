@@ -140,7 +140,6 @@ function MyResponsiveLine(props) {
         axisRight={null}
         axisBottom={{
           format: "%H:%M",
-          tickValues: "every minute",
           orient: "bottom",
           tickSize: 5,
           tickPadding: 5,
@@ -259,7 +258,6 @@ function MyResponsiveLine(props) {
         axisRight={null}
         axisBottom={{
           format: "%H:%M",
-          tickValues: "every minute",
           orient: "bottom",
           tickSize: 5,
           tickPadding: 5,
@@ -378,7 +376,6 @@ function MyResponsiveLine(props) {
         axisRight={null}
         axisBottom={{
           format: "%H:%M",
-          tickValues: "every minute",
           orient: "bottom",
           tickSize: 5,
           tickPadding: 5,
