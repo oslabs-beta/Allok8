@@ -8,7 +8,7 @@
     "build": "webpack --mode production",
     "both": "concurrently \"npm run dev\" \"npm run start\"",
     "dev": "env-cmd ./config/dev.env nodemon server/server.js",
-    "test": "env-cmd ./config/test.env Jest --watchAll",
+    "test": "Jest --watchAll",
     "format": "prettier-eslint —eslint-config-path ./.eslintrc. --write '**/*.js'",
     "lint": "eslint . —ext .js"
   },
