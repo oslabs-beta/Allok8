@@ -6,7 +6,7 @@ const  { token } = require("../mock-data/api-token-mock-data")
 const originalObj = require("../mock-data/getNodeInfo-mock-data/originalObject.json")
 const nodeInfo = require("../mock-data/getNodeInfo-mock-data/nodeInfo.json")
 
-// mock functions
+// mock function
 cmd.get = jest.fn(); 
 
 
