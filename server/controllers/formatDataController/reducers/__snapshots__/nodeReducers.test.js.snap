@@ -1,0 +1,450 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cleanUpReducer2 matchSnapshot 1`] = `
+Array [
+  Object {
+    "allocatableCPU": "2",
+    "allocatableMemory": "3936948Ki",
+    "capacity": Object {
+      "cpu": "2",
+      "ephemeral-storage": "16954224Ki",
+      "hugepages-2Mi": "0",
+      "memory": "3936948Ki",
+      "pods": "110",
+    },
+    "containers": Array [
+      Object {
+        "containerCPU": "0",
+        "containerMemory": "18632Ki",
+        "containerName": "backend-container",
+        "cpuPercent": -1,
+        "cpuRequested": "300m",
+        "memoryPercent": -1,
+        "namespace": "default",
+        "nodeName": "minikube",
+        "podName": "backend-5b646c545d-n2gjp",
+        "status": "Running",
+        "timestamp": "2020-10-27T01:51:00Z",
+      },
+    ],
+    "nodeName": "minikube",
+    "usedCPU": 167,
+    "usedMemory": 1374392,
+  },
+  Object {
+    "allocatableCPU": "",
+    "allocatableMemory": "",
+    "capacity": "",
+    "containers": Array [
+      Object {
+        "containerCPU": "0",
+        "containerMemory": "18632Ki",
+        "containerName": "backend-container",
+        "cpuPercent": -1,
+        "cpuRequested": "300m",
+        "memoryPercent": -1,
+        "namespace": "default",
+        "nodeName": "minikube",
+        "podName": "backend-5b646c545d-n2gjp",
+        "status": "Running",
+        "timestamp": "2020-10-27T01:51:00Z",
+      },
+    ],
+    "nodeName": "minikube",
+    "usedCPU": 167,
+    "usedMemory": 1374392,
+  },
+  Object {
+    "allocatableCPU": "",
+    "allocatableMemory": "",
+    "capacity": "",
+    "containers": Array [
+      Object {
+        "containerCPU": "0",
+        "containerMemory": "18632Ki",
+        "containerName": "backend-container",
+        "cpuPercent": -1,
+        "cpuRequested": "300m",
+        "memoryPercent": -1,
+        "namespace": "default",
+        "nodeName": "minikube",
+        "podName": "backend-5b646c545d-n2gjp",
+        "status": "Running",
+        "timestamp": "2020-10-27T01:51:00Z",
+      },
+    ],
+    "nodeName": "minikube",
+    "usedCPU": 167,
+    "usedMemory": 1374392,
+  },
+]
+`;
+
+exports[`containerReducer matchSnapshot 1`] = `
+Array [
+  Array [
+    Object {
+      "containerCPU": "0",
+      "containerMemory": "18632Ki",
+      "containerName": "backend-container",
+      "cpuPercent": -1,
+      "memoryPercent": -1,
+      "nodeName": "minikube",
+      "podName": "backend-5b646c545d-n2gjp",
+    },
+  ],
+  Array [
+    Object {
+      "containerCPU": "0",
+      "containerMemory": "18632Ki",
+      "containerName": "backend-container",
+      "cpuPercent": -1,
+      "memoryPercent": -1,
+      "nodeName": "minikube",
+      "podName": "backend-5b646c545d-n2gjp",
+    },
+  ],
+  Array [
+    Object {
+      "containerCPU": "0",
+      "containerMemory": "18632Ki",
+      "containerName": "backend-container",
+      "cpuPercent": -1,
+      "memoryPercent": -1,
+      "nodeName": "minikube",
+      "podName": "backend-5b646c545d-n2gjp",
+    },
+  ],
+]
+`;
+
+exports[`nodeInfoReducer matchSnapshot 1`] = `
+Array [
+  Object {
+    "allocatableCPU": "2",
+    "allocatableMemory": "3936948Ki",
+    "capacity": Object {
+      "cpu": "2",
+      "ephemeral-storage": "16954224Ki",
+      "hugepages-2Mi": "0",
+      "memory": "3936948Ki",
+      "pods": "110",
+    },
+    "minikube": Array [],
+    "nodeName": "minikube",
+  },
+  Object {
+    "allocatableCPU": "2",
+    "allocatableMemory": "3936948Ki",
+    "capacity": Object {
+      "cpu": "2",
+      "ephemeral-storage": "16954224Ki",
+      "hugepages-2Mi": "0",
+      "memory": "3936948Ki",
+      "pods": "110",
+    },
+    "minikube": Array [],
+    "nodeName": "minikube",
+  },
+  Object {
+    "allocatableCPU": "2",
+    "allocatableMemory": "3936948Ki",
+    "capacity": Object {
+      "cpu": "2",
+      "ephemeral-storage": "16954224Ki",
+      "hugepages-2Mi": "0",
+      "memory": "3936948Ki",
+      "pods": "110",
+    },
+    "minikube": Array [],
+    "nodeName": "minikube",
+  },
+]
+`;
+
+exports[`nodeUsageReducer matchSnapshot 1`] = `
+Array [
+  Object {
+    "nodeName": "minikube",
+    "usedCPU": 167,
+    "usedMemory": 1374392,
+  },
+  Object {
+    "nodeName": "minikube",
+    "usedCPU": 167,
+    "usedMemory": 1374392,
+  },
+  Object {
+    "nodeName": "minikube",
+    "usedCPU": 167,
+    "usedMemory": 1374392,
+  },
+]
+`;
+
+exports[`percentReducer matchSnapshot 1`] = `
+Array [
+  Array [
+    Object {
+      "containerCPU": 0,
+      "containerCPUPercent": 0,
+      "containerMemory": 18632,
+      "containerMemoryPercent": 1.3556539910011118,
+      "containerName": "backend-container",
+      "cpuRequested": "300m",
+      "namespace": "default",
+      "nodeAllocatableCPU": "2",
+      "nodeAllocatableMemory": "3936948Ki",
+      "nodeCapacity": Object {
+        "cpu": "2",
+        "ephemeral-storage": "16954224Ki",
+        "hugepages-2Mi": "0",
+        "memory": "3936948Ki",
+        "pods": "110",
+      },
+      "nodeName": "minikube",
+      "nodeUsedCPU": 167,
+      "nodeUsedMemory": 1374392,
+      "podName": "backend-5b646c545d-n2gjp",
+      "status": "Running",
+      "timestamp": "2020-10-27T01:51:00Z",
+    },
+  ],
+  Array [
+    Object {
+      "containerCPU": 0,
+      "containerCPUPercent": 0,
+      "containerMemory": 18632,
+      "containerMemoryPercent": 1.3556539910011118,
+      "containerName": "backend-container",
+      "cpuRequested": "300m",
+      "namespace": "default",
+      "nodeAllocatableCPU": "2",
+      "nodeAllocatableMemory": "3936948Ki",
+      "nodeCapacity": Object {
+        "cpu": "2",
+        "ephemeral-storage": "16954224Ki",
+        "hugepages-2Mi": "0",
+        "memory": "3936948Ki",
+        "pods": "110",
+      },
+      "nodeName": "minikube",
+      "nodeUsedCPU": 167,
+      "nodeUsedMemory": 1374392,
+      "podName": "backend-5b646c545d-n2gjp",
+      "status": "Running",
+      "timestamp": "2020-10-27T01:51:00Z",
+    },
+  ],
+  Array [
+    Object {
+      "containerCPU": 0,
+      "containerCPUPercent": 0,
+      "containerMemory": 18632,
+      "containerMemoryPercent": 1.3556539910011118,
+      "containerName": "backend-container",
+      "cpuRequested": "300m",
+      "namespace": "default",
+      "nodeAllocatableCPU": "2",
+      "nodeAllocatableMemory": "3936948Ki",
+      "nodeCapacity": Object {
+        "cpu": "2",
+        "ephemeral-storage": "16954224Ki",
+        "hugepages-2Mi": "0",
+        "memory": "3936948Ki",
+        "pods": "110",
+      },
+      "nodeName": "minikube",
+      "nodeUsedCPU": 167,
+      "nodeUsedMemory": 1374392,
+      "podName": "backend-5b646c545d-n2gjp",
+      "status": "Running",
+      "timestamp": "2020-10-27T01:51:00Z",
+    },
+  ],
+]
+`;
+
+exports[`podsInfoReducer matchSnapshot 1`] = `
+Array [
+  Object {
+    "nodeName": "minikube",
+    "podName": "allok8-79fb795f9d-xrwh6",
+    "specContainers": Array [
+      Object {
+        "image": "docker.io/rbargues32/allok8:latest",
+        "imagePullPolicy": "Always",
+        "name": "allok8-container",
+        "ports": Array [
+          Object {
+            "containerPort": 3000,
+            "protocol": "TCP",
+          },
+        ],
+        "resources": Object {
+          "limits": Object {
+            "cpu": "300m",
+          },
+          "requests": Object {
+            "cpu": "300m",
+          },
+        },
+        "terminationMessagePath": "/dev/termination-log",
+        "terminationMessagePolicy": "File",
+        "volumeMounts": Array [
+          Object {
+            "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+            "name": "default-token-wkqfs",
+            "readOnly": true,
+          },
+        ],
+      },
+    ],
+    "status": "Running",
+  },
+  Object {
+    "nodeName": undefined,
+    "podName": "minikube",
+    "specContainers": Array [
+      Object {
+        "image": "docker.io/rbargues32/allok8:latest",
+        "name": "allok8-container",
+        "ports": Array [
+          Object {
+            "containerPort": 3000,
+            "protocol": "TCP",
+          },
+        ],
+        "resources": Object {
+          "limits": Object {
+            "cpu": "300m",
+          },
+          "requests": Object {
+            "cpu": "300m",
+          },
+        },
+        "volumeMounts": Array [
+          Object {
+            "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+            "name": "default-token-wkqfs",
+            "readOnly": true,
+          },
+        ],
+      },
+    ],
+    "status": "Running",
+  },
+  Object {
+    "nodeName": "minikube",
+    "podName": "allok8-79fb795f9d-xrwh6",
+    "specContainers": Array [
+      Object {
+        "image": "docker.io/rbargues32/allok8:latest",
+        "imagePullPolicy": "Always",
+        "name": "allok8-container",
+        "ports": Array [
+          Object {
+            "containerPort": 3000,
+            "protocol": "TCP",
+          },
+        ],
+        "resources": Object {
+          "limits": Object {
+            "cpu": "300m",
+          },
+          "requests": Object {
+            "cpu": "300m",
+          },
+        },
+        "terminationMessagePath": "/dev/termination-log",
+        "terminationMessagePolicy": "File",
+        "volumeMounts": Array [
+          Object {
+            "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+            "name": "default-token-wkqfs",
+            "readOnly": true,
+          },
+        ],
+      },
+    ],
+    "status": "Running",
+  },
+]
+`;
+
+exports[`podsUsageReducer matchSnapshot 1`] = `
+Array [
+  Object {
+    "containers": Array [
+      Object {
+        "name": "backend-container",
+        "usage": Object {
+          "cpu": "0",
+          "memory": "18632Ki",
+        },
+      },
+    ],
+    "namespace": "default",
+    "podName": "backend-5b646c545d-n2gjp",
+    "timestamp": "2020-10-27T01:51:00Z",
+  },
+  Object {
+    "containers": undefined,
+    "namespace": undefined,
+    "podName": "minikube",
+    "timestamp": undefined,
+  },
+  Object {
+    "containers": Array [
+      Object {
+        "name": "backend-container",
+        "usage": Object {
+          "cpu": "0",
+          "memory": "18632Ki",
+        },
+      },
+    ],
+    "namespace": "default",
+    "podName": "backend-5b646c545d-n2gjp",
+    "timestamp": "2020-10-27T01:51:00Z",
+  },
+]
+`;
+
+exports[`specContainerReducer matchSnapshot 1`] = `
+Array [
+  Array [
+    Object {
+      "containerName": "allok8-container",
+      "cpuRequested": "300m",
+      "namespace": "default",
+      "nodeName": "minikube",
+      "podName": "allok8-79fb795f9d-xrwh6",
+      "status": "Running",
+      "timestamp": "2020-10-27T01:51:00Z",
+    },
+  ],
+  Array [
+    Object {
+      "containerName": "allok8-container",
+      "cpuRequested": "300m",
+      "namespace": "default",
+      "nodeName": "minikube",
+      "podName": "allok8-79fb795f9d-xrwh6",
+      "status": "Running",
+      "timestamp": "2020-10-27T01:51:00Z",
+    },
+  ],
+  Array [
+    Object {
+      "containerName": "allok8-container",
+      "cpuRequested": "300m",
+      "namespace": "default",
+      "nodeName": "minikube",
+      "podName": "allok8-79fb795f9d-xrwh6",
+      "status": "Running",
+      "timestamp": "2020-10-27T01:51:00Z",
+    },
+  ],
+]
+`;
