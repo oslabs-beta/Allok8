@@ -1,0 +1,54 @@
+{
+  "extends": ["airbnb", "prettier", "plugin:node/recommended"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    "no-unused-vars": "warn",
+    "no-console": "warn",
+    "func-names": "off",
+    "object-shorthand": "off",
+    "node/no-unsupported-features/es-syntax": [
+      "off",
+      {
+        "version": ">=8.3.0",
+        "ignores": []
+      }
+    ],
+    "consistent-return": ["off", { "treatUndefinedAsUnspecified": true }],
+    "node/no-unpublished-require": [
+      "error",
+      {
+        "allowModules": ["supertest"],
+        "convertPath": {
+          "src/**/*.jsx": ["^src/(.+?)\\.jsx$", "lib/$1.js"]
+        },
+        "tryExtensions": [".js", ".jsx", ".json"]
+      }
+    ],
+    "no-return-assign": "off",
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": [
+          "newObj",
+          "pods",
+          "containers",
+          "specContainers",
+          "res",
+          "normalizedResults"
+        ]
+      }
+    ],
+    "dot-notation": "off",
+    "no-shadow": ["error", { "allow": ["namespace"] }],
+    "no-unused-expressions": [
+      "error",
+      { "allowShortCircuit": true, "allowTernary": true }
+    ]
+  },
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module"
+  }
+}

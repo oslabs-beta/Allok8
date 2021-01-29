@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import Modal from "./Modal.jsx";
+import React, { useState } from 'react';
+import Modal from './Modal.jsx';
 
 function SideBar() {
   const [isShown, setIsShown] = useState(false);

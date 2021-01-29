@@ -1,4 +1,5 @@
-const db = require("../models/dbmodel.js");
+const db = require('../../models/dbmodel.js');
+
 const dbGet = {};
 
 dbGet.dbInformation = (req, res, next) => {
@@ -36,7 +37,8 @@ dbGet.architecture = (req, res, next) => {
 };
 dbGet.containerDB = (req, res, next) => {
   const { containerName } = req.body;
-  db.query(`
+  db.query(
+    `
   SELECT DISTINCT c.container_name
                   , c.tm
                   , c.cpu_used
@@ -58,7 +60,8 @@ dbGet.containerDB = (req, res, next) => {
 };
 dbGet.nodeDB = (req, res, next) => {
   const { nodeName } = req.body;
-  db.query(`
+  db.query(
+    `
   SELECT DISTINCT c.container_name
                   , c.tm
                   , c.cpu_used
@@ -82,7 +85,8 @@ dbGet.nodeDB = (req, res, next) => {
 };
 dbGet.podDB = (req, res, next) => {
   const { podName } = req.body;
-  db.query(`
+  db.query(
+    `
   SELECT DISTINCT c.container_name
                   , c.tm
                   , c.cpu_used
@@ -94,25 +98,29 @@ dbGet.podDB = (req, res, next) => {
     ON p.pod_id = c.pod_id
   WHERE p.pod_name = $1
   ORDER BY c.tm ASC;
-  `, [podName], (err, sqlres) => {
-    if (err) return next(err);
-    const results = sqlres.rows;
-    res.locals.containerResults = results;
-    console.log(podName,results)
-    return next();
-  })
-}
+  `,
+    [podName],
+    (err, sqlres) => {
+      if (err) return next(err);
+      const results = sqlres.rows;
+      res.locals.containerResults = results;
+
+      return next();
+    }
+  );
+};
 
 dbGet.formatContainerInfo = (req, res, next) => {
   const { mode } = req.body;
   const { containerResults } = res.locals;
   const output = [];
-  for (let i = 0; i < containerResults.length; i++) {
+  for (let i = 0; i < containerResults.length; i += 1) {
     const dataPoint = containerResults[i];
 
+    // eslint-disable-next-line camelcase
     const { container_name, tm } = dataPoint;
     const dataModeVal = dataPoint[mode];
-    let containerIndex = dbGet.findIndex(output, "id", container_name);
+    const containerIndex = dbGet.findIndex(output, 'id', container_name);
     let containerInfo;
     if (containerIndex === -1) {
       containerInfo = {
@@ -133,7 +141,7 @@ dbGet.formatContainerInfo = (req, res, next) => {
 };
 
 dbGet.findIndex = (array, key, val) => {
-  for (let i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length; i += 1) {
     if (JSON.stringify(array[i][key]) === JSON.stringify(val)) {
       return i;
     }
@@ -149,7 +157,7 @@ dbGet.overview = (req, res, next) => {
     const podName = info.pod_name;
 
     let nodeInfo;
-    let nodeIndex = dbGet.findIndex(overview, "node", nodeName);
+    let nodeIndex = dbGet.findIndex(overview, 'node', nodeName);
     if (nodeIndex === -1) {
       nodeInfo = {
         node: nodeName,
@@ -160,7 +168,7 @@ dbGet.overview = (req, res, next) => {
     } else {
       nodeInfo = overview[nodeIndex];
     }
-    let podIndex = dbGet.findIndex(nodeInfo.pods, "pod", podName);
+    let podIndex = dbGet.findIndex(nodeInfo.pods, 'pod', podName);
     let podInfo;
     if (podIndex === -1) {
       podInfo = {
@@ -185,10 +193,10 @@ dbGet.cleanOutput = (req, res, next) => {
     const containerName = info.container_name;
     const podName = info.pod_name;
 
-    const usedMemory = info.used_memory;
-    const usedCPU = info.used_cpu;
+    // const usedMemory = info.used_memory;
+    // const usedCPU = info.used_cpu;
     const timestamp = info.tm;
-    const status = info.status;
+    // const {status} = info;
 
     const cpuUsed = info.cpu_used;
     const memoryUsed = info.memory_used;
@@ -196,7 +204,7 @@ dbGet.cleanOutput = (req, res, next) => {
     const memoryPercent = info.memory_percent;
 
     let objInfo;
-    let timeIndex = dbGet.findIndex(cleanedOutput, "time", timestamp);
+    let timeIndex = dbGet.findIndex(cleanedOutput, 'time', timestamp);
     if (timeIndex === -1) {
       objInfo = {
         time: timestamp,
@@ -207,7 +215,7 @@ dbGet.cleanOutput = (req, res, next) => {
     } else {
       objInfo = cleanedOutput[timeIndex];
     }
-    let nodeIndex = dbGet.findIndex(objInfo.nodes, "id", nodeName);
+    let nodeIndex = dbGet.findIndex(objInfo.nodes, 'id', nodeName);
     let nodeInfo;
     if (nodeIndex === -1) {
       nodeInfo = {
@@ -222,7 +230,7 @@ dbGet.cleanOutput = (req, res, next) => {
 
     let podIndex = dbGet.findIndex(
       objInfo.nodes[nodeIndex].pods,
-      "id",
+      'id',
       podName
     );
     let podInfo;

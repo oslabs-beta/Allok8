@@ -14,7 +14,7 @@ module.exports = {
     },
     contentBase: './client',
     publicPath: '/dist',
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   module: {
     rules: [

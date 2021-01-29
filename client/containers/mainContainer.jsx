@@ -9,9 +9,9 @@ class MainContainer extends Component {
     return (
       <Router>
         <Switch>
-          <Route exact path='/login' component={ Login } />
+          <Route exact path="/login" component={Login} />
 
-          <PrivateRoute exact path='/' component={ Dashboard } />
+          <PrivateRoute exact path="/" component={Dashboard} />
         </Switch>
       </Router>
     );

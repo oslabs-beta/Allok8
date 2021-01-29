@@ -1,5 +1,5 @@
 html {
-  font-family: "Andale Mono";
+  font-family: 'Andale Mono';
   color: #0f99ff;
   background-color: rgb(10, 10, 10);
   font-size: 20px;
@@ -30,13 +30,13 @@ html {
   border: rgb(3, 47, 119);
   border-style: solid;
   border-width: 1px;
-  font-family: "Andale Mono";
+  font-family: 'Andale Mono';
   color: #0f99ff;
 }
 
 ::placeholder {
   color: #0f99ff;
-  font-family: "Andale Mono";
+  font-family: 'Andale Mono';
   opacity: 1;
 }
 
@@ -80,7 +80,7 @@ html {
   height: 20px;
   width: 25%;
   background-color: black;
-  font-family: "Andale Mono";
+  font-family: 'Andale Mono';
   border: rgb(3, 47, 119);
   border-style: solid;
   border-width: 1px;
