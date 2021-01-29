@@ -6,14 +6,14 @@ const bodyParser = require('body-parser');
 const PORT = 3000;
 const app = express();
 const path = require('path');
-const curlRouter = require('./routes/curlRouter.js');
 const fetch = require('node-fetch');
 const fs = require('fs');
+const curlRouter = require('./routes/curlRouter.js');
 
 // statically serve everything in the dist folder on the route '/dist'
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
 
-//parse incoming request body
+// parse incoming request body
 app.use(bodyParser.json());
 
 app.get('/local', (req, res) => {
@@ -24,7 +24,7 @@ app.get('/local', (req, res) => {
   return res.status(200).json(architecture);
 });
 
-//route handlers
+// route handlers
 app.use('/server', curlRouter);
 
 setInterval(() => {

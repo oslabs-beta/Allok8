@@ -127,7 +127,7 @@ const parseMemoryPercent = R.curryN(2, function parseMemoryPercent(
  */
 // applying business logic at this step because nodeData(usedCPU and usedMemory) was only available after merging nodes to pods
 function percentReducer(newObj, item) {
-  let {
+  const {
     usedCPU,
     usedMemory,
     allocatableMemory,

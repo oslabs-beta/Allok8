@@ -70,10 +70,9 @@ const addNode = (req, res, next) => {
       [nodeName, nodeUsedCPU, nodeUsedMemory],
       (err, sqlres) => {
         if (err) return next(err);
-        console.log('insertNodeData sqlres: ', sqlres);
 
         const { node_id } = sqlres.rows[0];
-        console.log('insertPodData:  node_id: ', node_id);
+
         db.query(
           `
           WITH insert_cte AS (
@@ -91,11 +90,9 @@ const addNode = (req, res, next) => {
           [node_id, podName, timestamp, status, podName],
           (err, sqlres) => {
             if (err) return next(err);
-            console.log('insertPodData sqlres: ', sqlres);
+
             const { pod_id } = sqlres.rows[0];
 
-            console.log('insert containerData node_id: ', node_id);
-            console.log('insert containerData pod_id: ', pod_id);
             db.query(
               `
           INSERT INTO public.containers (container_name, pod_id, node_id, tm, cpu_used, memory_used, cpu_percent, memory_percent)
@@ -114,7 +111,7 @@ const addNode = (req, res, next) => {
               ],
               (err, sqlres) => {
                 if (err) return next(err);
-                console.log('insert ContainerData sqlres: ', sqlres);
+
                 return next();
               }
             );
