@@ -8,7 +8,7 @@ const PrivateRoute = ({ component: Component, ...args }) => {
       {...args}
       render={(props) => {
         if (Auth.isAuthenticated()) {
-          return <Component {...props} />
+          return <Component {...props} />;
         } else {
           return (
             <Redirect
@@ -23,7 +23,7 @@ const PrivateRoute = ({ component: Component, ...args }) => {
         }
       }}
     />
-  )
-}
+  );
+};
 
 export default PrivateRoute;

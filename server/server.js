@@ -7,8 +7,8 @@ const PORT = 3000;
 const app = express();
 const path = require('path');
 const curlRouter = require('./routes/curlRouter.js');
-const fetch = require("node-fetch");
-const fs = require("fs");
+const fetch = require('node-fetch');
+const fs = require('fs');
 
 // statically serve everything in the dist folder on the route '/dist'
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
@@ -16,23 +16,27 @@ app.use('/dist', express.static(path.join(__dirname, '../dist')));
 //parse incoming request body
 app.use(bodyParser.json());
 
-
-app.get("/local", (req, res) => {
-  const architecture = fs.readFileSync(path.resolve(__dirname, "./clusterArchitecture.json"),"utf8");
+app.get('/local', (req, res) => {
+  const architecture = fs.readFileSync(
+    path.resolve(__dirname, './clusterArchitecture.json'),
+    'utf8'
+  );
   return res.status(200).json(architecture);
-})
+});
 
 //route handlers
 app.use('/server', curlRouter);
 
 setInterval(() => {
-  fetch("http://localhost:3000/server/dev")
-  .then(result => result.json())
-  .then(json => console.log(json))
+  fetch('http://localhost:3000/server/dev')
+    .then((result) => result.json())
+    .then((json) => console.log('server.js:31 : ', json));
 }, 10000);
 
 app.get('/', (req, res) => {
-  return res.status(200).sendFile(path.resolve(__dirname, '../client/index.html'));
+  return res
+    .status(200)
+    .sendFile(path.resolve(__dirname, '../client/index.html'));
 });
 
 // global error handler
@@ -48,6 +52,5 @@ app.use((err, req, res, next) => {
   console.log(err);
   return res.status(errorObj.status).json(errorObj.message);
 });
-
 
 app.listen(PORT, () => console.log(`The server is listening on PORT ${PORT}`));

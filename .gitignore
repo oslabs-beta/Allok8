@@ -3,3 +3,6 @@ node_modules
 package-lock.json
 dist
 coverage/
+notes
+.vscode
+playground.js

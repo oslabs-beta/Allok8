@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import NewCard from "../components/NewCard.jsx";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Line from "../components/Line.jsx";
-import Dropdown from "../components/Dropdown.jsx";
+import React, { Component } from 'react';
+import NewCard from '../components/NewCard.jsx';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Line from '../components/Line.jsx';
+import Dropdown from '../components/Dropdown.jsx';
 //import NewCard from "../components/NewCard.jsx";
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedObj: "",
-      restObjType: "",
+      selectedObj: '',
+      restObjType: '',
       chartData: [],
-      method: "memory_percent",
+      method: 'memory_percent',
     };
     this.selectObject = this.selectObject.bind(this);
     this.setMethod = this.setMethod.bind(this);
@@ -20,11 +20,11 @@ class Dashboard extends Component {
   selectObject(event) {
     const restObjName = event.target.innerText;
     const restObjType = event.target.className;
-    if (restObjType === "node") {
-      fetch("/server/node", {
-        method: "POST",
+    if (restObjType === 'node') {
+      fetch('/server/node', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           nodeName: restObjName,
@@ -35,16 +35,16 @@ class Dashboard extends Component {
         .then((json) => {
           const newState = Object.assign(this.state, {
             selectedObj: restObjName,
-            restObjType: "node",
+            restObjType: 'node',
             chartData: json,
           });
           this.setState(newState);
         });
-    } else if (restObjType === "container") {
-      fetch("/server/container", {
-        method: "POST",
+    } else if (restObjType === 'container') {
+      fetch('/server/container', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           containerName: restObjName,
@@ -55,16 +55,16 @@ class Dashboard extends Component {
         .then((json) => {
           const newState = Object.assign(this.state, {
             selectedObj: restObjName,
-            restObjType: "container",
+            restObjType: 'container',
             chartData: json,
           });
           this.setState(newState);
         });
     } else {
-      fetch("/server/pod", {
-        method: "POST",
+      fetch('/server/pod', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           podName: restObjName,
@@ -75,7 +75,7 @@ class Dashboard extends Component {
         .then((json) => {
           const newState = Object.assign(this.state, {
             selectedObj: restObjName,
-            restObjType: "pod",
+            restObjType: 'pod',
             chartData: json,
           });
           this.setState(newState);
@@ -93,17 +93,15 @@ class Dashboard extends Component {
     if (this.state.chartData.length > 0) {
       charts = (
         <div id="line" style={{ width: 900, height: 600 }}>
-            <Line method = {this.state.method} data={this.state.chartData} />
-            <Dropdown setMethod={this.setMethod} method={this.state.method} />
-          </div>
-      )
+          <Line method={this.state.method} data={this.state.chartData} />
+          <Dropdown setMethod={this.setMethod} method={this.state.method} />
+        </div>
+      );
     }
     return (
       <div id="dashboard">
         <NewCard selectObject={this.selectObject} />
-        <div id="graphs">
-          {charts}
-        </div>
+        <div id="graphs">{charts}</div>
       </div>
     );
   }
