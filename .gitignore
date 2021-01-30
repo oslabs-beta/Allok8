@@ -5,4 +5,4 @@ dist
 coverage/
 notes
 .vscode
-playground.js
+request.http

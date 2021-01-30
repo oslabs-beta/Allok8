@@ -10,10 +10,11 @@
     "start": "node server/server.js",
     "build": "webpack --mode production",
     "both": "concurrently \"npm run dev\" \"npm run start\"",
-    "dev": "env-cmd ./config/dev.env nodemon server/server.js",
+    "dev": "env-cmd .env nodemon server/server.js",
     "test": "jest --watchAll",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "migrate": "node-pg-migrate"
   },
   "jest": {
     "verbose": true,
@@ -33,6 +34,7 @@
     "@babel/preset-react": "^7.9.4",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.5.3",
+    "dedent": "^0.7.0",
     "env-cmd": "^8.0.2",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.2.0",
@@ -47,6 +49,8 @@
     "file-loader": "^6.0.0",
     "jest": "^25.5.2",
     "node-mocks-http": "^1.8.1",
+    "node-pg-migrate": "^5.9.0",
+    "pg-format": "^1.0.4",
     "prettier": "2.1.2",
     "supertest": "^4.0.2"
   },
