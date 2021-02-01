@@ -7,11 +7,11 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "node server/server.js",
+    "start": "node server/index.js",
     "build": "webpack --mode production",
     "both": "concurrently \"npm run dev\" \"npm run start\"",
-    "dev": "env-cmd .env nodemon server/server.js",
-    "test": "jest --watchAll",
+    "dev": "env-cmd .env nodemon server/index.js",
+    "test": "jest --no-cache ",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "migrate": "node-pg-migrate"
@@ -30,7 +30,6 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.5.3",
@@ -58,6 +57,7 @@
     "@nivo/circle-packing": "^0.61.0",
     "@nivo/line": "^0.61.1",
     "@trendmicro/react-sidenav": "^0.4.5",
+    "body-parser": "^1.19.0",
     "concurrently": "^5.0.2",
     "express": "^4.17.1",
     "html-loader": "^1.1.0",
