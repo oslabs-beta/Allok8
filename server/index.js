@@ -1,20 +1,25 @@
 const app = require('./server.js');
-const pool = require('./pool');
+const testPool = require('./models/testDbModel');
 
 const PORT = 3000;
-
-pool
-  .connect({
-    host: 'localhost',
-    port: 5432,
-    database: 'socialnetwork',
-    user: 'justingillespie',
-    password: '',
-  })
-
-  .then(() => {
-    app().listen(PORT, () => {
-      console.log(`listening on port ${PORT}`);
-    });
-  })
-  .catch((error) => console.log(error));
+// if run dbTests, enable local dbTests(check dbTest files), connect to testDB, otherwise dbTests fail
+if (process.env.NODE_ENV === 'test') {
+  testPool
+    .connect({
+      host: 'localhost',
+      port: 5432,
+      database: 'allok8-test',
+      user: 'justingillespie',
+      password: '',
+    })
+    .then(() => {
+      app().listen(3005, () => {
+        console.log('Listening on port 3005');
+      });
+    })
+    .catch((err) => console.error(err));
+} else {
+  app().listen(PORT, () => {
+    console.log(`listening on port ${PORT}`);
+  });
+}

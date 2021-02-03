@@ -11,7 +11,7 @@
     "build": "webpack --mode production",
     "both": "concurrently \"npm run dev\" \"npm run start\"",
     "dev": "env-cmd .env nodemon server/index.js",
-    "test": "jest --no-cache ",
+    "test": " NODE_ENV=test env-cmd .env jest --no-cache",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "migrate": "node-pg-migrate"
@@ -19,6 +19,10 @@
   "jest": {
     "verbose": true,
     "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/server/controllers/dbController/tests/"
+    ],
     "coveragePathIgnorePatterns": [
       "/node_modules/"
     ],
@@ -47,7 +51,6 @@
     "eslint-plugin-react-hooks": "^4.0.0",
     "file-loader": "^6.0.0",
     "jest": "^25.5.2",
-    "node-mocks-http": "^1.8.1",
     "node-pg-migrate": "^5.9.0",
     "pg-format": "^1.0.4",
     "prettier": "2.1.2",
