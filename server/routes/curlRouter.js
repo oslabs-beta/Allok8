@@ -14,7 +14,8 @@ const {
   addAPI,
   getAPI,
   addNode,
-} = require('../controllers/dbController/dbEntry.js');
+} = require('../controllers/dbController/dbEntry2.js');
+
 const dbGet = require('../controllers/dbController/dbGet');
 
 const curlRouter = express.Router();
