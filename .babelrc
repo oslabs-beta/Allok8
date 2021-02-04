@@ -1,5 +1,5 @@
 {
-  "presets": ["@babel/preset-react", "@babel/preset-env"]
+  "presets": ["@babel/preset-react"]
 }
 // removed "@babel/preset-env" from presets and tests db tests ran before I was getting
 /* SyntaxError: /Users/justingillespie/Github/cs/projects/Allok8/server/pool.js: Missing class properties transform.
