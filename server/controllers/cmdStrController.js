@@ -3,7 +3,7 @@ const namespace = 'default';
 // curl Commands
 const commandStrings = (req, res, next) => {
   let { api, token } = req.body;
-  if (!api & !token) {
+  if (!api && !token) {
     api = res.locals.api;
     token = res.locals.token;
   }

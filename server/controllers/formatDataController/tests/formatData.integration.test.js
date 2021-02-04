@@ -4,13 +4,13 @@ const {
   mergeNodeInfoAndUsage,
   mergePodsAndNodes,
   mergePodInfoAndUsage,
-} = require('./reducers/reducers');
+} = require('../reducers/reducers');
 const {
   nodesInfo,
   nodesUsage,
   podsInfo,
   podsUsage,
-} = require('./reducers/reducers.test.js');
+} = require('./reducers.test.js');
 
 describe('mergePodsAndNodes', () => {
   it('matchSnapshot', () => {

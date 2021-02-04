@@ -9,7 +9,7 @@ const {
   containerReducer,
   cleanUpReducer2,
   percentReducer,
-} = require('./reducers');
+} = require('../reducers/reducers');
 
 const nodesInfo = {
   kind: 'NodeList',
