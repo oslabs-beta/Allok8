@@ -39,18 +39,119 @@ To access a cluster, you would need the location of the cluster and have credent
 
 🗺📙📊
 
+**Minikube Installation**
+
+- [Install minikube](https://minikube.sigs.k8s.io/docs/start/)
+
+**Minikube Start**
+
+- start minikube
+
+`minikube start --driver=hyperkit`
+
+**Minikube Start for test with applications that use ingress-nginx**
+
+`minikube start`
+
+`minikube addons enable ingress`
+
+![minikube start --driver=hyperkit](https://www.github.com/jgillespie0715/microservice-proof/blob/media/minikube-ingress-start.png?raw=true)
+![minikube addons enable ingress](https://www.github.com/jgillespie0715/microservice-proof/blob/media/minikube-start-ingress2.png?raw=true)
+Note for Minikube Users and the Docker Driver
+
+Recent versions of Minikube will use the docker driver by default when you run minikube start. On Windows or macOS, the docker driver is not compatible with an ingress, which we will be using throughout the course.
+
+https://minikube.sigs.k8s.io/docs/drivers/docker/#known-issues
+
+https://github.com/kubernetes/minikube/issues/7332
+
+To avoid this issue, you can pass the `--driver` flag with a specific driver or `--vm=true`
+
+macOS
+
+`minikube start --vm=true`
+
+or
+
+`minikube start --driver=hyperkit`
+
+or
+
+`minikube start --driver=virtualbox`
+
+Windows:
+
+`minikube start --vm=true`
+
+or
+
+`minikube start --driver=hyperv`
+
+or
+
+`minikube start --driver=virtualbox`
+
+- if using virtual box there is a known installation error
+
+https://github.com/kubernetes/minikube/issues/7332
+
+- here is a workaround
+  ![virtualbox workaroud](https://www.github.com/jgillespie0715/microservice-proof/blob/media/virtualbox.png?raw=true)
+
+**Enable Addons**
+
+- enable metrics-server addon
+
+`minikube addons enable metrics-server`
+
 **Deployment**
 
-- make sure the metrics-server addon is enable
-- Deploy metrics-server-yaml (kubectl apply -f metrics-server-yaml/)
-- Deploy Allok8 and DB (kubectl apply -f deploy.yaml)
-- Navigate to allok8 service
+- In Allok8 directory, deploy metrics-server-yaml
+
+`kubectl apply -f metrics-server-yaml/`
+
+- Deploy Allok8 with postgres database
+
+`kubectl apply -f deploy.yaml`
+
+- If using for testing of other application, deploy
+  yaml files for that application
+
+`kubectl apply -f yourApplicationsYamls.yaml`
+
+- verify running pods and services
+
+`kubectl get pods -A`
+
+`kubectl get svc -A`
 
 **Usage**
 
-- Enter API and TOKEN in Allok8
+- In Allok8 directory, start Allok8 in development
+
+`npm run dev`
+
+- navigate to localhost in browser
+
+`http://localhost:3000`
+
+- Click on GET API/ TOKEN
+
+- Copy and paste approriate string into terminal concatenating 'echo' on beginning of command
+
+`echo $(kubectl config view --minify -o jsonpath='{.clusters[0].cluster.server}')`
+
+![api-command](https://www.github.com/jgillespie0715/microservice-proof/blob/media/api-command.png?raw=true)
+
+`echo $(kubectl get secret $(kubectl get serviceaccount default -o jsonpath='{.secrets[0].name}') -o jsonpath='{.data.token}' | base64 --decode )`
+
+- Enter API and TOKEN into Allok8
+
 - Allow for time as server will aggregate data
-- Navigate to Allok8
+
+- Refresh page enter API and TOKEN into Allok8 again
+
+- Enjoy your data!
 
 ## Contributing
 
