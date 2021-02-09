@@ -59,7 +59,10 @@ function specContainerReducer(newObj, item) {
           namespace: namespace,
           timestamp: timestamp,
           containerName: eachSpecContainer.name,
-          cpuRequested: eachSpecContainer.resources.requests.cpu,
+          // fix: terenary operator for containers that have empty resource object throws undefined error
+          cpuRequested: eachSpecContainer.resources.requests
+            ? eachSpecContainer.resources.requests.cpu
+            : -1,
         });
         return specContainer;
       },
@@ -67,6 +70,7 @@ function specContainerReducer(newObj, item) {
       item.specContainers
     )
   );
+
   return newObj;
 }
 
@@ -257,6 +261,7 @@ function mergePodContainers(specContainers, containers) {
 /*
  *************podsAndNodesData grouping, reducing, and merging functionality
  */
+
 function groupContainersByNodeName(arrayOfObjs) {
   return R.groupBy(R.prop('nodeName'))(arrayOfObjs);
 }
