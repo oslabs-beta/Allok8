@@ -10,7 +10,7 @@ module.exports = () => {
   const app = express();
 
   // statically serve everything in the dist folder on the route '/dist'
-  app.use('/dist', express.static(path.join(__dirname, '../dist')));
+  // app.use('/dist', express.static(path.join(__dirname, '../dist')));
 
   // parse incoming request body
   app.use(bodyParser.json());
@@ -32,11 +32,11 @@ module.exports = () => {
       .then((json) => console.log('server.js:31 : ', json));
   }, 10000);
 
-  app.get('/', (req, res) => {
-    return res
-      .status(200)
-      .sendFile(path.resolve(__dirname, '../client/index.html'));
-  });
+  // app.get('/', (req, res) => {
+  //   return res
+  //     .status(200)
+  //     .sendFile(path.resolve(__dirname, '../client/index.html'));
+  // });
 
   // global error handler
   app.use((err, req, res, next) => {
