@@ -4,7 +4,8 @@
   "description": "client package.json",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development — open — hot",
+    "start": "npm run webpack-dev-server -- --env.mode development --hot",
+    "dev": "webpack",
     "build": "webpack --mode production"
   },
   "author": "",
