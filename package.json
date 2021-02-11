@@ -9,18 +9,18 @@
   "scripts": {
     "start": "node server/index.js",
     "build": "NODE_ENV=production webpack --env.mode production --config ./webpack.config.js ",
-    "server": "env-cmd .env nodemon server/index.js",
-    "dev-hot": "npm run server & webpack-dev-server -- --env.mode development--open --hot --inline --progress --colors --watch --content-base ./",
+    "client": "NODE_ENV=development webpack-dev-server --env.mode development --hot",
+    "server": "NODE_ENV=development env-cmd .env nodemon server/index.js",
+    "dev": "NODE_ENV=development concurrently \"npm run server\" \"npm run client\"",
+    "dev-hot": "NODE_ENV=development npm run server & webpack-dev-server --env.mode development --open --hot --inline --progress --colors --watch --content-base ./",
     "test": " NODE_ENV=test env-cmd .env jest --no-cache",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "migrate": "node-pg-migrate",
+    "prod-analyze": "NODE_ENV=production webpack --env.presets analyze",
     "debug": "node --inspect --inspect-brk ./node_modules/webpack/bin/webpack.js",
-    "prod-analyze": "npm run prod -- --env.presets analyze",
-    "prod-ts": "npm run prod -- --env.presets typescript",
-    "prod-compression": "npm run prod -- --env.presets compression",
-    "prod:debug": "npm run debug -- --mode production",
-    "dev:debug": "npm run debug -- --mode development"
+    "prod:debug": "npm run debug --mode production",
+    "dev:debug": "npm run debug --mode development"
   },
   "jest": {
     "verbose": true,

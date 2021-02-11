@@ -22,6 +22,7 @@ module.exports = ({ mode = 'production', presets = [] }) => {
       },
       devtool: 'eval-source-map',
       devServer: {
+        lazy: true,
         // docker to work with dev server
         host: '0.0.0.0',
         port: 8080,
@@ -34,12 +35,15 @@ module.exports = ({ mode = 'production', presets = [] }) => {
         // fallback to root for other urls
         historyApiFallback: true,
 
-        inline: true,
+        //inline: true,
 
         headers: { 'Access-Control-Allow-Origin': '*' },
 
         proxy: {
-          target: 'http://localhost:3000/',
+          '/api/**': {
+            target: 'http://localhost:3000/',
+            secure: false,
+          },
         },
       },
       module: {
