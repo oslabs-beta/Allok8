@@ -7,7 +7,8 @@ module.exports = (env) => ({
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /.(css|scss)$/,
+        exclude: /node_modules/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
     ],
