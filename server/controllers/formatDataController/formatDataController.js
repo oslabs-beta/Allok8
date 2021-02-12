@@ -21,7 +21,6 @@ const formatData = async (req, res, next) => {
     ...res.locals,
     k8Data,
   };
-  console.log('k8Data: ', res.locals.k8Data);
   return next();
 };
 

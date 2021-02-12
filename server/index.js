@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const app = require('./server.js');
 const testPool = require('./models/testDbModel');
 

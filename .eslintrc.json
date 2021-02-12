@@ -1,31 +1,35 @@
 {
-  "extends": ["airbnb", "prettier", "plugin:node/recommended"],
-  "plugins": ["prettier"],
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es2020": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/babel",
+    "plugin:node/recommended",
+    "plugin:react/recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 11
+  },
+  "plugins": ["react", "@babel"],
   "rules": {
-    "prettier/prettier": "error",
-    "no-unused-vars": "warn",
+    "prefer-const": "off",
+    "no-unused-vars": ["error", { "args": "none", "caughtErrors": "none" }],
+    "import/no-dynamic-require": "off",
+    "import/no-extraneous-dependencies": "off",
+    "@babel/no-invalid-this": "error",
+    "@babel/semi": "error",
     "no-console": "warn",
-    "func-names": "off",
-    "object-shorthand": "off",
-    "node/no-unsupported-features/es-syntax": [
-      "off",
-      {
-        "version": ">=8.3.0",
-        "ignores": []
-      }
-    ],
+    "func-names": 1,
     "consistent-return": ["off", { "treatUndefinedAsUnspecified": true }],
-    "node/no-unpublished-require": [
-      "error",
-      {
-        "allowModules": ["supertest"],
-        "convertPath": {
-          "src/**/*.jsx": ["^src/(.+?)\\.jsx$", "lib/$1.js"]
-        },
-        "tryExtensions": [".js", ".jsx", ".json"]
-      }
-    ],
-    "no-return-assign": "off",
     "no-param-reassign": [
       "error",
       {
@@ -40,18 +44,31 @@
         ]
       }
     ],
+    "node/no-unpublished-require": [
+      "error",
+      {
+        "allowModules": [
+          "supertest",
+          "html-webpack-plugin",
+          "webpack",
+          "webpack-merge",
+          "pg-format",
+          "node-pg-migrate",
+          "webpack-bundle-analyzer",
+          "mini-css-extract-plugin"
+        ],
+        "convertPath": {
+          "src/**/*.jsx": ["^src/(.+?)\\.jsx$", "lib/$1.js"]
+        },
+        "tryExtensions": [".js", ".jsx", ".json"]
+      }
+    ],
+    "no-return-assign": "off",
+    "object-shorthand": "off",
     "dot-notation": "off",
-    "no-shadow": ["error", { "allow": ["namespace"] }],
     "no-unused-expressions": [
       "error",
       { "allowShortCircuit": true, "allowTernary": true }
     ]
-  },
-  "parserOptions": {
-    "ecmaVersion": 2021,
-    "sourceType": "module"
-  },
-  "env": {
-    "jest": true
   }
 }

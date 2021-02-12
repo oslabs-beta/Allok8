@@ -51,7 +51,7 @@ function specContainerReducer(newObj, item) {
   const { status, namespace, timestamp } = item;
   newObj.push(
     R.reduce(
-      function specContainerReducer(specContainer, eachSpecContainer) {
+      function sPInnerReducer(specContainer, eachSpecContainer) {
         specContainer.push({
           nodeName: item.nodeName,
           podName: item.podName,

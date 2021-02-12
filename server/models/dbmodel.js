@@ -7,6 +7,7 @@ const pool = new Pool({
 
 module.exports = {
   query: (text, params, callback) => {
+    // eslint-disable-next-line no-console
     console.log(`Executed query: ${text}`);
     return pool.query(text, params, callback);
   },
