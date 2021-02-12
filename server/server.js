@@ -7,11 +7,13 @@ const fetch = require('node-fetch');
 const fs = require('fs');
 
 const curlRouter = require('./routes/curlRouter.js');
+
 module.exports = () => {
   const app = express();
 
   // statically serve everything in the dist folder on the route '/dist'
-  app.use('/dist', express.static(path.join(__dirname, '../dist')));
+  app.use('/', express.static(path.join(__dirname, '../dist')));
+  // app.use(express.static('dist'));
 
   // parse incoming request body
   app.use(bodyParser.json());
@@ -26,18 +28,19 @@ module.exports = () => {
 
   // route handlers
   app.use('/server', curlRouter);
-
+  // polling
   setInterval(() => {
     fetch('http://localhost:3000/server/dev')
       .then((result) => result.json())
       .then((json) => console.log('server.js:31 : ', json));
   }, 10000);
 
-  app.get('/', (req, res) => {
-    return res
-      .status(200)
-      .sendFile(path.resolve(__dirname, '../client/index.html'));
-  });
+  // workaround for npm build not working
+  // app.get('/', (req, res) => {
+  //   return res
+  //     .status(200)
+  //     .sendFile(path.resolve(__dirname, '../client/index.html'));
+  // });
 
   // global error handler
   app.use((err, req, res, next) => {
