@@ -127,13 +127,25 @@ https://github.com/kubernetes/minikube/issues/7332
 
 **Usage**
 
-- In Allok8 directory, start Allok8 in development
+- In Allok8 directory,
 
-`npm run dev`
+`npm install`
+
+- build
+
+`npm run build`
+
+- start
+
+`npm start`
 
 - navigate to localhost in browser
 
 `http://localhost:3000`
+
+- alternatively Allok8 can be run in dev mode and webpack-dev-server will open a browser
+
+`npm run dev`
 
 - Click on GET API/ TOKEN
 
@@ -169,12 +181,12 @@ We love feedback! We are always looking to improve. For major changes, please op
 - [Jest](https://github.com/facebook/jest)
 - [Kubernetes](https://github.com/kubernetes/kubernetes)
 - [Node](https://github.com/nodejs/node)
+- [Ramda.js](https://github.com/ramda/ramda)
 - [React](https://github.com/facebook/react)
 - [React-Router](https://github.com/ReactTraining/react-router)
 - [Supertest](https://github.com/visionmedia/supertest)
 - [Travis-CI](https://github.com/travis-ci/travis-ci)
 - [Webpack](https://github.com/webpack/webpack)
-- [Ramda.js](https://github.com/ramda/ramda)
 
 ## Authors
 
