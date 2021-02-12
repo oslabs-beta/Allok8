@@ -36,11 +36,11 @@ module.exports = () => {
   }, 10000);
 
   // workaround for npm build not working
-  // app.get('/', (req, res) => {
-  //   return res
-  //     .status(200)
-  //     .sendFile(path.resolve(__dirname, '../client/index.html'));
-  // });
+  app.get('/', (req, res) => {
+    return res
+      .status(200)
+      .sendFile(path.resolve(__dirname, '../client/index.html'));
+  });
 
   // global error handler
   app.use((err, req, res, next) => {
