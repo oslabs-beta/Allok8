@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 /* eslint-disable no-undef */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */

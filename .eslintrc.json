@@ -21,6 +21,7 @@
   },
   "plugins": ["react", "@babel"],
   "rules": {
+    "prefer-const": "off",
     "no-unused-vars": ["error", { "args": "none", "caughtErrors": "none" }],
     "import/no-dynamic-require": "off",
     "import/no-extraneous-dependencies": "off",
@@ -52,7 +53,9 @@
           "webpack",
           "webpack-merge",
           "pg-format",
-          "node-pg-migrate"
+          "node-pg-migrate",
+          "webpack-bundle-analyzer",
+          "mini-css-extract-plugin"
         ],
         "convertPath": {
           "src/**/*.jsx": ["^src/(.+?)\\.jsx$", "lib/$1.js"]

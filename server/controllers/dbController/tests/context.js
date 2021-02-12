@@ -14,6 +14,7 @@ const DEFAULT_OPTS = {
 class Context {
   static async build() {
     // Randomly generating a role name to connect to PG as
+    // eslint-disable-next-line prefer-template
     const roleName = 'a' + randomBytes(4).toString('hex');
 
     // Connect to PG as usual

@@ -7,6 +7,7 @@ const toCamelCase = require('../dbUtils/dbUtils');
 
 function DbEntryRepo() {
   DbEntryRepo.prototype.addAPI = async function addAPI(api, token) {
+    // eslint-disable-next-line no-unused-vars
     const { rows } = await pool.query(
       `
         INSERT INTO metrics_server (api, token)
@@ -24,14 +25,15 @@ function DbEntryRepo() {
       `);
 
     return toCamelCase(rows)[0];
-    //return rows[0];
   };
   DbEntryRepo.prototype.count = async function count() {
     const { rows } = await pool.query(' SELECT COUNT(*) FROM metrics_server;');
+    // eslint-disable-next-line radix
     return parseInt(rows[0].count);
   };
   DbEntryRepo.prototype.countNodes = async function count() {
     const { rows } = await pool.query(' SELECT COUNT(*) FROM nodes;');
+    // eslint-disable-next-line radix
     return parseInt(rows[0].count);
   };
 
@@ -54,11 +56,11 @@ function DbEntryRepo() {
       [nodeName, nodeUsedCPU, nodeUsedMemory]
     );
     const { nodeId } = toCamelCase(rows)[0];
-    //const { nodeId } = rows[0];
     return nodeId;
   };
   DbEntryRepo.prototype.countPods = async function count() {
     const { rows } = await pool.query(' SELECT COUNT(*) FROM pods;');
+    // eslint-disable-next-line radix
     return parseInt(rows[0].count);
   };
   DbEntryRepo.prototype.curriedAddPod = R.curryN(2, async function addPod(
@@ -88,6 +90,7 @@ function DbEntryRepo() {
   });
   DbEntryRepo.prototype.countContainers = async function count() {
     const { rows } = await pool.query(' SELECT COUNT(*) FROM containers;');
+    // eslint-disable-next-line radix
     return parseInt(rows[0].count);
   };
   DbEntryRepo.prototype.curriedAddContainer = R.curryN(
@@ -119,7 +122,6 @@ ON CONFLICT (container_name, tm) DO NOTHING ;
         ]
       );
       return toCamelCase(rows)[0];
-      //return rows[0];
     }
   );
 }

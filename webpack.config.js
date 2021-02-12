@@ -1,8 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
-const path = require('path');
 
 const { merge } = require('webpack-merge');
+
+// eslint-disable-next-line global-require
 const modeConfig = (env) => require(`./build-utils/webpack.${env}`)(env);
 const presetConfig = require('./build-utils/loadPresets');
 //= { mode: 'production', presets: [] }

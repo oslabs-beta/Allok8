@@ -89,7 +89,7 @@ class Dashboard extends Component {
   }
   render() {
     let charts;
-    console.log(this.state.chartData)
+    console.log(this.state.chartData);
     if (this.state.chartData.length > 0) {
       charts = (
         <div id="line" style={{ width: 900, height: 600 }}>

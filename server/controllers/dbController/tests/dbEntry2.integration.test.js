@@ -1,4 +1,5 @@
-/* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+
 const request = require('supertest');
 const R = require('ramda');
 const buildApp = require('../../../server');
