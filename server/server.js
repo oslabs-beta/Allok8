@@ -14,7 +14,6 @@ module.exports = () => {
 
   // statically serve everything in the dist folder on the route '/dist'
   app.use('/', express.static(path.join(__dirname, '../dist')));
-  // app.use(express.static('dist'));
 
   // parse incoming request body
   app.use(bodyParser.json());
@@ -36,7 +35,6 @@ module.exports = () => {
       .then((json) => console.log('server.js:31 : ', json));
   }, 10000);
 
-  // workaround for npm build not working
   app.get('/', (req, res) => {
     return res
       .status(200)

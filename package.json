@@ -7,7 +7,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "env-cmd .env node server/index.js",
     "build": "NODE_ENV=production webpack --env.mode production --config ./webpack.config.js ",
     "client": "NODE_ENV=development webpack-dev-server --env.mode development --hot --open --progress",
     "server": "NODE_ENV=development env-cmd .env nodemon server/index.js",
