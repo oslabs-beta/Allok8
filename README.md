@@ -56,7 +56,7 @@ To access a cluster, you would need the location of the cluster and have credent
 `minikube addons enable ingress`
 
 ![minikube start --driver=hyperkit](https://i.ibb.co/F4pJxtP/minikube-ingress-start.gif)
-![minikube addons enable ingress](https://i.ibb.co/GQFFTgK/minikube-start-ingress2.gif)
+![minikube addons enable ingress](https://i.ibb.co/x72nt52/minikube-start-ingress2.gif)
 Note for Minikube Users and the Docker Driver
 
 Recent versions of Minikube will use the docker driver by default when you run minikube start. On Windows or macOS, the docker driver is not compatible with an ingress, which we will be using throughout the course.
