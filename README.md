@@ -55,8 +55,8 @@ To access a cluster, you would need the location of the cluster and have credent
 
 `minikube addons enable ingress`
 
-![minikube start --driver=hyperkit](https://www.github.com/jgillespie0715/microservice-proof/blob/media/minikube-ingress-start.png?raw=true)
-![minikube addons enable ingress](https://www.github.com/jgillespie0715/microservice-proof/blob/media/minikube-start-ingress2.png?raw=true)
+![minikube start --driver=hyperkit](https://i.ibb.co/F4pJxtP/minikube-ingress-start.gif)
+![minikube addons enable ingress](https://i.ibb.co/GQFFTgK/minikube-start-ingress2.gif)
 Note for Minikube Users and the Docker Driver
 
 Recent versions of Minikube will use the docker driver by default when you run minikube start. On Windows or macOS, the docker driver is not compatible with an ingress, which we will be using throughout the course.
@@ -96,7 +96,7 @@ or
 https://github.com/kubernetes/minikube/issues/7332
 
 - here is a workaround
-  ![virtualbox workaroud](https://www.github.com/jgillespie0715/microservice-proof/blob/media/virtualbox.png?raw=true)
+  ![virtualbox workaroud](https://i.ibb.co/pfcqJvL/virtualbox.png)
 
 **Enable Addons**
 
@@ -153,7 +153,7 @@ https://github.com/kubernetes/minikube/issues/7332
 
 `echo $(kubectl config view --minify -o jsonpath='{.clusters[0].cluster.server}')`
 
-![api-command](https://www.github.com/jgillespie0715/microservice-proof/blob/media/api-command.png?raw=true)
+![api-command](https://i.ibb.co/vVmtN3K/api-command.gif)
 
 `echo $(kubectl get secret $(kubectl get serviceaccount default -o jsonpath='{.secrets[0].name}') -o jsonpath='{.data.token}' | base64 --decode )`
 
